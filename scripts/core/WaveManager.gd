@@ -41,9 +41,12 @@ func _process(delta: float) -> void:
 		if spawn_queue.size() > 0:
 			spawn_interval_timer -= delta
 			if spawn_interval_timer <= 0.0:
-				spawn_interval_timer = 0.12
-				var m_data = spawn_queue.pop_front()
-				_spawn_wave_monster(m_data)
+				spawn_interval_timer = 0.04 # 極速出怪 (0.04s)
+				# 每次自四方裂隙同時湧出 2~3 隻
+				var spawn_batch = min(3, spawn_queue.size())
+				for s in range(spawn_batch):
+					var m_data = spawn_queue.pop_front()
+					_spawn_wave_monster(m_data)
 				
 		var current_alive = _get_alive_wave_enemies_count()
 		wave_timer_updated.emit(0.0, total_wave_enemies_to_spawn, current_alive)
@@ -70,9 +73,10 @@ func _start_next_wave() -> void:
 	
 	spawn_queue.clear()
 	
-	var count = min(40, 12 + int(current_wave * 0.15))
+	# 怪物量提升 3 倍 (初波即有 36~40+ 隻，隨波次逐步攀升至 120 隻超大魔潮)
+	var count = min(120, int((12 + current_wave * 0.45) * 3.0))
 	if is_boss_wave:
-		count += 6
+		count += 15
 		
 	for i in range(count):
 		var m_id = monster_ids[i % monster_ids.size()]
