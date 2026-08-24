@@ -30,6 +30,12 @@ var is_wave_attacker: bool = false
 # 怪物外觀與資料
 var monster_data: Dictionary = {}
 var monster_texture: Texture2D = null
+var anim_texture: Texture2D = null
+var anim_frame_count: int = 1
+var anim_frame_w: float = 64.0
+var anim_frame_h: float = 64.0
+var anim_fps: float = 8.0
+
 var drawer_type: String = "slime"
 var color_main: Color = Color(0.2, 0.85, 0.45)
 var color_sub: Color = Color(0.6, 1.0, 0.7)
@@ -67,16 +73,21 @@ func setup_from_monster_data(m_data: Dictionary, wave: int = 1) -> void:
 	monster_scale = m_data.get("scale", 1.0)
 	is_boss = "boss" in m_data.get("id", "") or "B0" in m_data.get("num", "")
 	
-	# 嘗試加載魔物原版圖片精靈
+	# 優先載入魔物多幀動態 Sprite Sheet 動畫
 	var num_str = str(m_data.get("num", ""))
 	if num_str != "":
-		var png_res = "res://assets/sprites/monsters/%s.png" % num_str
-		if ResourceLoader.exists(png_res):
-			monster_texture = load(png_res)
+		var anim_res = "res://assets/sprites/monsters/%s_anim.png" % num_str
+		if ResourceLoader.exists(anim_res):
+			anim_texture = load(anim_res)
+			var f_sz = anim_texture.get_size()
+			anim_frame_h = max(1.0, f_sz.y)
+			# 根據長寬比自動計算精靈圖幀數
+			anim_frame_count = max(1, int(round(f_sz.x / anim_frame_h)))
+			anim_frame_w = f_sz.x / float(anim_frame_count)
 		else:
-			var img = Image.new()
-			if img.load("assets/sprites/monsters/%s.png" % num_str) == OK:
-				monster_texture = ImageTexture.create_from_image(img)
+			var png_res = "res://assets/sprites/monsters/%s.png" % num_str
+			if ResourceLoader.exists(png_res):
+				monster_texture = load(png_res)
 	
 	if not is_node_ready():
 		await ready
@@ -226,7 +237,6 @@ func _on_died() -> void:
 	hitbox_collision.disabled = true
 	hurtbox.set_deferred("monitoring", false)
 	
-	# 給予經驗值與金幣 (支援天賦神之財富)
 	var gold_mult = 2 if BuffManager.has_buff("gold_master") else 1
 	Global.add_exp(stats.exp_reward)
 	var gold_val = randi_range(stats.gold_reward_min, stats.gold_reward_max) * gold_mult
@@ -271,8 +281,26 @@ func _spawn_drops() -> void:
 		d.setup(card_id, card_name, "seal_card", 1, 0, Color(0.85, 0.85, 0.9))
 
 func _draw() -> void:
-	if monster_texture:
-		# 陰影
+	if anim_texture:
+		# 1. 繪製動態多幀真實魔物動畫
+		draw_circle(Vector2(0, 12), 16.0 * monster_scale, Color(0, 0, 0, 0.35))
+		if is_boss:
+			var aura_r = 45.0 * monster_scale + sin(anim_timer * 10.0) * 5.0
+			draw_arc(Vector2.ZERO, aura_r, 0, TAU, 32, color_sub, 3.5)
+			
+		var target_h = 76.0 * monster_scale
+		var tex_scale = target_h / max(1.0, anim_frame_h)
+		var draw_w = anim_frame_w * tex_scale
+		var draw_h = target_h
+		var bounce = sin(anim_timer * 6.0) * 1.5
+		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 12 + bounce, draw_w, draw_h)
+		
+		# 計算當前幀
+		var cur_frame = int(fmod(anim_timer * anim_fps, float(anim_frame_count)))
+		var src_rect = Rect2(cur_frame * anim_frame_w, 0, anim_frame_w, anim_frame_h)
+		draw_texture_rect_region(anim_texture, dest_rect, src_rect)
+		
+	elif monster_texture:
 		draw_circle(Vector2(0, 12), 16.0 * monster_scale, Color(0, 0, 0, 0.35))
 		if is_boss:
 			var aura_r = 45.0 * monster_scale + sin(anim_timer * 10.0) * 5.0
@@ -288,7 +316,7 @@ func _draw() -> void:
 	else:
 		ProceduralMonsterDrawer.draw_monster(self, drawer_type, color_main, color_sub, anim_timer, monster_scale * 1.5, is_boss)
 	
-	# 繪製怪物頭頂血條與名稱
+	# 繪製怪物頭頂血條
 	if ai_state != AIState.DEAD and health and stats:
 		var bar_w = 56.0 * monster_scale
 		var bar_h = 5.0

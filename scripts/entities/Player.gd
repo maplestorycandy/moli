@@ -4,7 +4,6 @@ class_name Player
 @export var acceleration: float = 1200.0
 @export var friction: float = 1000.0
 
-# 狀態枚舉 (避免與 components/State.gd 名稱衝突)
 enum ActionState {
 	IDLE,
 	MOVE,
@@ -20,13 +19,22 @@ var current_state: ActionState = ActionState.IDLE
 var facing_direction: Vector2 = Vector2.DOWN
 var aim_direction: Vector2 = Vector2.RIGHT
 
-# 戰鬥計時器與參數
 var state_timer: float = 0.0
 var combo_step: int = 0
 var attack_charge_time: float = 0.0
 var dodge_direction: Vector2 = Vector2.ZERO
 var dodge_speed: float = 360.0
 var is_invulnerable: bool = false
+var anim_timer: float = 0.0
+
+# 英雄 Skin 外觀系統
+var skin_data: Dictionary = {}
+var skin_texture: Texture2D = null
+var skin_anim_texture: Texture2D = null
+var skin_frame_count: int = 1
+var skin_frame_w: float = 64.0
+var skin_frame_h: float = 64.0
+var skin_fps: float = 8.0
 
 # 預載技能與投射物場景
 var kiblast_scene = preload("res://scenes/combat/KiBlastProjectile.tscn")
@@ -47,9 +55,38 @@ func _ready() -> void:
 	hurtbox.hit_received.connect(_on_hit_received)
 	EventBus.player_health_changed.emit(Global.hp, Global.max_hp)
 	EventBus.player_mana_changed.emit(Global.mp, Global.max_mp)
+	
+	if has_node("/root/SkinManager"):
+		var sm = get_node("/root/SkinManager")
+		sm.skin_changed.connect(_on_skin_changed)
+		_on_skin_changed(sm.get_current_skin())
+
+func _on_skin_changed(new_skin: Dictionary) -> void:
+	skin_data = new_skin
+	Global.player_name = new_skin.get("name", "辛 (Shin)").split(" ")[0]
+	var num_str = str(new_skin.get("num", "001"))
+	
+	if not new_skin.get("is_custom_draw", false) and num_str != "":
+		var anim_res = "res://assets/sprites/monsters/%s_anim.png" % num_str
+		if ResourceLoader.exists(anim_res):
+			skin_anim_texture = load(anim_res)
+			var f_sz = skin_anim_texture.get_size()
+			skin_frame_h = max(1.0, f_sz.y)
+			skin_frame_count = max(1, int(round(f_sz.x / skin_frame_h)))
+			skin_frame_w = f_sz.x / float(skin_frame_count)
+			skin_texture = null
+		else:
+			var png_res = "res://assets/sprites/monsters/%s.png" % num_str
+			if ResourceLoader.exists(png_res):
+				skin_texture = load(png_res)
+			skin_anim_texture = null
+	else:
+		skin_anim_texture = null
+		skin_texture = null
+	EventBus.player_stats_changed.emit()
 
 func _process(delta: float) -> void:
-	# 滑鼠瞄準方向計算
+	anim_timer += delta
 	var mouse_pos = get_global_mouse_position()
 	aim_direction = (mouse_pos - global_position).normalized()
 	
@@ -60,24 +97,22 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	match current_state:
 		ActionState.IDLE, ActionState.MOVE:
-			_physics_movement(delta)
+			_process_movement(delta)
 		ActionState.DODGE:
 			velocity = dodge_direction * dodge_speed
 			move_and_slide()
-		ActionState.SKILL_COMBO:
-			velocity = facing_direction * 180.0
+		ActionState.ATTACK, ActionState.SKILL_FORCE_STRIKE, ActionState.CAST_MAGIC:
+			velocity = velocity.move_toward(Vector2.ZERO, friction * 2 * delta)
 			move_and_slide()
-		ActionState.ATTACK, ActionState.SKILL_FORCE_STRIKE, ActionState.CAST_MAGIC, ActionState.HURT:
+		ActionState.SKILL_COMBO:
+			velocity = facing_direction * (Global.move_speed * 1.6)
+			move_and_slide()
+		ActionState.HURT:
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 			move_and_slide()
 
 func _handle_input() -> void:
-	if current_state in [ActionState.ATTACK, ActionState.DODGE, ActionState.SKILL_COMBO, ActionState.SKILL_FORCE_STRIKE, ActionState.CAST_MAGIC, ActionState.HURT]:
-		return
-		
-	# 普通攻擊
-	if Input.is_action_just_pressed("attack"):
-		_start_attack()
+	if current_state in [ActionState.DODGE, ActionState.HURT, ActionState.SKILL_FORCE_STRIKE]:
 		return
 		
 	# 翻滾閃避
@@ -85,299 +120,311 @@ func _handle_input() -> void:
 		_start_dodge()
 		return
 		
+	# 普通攻擊
+	if Input.is_action_just_pressed("attack"):
+		_start_attack()
+		return
+		
 	# 技能1: 連擊
 	if Input.is_action_just_pressed("skill_1"):
-		if Global.mp >= 15:
-			Global.mp -= 15
-			EventBus.player_mana_changed.emit(Global.mp, Global.max_mp)
-			_start_skill_combo()
-		else:
-			EventBus.damage_spawned.emit(global_position, "MP不足！", Color(0.4, 0.7, 1.0), false, false)
+		_start_skill_combo()
 		return
 		
 	# 技能2: 乾坤一擲
 	if Input.is_action_just_pressed("skill_2"):
-		if Global.mp >= 22:
-			Global.mp -= 22
-			EventBus.player_mana_changed.emit(Global.mp, Global.max_mp)
-			_start_force_strike()
-		else:
-			EventBus.damage_spawned.emit(global_position, "MP不足！", Color(0.4, 0.7, 1.0), false, false)
+		_start_skill_force_strike()
 		return
 		
 	# 技能3: 氣功彈
 	if Input.is_action_just_pressed("skill_3"):
-		if Global.mp >= 20:
-			Global.mp -= 20
-			EventBus.player_mana_changed.emit(Global.mp, Global.max_mp)
-			_cast_ki_blast()
-		else:
-			EventBus.damage_spawned.emit(global_position, "MP不足！", Color(0.4, 0.7, 1.0), false, false)
+		_start_skill_kiblast()
 		return
 		
 	# 技能4: 超強隕石魔法
 	if Input.is_action_just_pressed("skill_4"):
-		if Global.mp >= 30:
-			Global.mp -= 30
-			EventBus.player_mana_changed.emit(Global.mp, Global.max_mp)
-			_cast_meteor_magic()
-		else:
-			EventBus.damage_spawned.emit(global_position, "MP不足！", Color(0.4, 0.7, 1.0), false, false)
+		_start_skill_meteor()
 		return
 		
-	# 投擲封印卡
+	# 封印卡投擲
 	if Input.is_action_just_pressed("seal_monster"):
-		_throw_seal_card()
+		_use_seal_card()
 		return
 		
-	# 切換寵物戰術
+	# 寵物指令切換
 	if Input.is_action_just_pressed("pet_command"):
 		_cycle_pet_command()
-		return
 
-func _physics_movement(delta: float) -> void:
-	var input_vec = Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	).normalized()
-	
-	if input_vec != Vector2.ZERO:
-		facing_direction = input_vec
-		velocity = velocity.move_toward(input_vec * Global.agi_speed, acceleration * delta)
+func _process_movement(delta: float) -> void:
+	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if input_vector != Vector2.ZERO:
+		facing_direction = input_vector.normalized()
+		velocity = velocity.move_toward(input_vector * Global.move_speed, acceleration * delta)
 		current_state = ActionState.MOVE
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		current_state = ActionState.IDLE
-		
 	move_and_slide()
 
-# --- 戰鬥與技能動作 ---
+func _start_dodge() -> void:
+	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	dodge_direction = input_vector.normalized() if input_vector != Vector2.ZERO else facing_direction
+	current_state = ActionState.DODGE
+	state_timer = 0.0
+	is_invulnerable = true
+	hurtbox.is_invulnerable = true
+	SoundManager.play_swing()
 
 func _start_attack() -> void:
 	current_state = ActionState.ATTACK
 	state_timer = 0.0
-	combo_step = (combo_step % 3) + 1
 	facing_direction = aim_direction
 	
-	weapon_hitbox.damage_multiplier = 1.0 + (combo_step * 0.2)
-	weapon_hitbox.skill_name = "普通攻擊"
-	weapon_hitbox.reset_hit_list()
-	weapon_hitbox.position = facing_direction * 28.0
-	weapon_hitbox.rotation = facing_direction.angle()
-	weapon_collision.disabled = false
-	
+	var is_dual = BuffManager.has_buff("dual_attack")
+	var dmg_mult = 1.0 if not is_dual else 1.35
+	_trigger_weapon_hitbox("普通攻擊", dmg_mult, 0.15, 0.3)
 	SoundManager.play_swing()
-	EventBus.character_attack_triggered.emit(self, global_position + facing_direction * 30, "普通攻擊")
-
-func _start_dodge() -> void:
-	current_state = ActionState.DODGE
-	state_timer = 0.0
-	var input_vec = Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	).normalized()
-	
-	dodge_direction = input_vec if input_vec != Vector2.ZERO else facing_direction
-	hurtbox.is_invulnerable = true
-	SoundManager.play_dodge()
 
 func _start_skill_combo() -> void:
+	var mp_cost = 15
+	if Global.mp < mp_cost:
+		_show_not_enough_mp()
+		return
+	Global.consume_mp(mp_cost)
+	
 	current_state = ActionState.SKILL_COMBO
 	state_timer = 0.0
 	combo_step = 0
 	facing_direction = aim_direction
-	EventBus.damage_spawned.emit(global_position + Vector2(0, -35), "【連擊】", Color(0.3, 1.0, 0.8), false, false)
+	_process_combo_step()
 
-func _start_force_strike() -> void:
+func _process_combo_step() -> void:
+	combo_step += 1
+	var is_master = BuffManager.has_buff("combo_master")
+	var max_step = 6 if is_master else 4
+	
+	_trigger_weapon_hitbox("連擊", 0.75 + (combo_step * 0.1), 0.05, 0.15)
+	SoundManager.play_swing()
+	EventBus.screen_shake_requested.emit(4.0, 0.1)
+	
+	if combo_step < max_step:
+		get_tree().create_timer(0.12).timeout.connect(func():
+			if current_state == ActionState.SKILL_COMBO:
+				_process_combo_step()
+		)
+	else:
+		get_tree().create_timer(0.2).timeout.connect(func():
+			if current_state == ActionState.SKILL_COMBO:
+				current_state = ActionState.IDLE
+		)
+
+func _start_skill_force_strike() -> void:
+	var mp_cost = 25
+	if Global.mp < mp_cost:
+		_show_not_enough_mp()
+		return
+	Global.consume_mp(mp_cost)
+	
 	current_state = ActionState.SKILL_FORCE_STRIKE
 	state_timer = 0.0
 	facing_direction = aim_direction
-	EventBus.damage_spawned.emit(global_position + Vector2(0, -35), "【乾坤一擲】蓄力！", Color(1.0, 0.6, 0.1), false, false)
+	SoundManager.play_magic()
 
-func _cast_ki_blast() -> void:
+func _start_skill_kiblast() -> void:
+	var mp_cost = 20
+	if Global.mp < mp_cost:
+		_show_not_enough_mp()
+		return
+	Global.consume_mp(mp_cost)
+	
 	facing_direction = aim_direction
-	SoundManager.play_swing()
-	EventBus.damage_spawned.emit(global_position + Vector2(0, -35), "【氣功彈】", Color(1.0, 0.9, 0.2), false, false)
+	var blast = kiblast_scene.instantiate()
+	blast.global_position = global_position + aim_direction * 20.0
+	get_parent().add_child(blast)
 	
-	# 發射 2 枚氣功彈 (略帶擴散角)
-	var angles = [-0.15, 0.15]
-	for a in angles:
-		var dir = aim_direction.rotated(a)
-		var proj = kiblast_scene.instantiate()
-		proj.global_position = global_position + dir * 20
-		get_parent().add_child(proj)
-		proj.setup(dir, self)
+	var is_master = BuffManager.has_buff("qigong_split")
+	var count = 3 if is_master else 1
+	var atk_val = int(Global.atk * 1.6)
+	blast.setup(aim_direction, atk_val, count)
+	SoundManager.play_magic()
 
-func _cast_meteor_magic() -> void:
-	var target_pos = get_global_mouse_position()
-	EventBus.damage_spawned.emit(global_position + Vector2(0, -35), "【超強隕石魔法】", Color(0.9, 0.6, 0.1), false, false)
-	var spell = meteor_scene.instantiate()
-	get_parent().add_child(spell)
-	spell.setup(target_pos, self)
-
-func _throw_seal_card() -> void:
-	# 檢查背包中是否有封印卡
-	var has_card = false
-	var chosen_tier = CombatMath.SealCardTier.NORMAL
-	var card_name = "普卡封印卡"
+func _start_skill_meteor() -> void:
+	var mp_cost = 45
+	if Global.mp < mp_cost:
+		_show_not_enough_mp()
+		return
+	Global.consume_mp(mp_cost)
 	
-	for item in Global.inventory:
-		if item.get("type") == "seal_card" and item.get("count", 0) > 0:
-			has_card = true
-			chosen_tier = item.get("tier", CombatMath.SealCardTier.NORMAL)
-			card_name = item.get("name", "封印卡")
-			Global.consume_item(item["id"])
+	var target_p = get_global_mouse_position()
+	var meteor = meteor_scene.instantiate()
+	meteor.global_position = target_p
+	get_parent().add_child(meteor)
+	meteor.setup(int(Global.atk * 2.8))
+	SoundManager.play_magic()
+
+func _use_seal_card() -> void:
+	var card_item = null
+	for it in Global.inventory:
+		if it.get("type") == "seal_card" and it.get("count", 0) > 0:
+			card_item = it
 			break
 			
-	if not has_card:
-		EventBus.damage_spawned.emit(global_position, "沒有封印卡！", Color(1.0, 0.3, 0.3), false, false)
+	if not card_item:
+		EventBus.damage_spawned.emit(global_position + Vector2(0, -30), "沒有封印卡！", Color(1, 0.4, 0.4), false, false)
 		return
 		
-	var target_pos = get_global_mouse_position()
-	var card_proj = seal_card_scene.instantiate()
-	card_proj.global_position = global_position
-	get_parent().add_child(card_proj)
-	card_proj.setup(target_pos, chosen_tier, card_name, self)
+	card_item["count"] -= 1
+	if card_item["count"] <= 0:
+		Global.inventory.erase(card_item)
+	EventBus.inventory_updated.emit()
+	
+	var seal_proj = seal_card_scene.instantiate()
+	seal_proj.global_position = global_position
+	get_parent().add_child(seal_proj)
+	seal_proj.setup(aim_direction, card_item.get("tier", CombatMath.SealCardTier.NORMAL))
+	SoundManager.play_swing()
 
 func _cycle_pet_command() -> void:
-	if Global.pet_command_mode == "FOLLOW_ATTACK":
-		Global.pet_command_mode = "GUARD"
-		EventBus.show_banner_notification.emit("寵物指令切換", "【護衛模式】寵物將優先守護玩家並阻擋攻擊！")
-	elif Global.pet_command_mode == "GUARD":
-		Global.pet_command_mode = "STANDBY"
-		EventBus.show_banner_notification.emit("寵物指令切換", "【待命模式】寵物原地警戒保持戰力！")
-	else:
-		Global.pet_command_mode = "FOLLOW_ATTACK"
-		EventBus.show_banner_notification.emit("寵物指令切換", "【進攻模式】寵物協同並肩主動攻擊敵人！")
+	match Global.pet_command_mode:
+		"FOLLOW_ATTACK": Global.pet_command_mode = "GUARD"
+		"GUARD": Global.pet_command_mode = "STANDBY"
+		"STANDBY": Global.pet_command_mode = "FOLLOW_ATTACK"
 	EventBus.pet_command_changed.emit(Global.pet_command_mode)
+
+func _trigger_weapon_hitbox(skill_name: String, dmg_mult: float, active_delay: float, duration: float) -> void:
+	weapon_hitbox.skill_name = skill_name
+	weapon_hitbox.damage_multiplier = dmg_mult
+	weapon_hitbox.position = facing_direction * 28.0
+	
+	get_tree().create_timer(active_delay).timeout.connect(func():
+		weapon_collision.disabled = false
+		weapon_hitbox.reset_hit_list()
+	)
+	get_tree().create_timer(active_delay + duration).timeout.connect(func():
+		weapon_collision.disabled = true
+	)
 
 func _update_state(delta: float) -> void:
 	state_timer += delta
-	
 	match current_state:
-		ActionState.ATTACK:
-			if state_timer >= 0.18:
-				weapon_collision.disabled = true
-			if state_timer >= 0.28:
-				current_state = ActionState.IDLE
-				
 		ActionState.DODGE:
-			if state_timer >= 0.25:
+			if state_timer >= 0.28:
+				is_invulnerable = false
 				hurtbox.is_invulnerable = false
 				current_state = ActionState.IDLE
-				
-		ActionState.SKILL_COMBO:
-			# 3~6 段高速劈砍節奏 (支援天賦: 連擊狂暴)
-			var max_steps = 6 if BuffManager.has_buff("combo_frenzy") else 3
-			var step_dur = 0.10 if max_steps == 6 else 0.12
-			
-			if state_timer >= step_dur * (combo_step + 1) and combo_step < max_steps:
-				combo_step += 1
-				var mult = 1.2 + (combo_step * 0.3)
-				_trigger_combo_slash(mult)
-			elif state_timer >= step_dur * (max_steps + 1):
-				weapon_collision.disabled = true
+		ActionState.ATTACK:
+			if state_timer >= 0.35:
 				current_state = ActionState.IDLE
-				
 		ActionState.SKILL_FORCE_STRIKE:
-			# 蓄力 0.45 秒後揮出毀天滅地一擊
-			if state_timer >= 0.45 and not weapon_collision.disabled == false:
-				weapon_hitbox.damage_multiplier = 3.2 # 320% 超高爆發
-				weapon_hitbox.skill_name = "乾坤一擲"
-				weapon_hitbox.reset_hit_list()
-				weapon_hitbox.position = facing_direction * 36.0
-				weapon_hitbox.rotation = facing_direction.angle()
-				weapon_collision.disabled = false
+			if state_timer >= 0.45 and weapon_collision.disabled:
+				_trigger_weapon_hitbox("乾坤一擲", 3.2, 0.0, 0.25)
+				EventBus.screen_shake_requested.emit(12.0, 0.3)
 				SoundManager.play_crit()
-				EventBus.screen_shake_requested.emit(14.0, 0.3)
-			if state_timer >= 0.65:
-				weapon_collision.disabled = true
+			elif state_timer >= 0.75:
 				current_state = ActionState.IDLE
-				
 		ActionState.HURT:
-			if state_timer >= 0.2:
+			if state_timer >= 0.3:
 				current_state = ActionState.IDLE
 
-func _trigger_combo_slash(mult: float) -> void:
-	weapon_hitbox.damage_multiplier = mult
-	weapon_hitbox.skill_name = "連擊"
-	weapon_hitbox.reset_hit_list()
-	weapon_hitbox.position = facing_direction * 30.0
-	weapon_hitbox.rotation = facing_direction.angle()
-	weapon_collision.disabled = false
-	SoundManager.play_swing()
-	EventBus.screen_shake_requested.emit(4.0, 0.1)
+func _show_not_enough_mp() -> void:
+	EventBus.damage_spawned.emit(global_position + Vector2(0, -30), "MP 不足！", Color(0.4, 0.6, 1.0), false, false)
 
 func _on_hit_received(dmg: int, _is_crit: bool, _is_effective: bool, knock_dir: Vector2, knock_force: float) -> void:
-	Global.hp -= dmg
-	Global.hp = max(0, Global.hp)
-	EventBus.player_health_changed.emit(Global.hp, Global.max_hp)
+	if is_invulnerable:
+		return
+		
+	Global.take_damage(dmg)
+	EventBus.screen_shake_requested.emit(6.0, 0.2)
+	SoundManager.play_hurt()
 	
 	if Global.hp <= 0:
-		EventBus.player_died.emit()
-		EventBus.show_banner_notification.emit("你已倒下！", "眼前一片漆黑...已回到法蘭城醫院治療。")
+		EventBus.show_banner_notification.emit("勇者倒下了...", "愛謝拉女神的光芒將你喚回！")
 		Global.hp = Global.max_hp
-		global_position = Vector2(300, 300)
+		global_position = Vector2(600, 500)
 		EventBus.player_health_changed.emit(Global.hp, Global.max_hp)
 	else:
 		velocity = knock_dir * (knock_force * 0.7)
 		current_state = ActionState.HURT
 		state_timer = 0.0
 
-# --- 繪製魔力寶貝經典主角 辛 (Shin) 視覺造型 ---
+# --- 繪製主角 Skin 視覺造型 (支援多幀動畫 Sprite Sheet 與經典辛手繪) ---
 func _draw() -> void:
+	var p_scale = skin_data.get("scale", 1.0)
+	
 	# 陰影
-	draw_custom_ellipse(Vector2(0, 20), 24.0, 12.0, Color(0, 0, 0, 0.35))
+	draw_custom_ellipse(Vector2(0, 20), 24.0 * p_scale, 12.0 * p_scale, Color(0, 0, 0, 0.35))
 	
 	# 翻滾殘影
 	if current_state == ActionState.DODGE:
-		draw_circle(Vector2.ZERO, 26.0, Color(0.4, 0.8, 1.0, 0.35))
+		draw_circle(Vector2.ZERO, 26.0 * p_scale, Color(0.4, 0.8, 1.0, 0.35))
 		
 	# 乾坤一擲蓄力氣場
 	if current_state == ActionState.SKILL_FORCE_STRIKE and state_timer < 0.45:
-		var aura_r = 36.0 + sin(state_timer * 25.0) * 8.0
+		var aura_r = (36.0 + sin(state_timer * 25.0) * 8.0) * p_scale
 		draw_arc(Vector2.ZERO, aura_r, 0, TAU, 28, Color(1.0, 0.7, 0.1, 0.85), 3.5)
 		draw_circle(Vector2.ZERO, aura_r * 0.6, Color(1.0, 0.4, 0.1, 0.35))
 		
-	# 主角身軀 (藍色勇者斗篷與輕鎧)
-	# 斗篷
-	var cape_off = -facing_direction * 9.0
-	draw_circle(cape_off + Vector2(0, 3), 18.0, Color(0.15, 0.35, 0.85))
-	
-	# 身體/輕鎧 (白金與鋼藍)
-	draw_circle(Vector2(0, 3), 16.0, Color(0.2, 0.45, 0.95))
-	draw_circle(Vector2(0, 6), 10.0, Color(0.85, 0.85, 0.95)) # 胸甲
-	
-	# 頭部與金色刺猬髮型 (經典辛的招牌金髮)
-	draw_circle(Vector2(0, -14), 14.0, Color(1.0, 0.85, 0.2)) # 金髮主體
-	draw_circle(Vector2(0, -11), 11.0, Color(0.98, 0.8, 0.68)) # 臉部膚色
-	draw_circle(Vector2(3, -20), 8.0, Color(1.0, 0.88, 0.2)) # 翹起的金髮撮
-	draw_circle(Vector2(-5, -19), 7.0, Color(1.0, 0.88, 0.2))
-	
-	# 眼睛
-	var eye_offset = facing_direction.normalized() * 4.5
-	draw_circle(Vector2(-3, -12) + eye_offset, 2.2, Color(0.1, 0.2, 0.5))
-	draw_circle(Vector2(3, -12) + eye_offset, 2.2, Color(0.1, 0.2, 0.5))
-	
-	# 經典佩劍 (雙手大劍 / 單手劍)
-	var sword_pos = facing_direction * 24.0 + Vector2(0, 3)
-	var sword_angle = facing_direction.angle()
-	
+	if skin_anim_texture:
+		# 1. 繪製動態多幀真實英雄 Skin
+		var target_h = 76.0 * p_scale
+		var tex_scale = target_h / max(1.0, skin_frame_h)
+		var draw_w = skin_frame_w * tex_scale
+		var draw_h = target_h
+		var bounce = sin(anim_timer * 6.0) * 1.5
+		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 16 + bounce, draw_w, draw_h)
+		
+		var cur_frame = int(fmod(anim_timer * skin_fps, float(skin_frame_count)))
+		var src_rect = Rect2(cur_frame * skin_frame_w, 0, skin_frame_w, skin_frame_h)
+		draw_texture_rect_region(skin_anim_texture, dest_rect, src_rect)
+		
+	elif skin_texture:
+		var tex_size = skin_texture.get_size()
+		var target_h = 76.0 * p_scale
+		var tex_scale = target_h / max(1.0, tex_size.y)
+		var draw_w = tex_size.x * tex_scale
+		var draw_h = target_h
+		var bounce = sin(anim_timer * 7.0) * 2.0
+		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 16 + bounce, draw_w, draw_h)
+		draw_texture_rect(skin_texture, dest_rect, false)
+		
+	else:
+		# 2. 經典主角 辛 (Shin) 藍斗篷金髮勇者手繪
+		var cape_off = -facing_direction * 9.0
+		draw_circle(cape_off + Vector2(0, 3), 18.0, Color(0.15, 0.35, 0.85))
+		draw_circle(Vector2(0, 3), 16.0, Color(0.2, 0.45, 0.95))
+		draw_circle(Vector2(0, 6), 10.0, Color(0.85, 0.85, 0.95)) # 胸甲
+		
+		# 頭部與金髮
+		draw_circle(Vector2(0, -14), 14.0, Color(1.0, 0.85, 0.2))
+		draw_circle(Vector2(0, -11), 11.0, Color(0.98, 0.8, 0.68))
+		draw_circle(Vector2(3, -20), 8.0, Color(1.0, 0.88, 0.2))
+		draw_circle(Vector2(-5, -19), 7.0, Color(1.0, 0.88, 0.2))
+		
+		var eye_offset = facing_direction.normalized() * 4.5
+		draw_circle(Vector2(-3, -12) + eye_offset, 2.2, Color(0.1, 0.2, 0.5))
+		draw_circle(Vector2(3, -12) + eye_offset, 2.2, Color(0.1, 0.2, 0.5))
+		
+		# 佩劍與盾
+		var sword_pos = facing_direction * 24.0 + Vector2(0, 3)
+		var sword_angle = facing_direction.angle()
+		var hilt = sword_pos
+		var tip = hilt + Vector2.from_angle(sword_angle) * 32.0
+		draw_line(hilt, tip, Color(0.9, 0.95, 1.0), 5.0)
+		draw_line(hilt, tip, Color.WHITE, 2.5)
+		draw_circle(hilt, 4.5, Color(0.9, 0.7, 0.1))
+		
+		var shield_pos = facing_direction.rotated(PI/2) * 16.0 + Vector2(0, 3)
+		draw_circle(shield_pos, 8.0, Color(0.85, 0.7, 0.2))
+		draw_circle(shield_pos, 5.0, Color(0.2, 0.45, 0.95))
+
 	# 揮劍刀光弧線特效
 	if current_state in [ActionState.ATTACK, ActionState.SKILL_COMBO, ActionState.SKILL_FORCE_STRIKE] and not weapon_collision.disabled:
 		var slash_col = Color(0.6, 0.9, 1.0, 0.9)
+		var s_angle = facing_direction.angle()
 		if current_state == ActionState.SKILL_FORCE_STRIKE:
-			slash_col = Color(1.0, 0.4, 0.1, 0.95) # 乾坤一擲熾紅刀光
-			draw_arc(Vector2.ZERO, 40.0, sword_angle - 1.2, sword_angle + 1.2, 16, slash_col, 8.0)
+			slash_col = Color(1.0, 0.4, 0.1, 0.95)
+			draw_arc(Vector2.ZERO, 60.0 * p_scale, s_angle - 1.2, s_angle + 1.2, 20, slash_col, 10.0)
 		else:
-			draw_arc(Vector2.ZERO, 32.0, sword_angle - 0.9, sword_angle + 0.9, 16, slash_col, 4.5)
-			
-	# 劍身繪製
-	var hilt = sword_pos
-	var tip = hilt + Vector2.from_angle(sword_angle) * 22.0
-	draw_line(hilt, tip, Color(0.9, 0.95, 1.0), 3.5)
-	draw_line(hilt, tip, Color.WHITE, 1.5)
-	draw_circle(hilt, 3.0, Color(0.9, 0.7, 0.1)) # 金色劍柄十字鐔
+			draw_arc(Vector2.ZERO, 48.0 * p_scale, s_angle - 0.9, s_angle + 0.9, 20, slash_col, 6.0)
 
 func draw_custom_ellipse(center: Vector2, rx: float, ry: float, color: Color) -> void:
 	var points = PackedVector2Array()

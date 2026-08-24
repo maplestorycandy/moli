@@ -1,0 +1,6410 @@
+{
+  "001": {
+    "frames": 12,
+    "width": 65,
+    "height": 76,
+    "fps": 8.0
+  },
+  "002": {
+    "frames": 12,
+    "width": 57,
+    "height": 77,
+    "fps": 8.0
+  },
+  "003": {
+    "frames": 12,
+    "width": 65,
+    "height": 87,
+    "fps": 8.0
+  },
+  "004": {
+    "frames": 12,
+    "width": 64,
+    "height": 77,
+    "fps": 8.0
+  },
+  "005": {
+    "frames": 12,
+    "width": 64,
+    "height": 77,
+    "fps": 8.0
+  },
+  "006": {
+    "frames": 12,
+    "width": 64,
+    "height": 87,
+    "fps": 8.0
+  },
+  "007": {
+    "frames": 6,
+    "width": 77,
+    "height": 94,
+    "fps": 8.0
+  },
+  "008": {
+    "frames": 6,
+    "width": 72,
+    "height": 96,
+    "fps": 8.0
+  },
+  "009": {
+    "frames": 6,
+    "width": 73,
+    "height": 85,
+    "fps": 8.0
+  },
+  "010": {
+    "frames": 6,
+    "width": 76,
+    "height": 102,
+    "fps": 8.0
+  },
+  "011": {
+    "frames": 6,
+    "width": 69,
+    "height": 81,
+    "fps": 8.0
+  },
+  "012": {
+    "frames": 12,
+    "width": 51,
+    "height": 60,
+    "fps": 8.0
+  },
+  "013": {
+    "frames": 12,
+    "width": 51,
+    "height": 61,
+    "fps": 8.0
+  },
+  "014": {
+    "frames": 12,
+    "width": 77,
+    "height": 71,
+    "fps": 8.0
+  },
+  "015": {
+    "frames": 12,
+    "width": 77,
+    "height": 70,
+    "fps": 8.0
+  },
+  "016": {
+    "frames": 12,
+    "width": 57,
+    "height": 60,
+    "fps": 8.0
+  },
+  "017": {
+    "frames": 12,
+    "width": 58,
+    "height": 70,
+    "fps": 8.0
+  },
+  "018": {
+    "frames": 12,
+    "width": 69,
+    "height": 90,
+    "fps": 8.0
+  },
+  "019": {
+    "frames": 12,
+    "width": 69,
+    "height": 90,
+    "fps": 8.0
+  },
+  "020": {
+    "frames": 12,
+    "width": 69,
+    "height": 90,
+    "fps": 8.0
+  },
+  "021": {
+    "frames": 12,
+    "width": 82,
+    "height": 91,
+    "fps": 8.0
+  },
+  "022": {
+    "frames": 6,
+    "width": 43,
+    "height": 66,
+    "fps": 8.0
+  },
+  "023": {
+    "frames": 12,
+    "width": 51,
+    "height": 66,
+    "fps": 8.0
+  },
+  "024": {
+    "frames": 12,
+    "width": 49,
+    "height": 64,
+    "fps": 8.0
+  },
+  "025": {
+    "frames": 6,
+    "width": 51,
+    "height": 66,
+    "fps": 8.0
+  },
+  "026": {
+    "frames": 12,
+    "width": 51,
+    "height": 66,
+    "fps": 8.0
+  },
+  "027": {
+    "frames": 4,
+    "width": 65,
+    "height": 84,
+    "fps": 8.0
+  },
+  "028": {
+    "frames": 8,
+    "width": 64,
+    "height": 86,
+    "fps": 8.0
+  },
+  "029": {
+    "frames": 12,
+    "width": 65,
+    "height": 84,
+    "fps": 8.0
+  },
+  "030": {
+    "frames": 12,
+    "width": 68,
+    "height": 88,
+    "fps": 8.0
+  },
+  "031": {
+    "frames": 12,
+    "width": 68,
+    "height": 88,
+    "fps": 8.0
+  },
+  "032": {
+    "frames": 6,
+    "width": 76,
+    "height": 77,
+    "fps": 8.0
+  },
+  "033": {
+    "frames": 6,
+    "width": 62,
+    "height": 61,
+    "fps": 8.0
+  },
+  "034": {
+    "frames": 6,
+    "width": 76,
+    "height": 77,
+    "fps": 8.0
+  },
+  "035": {
+    "frames": 6,
+    "width": 62,
+    "height": 61,
+    "fps": 8.0
+  },
+  "036": {
+    "frames": 6,
+    "width": 67,
+    "height": 79,
+    "fps": 8.0
+  },
+  "037": {
+    "frames": 6,
+    "width": 67,
+    "height": 79,
+    "fps": 8.0
+  },
+  "038": {
+    "frames": 6,
+    "width": 52,
+    "height": 84,
+    "fps": 8.0
+  },
+  "039": {
+    "frames": 6,
+    "width": 45,
+    "height": 72,
+    "fps": 8.0
+  },
+  "040": {
+    "frames": 6,
+    "width": 78,
+    "height": 93,
+    "fps": 8.0
+  },
+  "041": {
+    "frames": 6,
+    "width": 67,
+    "height": 80,
+    "fps": 8.0
+  },
+  "042": {
+    "frames": 6,
+    "width": 77,
+    "height": 137,
+    "fps": 8.0
+  },
+  "043": {
+    "frames": 6,
+    "width": 90,
+    "height": 153,
+    "fps": 8.0
+  },
+  "044": {
+    "frames": 6,
+    "width": 91,
+    "height": 154,
+    "fps": 8.0
+  },
+  "045": {
+    "frames": 6,
+    "width": 77,
+    "height": 138,
+    "fps": 8.0
+  },
+  "046": {
+    "frames": 6,
+    "width": 55,
+    "height": 98,
+    "fps": 8.0
+  },
+  "047": {
+    "frames": 6,
+    "width": 67,
+    "height": 115,
+    "fps": 8.0
+  },
+  "048": {
+    "frames": 6,
+    "width": 55,
+    "height": 98,
+    "fps": 8.0
+  },
+  "049": {
+    "frames": 6,
+    "width": 67,
+    "height": 115,
+    "fps": 8.0
+  },
+  "050": {
+    "frames": 6,
+    "width": 68,
+    "height": 115,
+    "fps": 8.0
+  },
+  "051": {
+    "frames": 6,
+    "width": 56,
+    "height": 98,
+    "fps": 8.0
+  },
+  "052": {
+    "frames": 4,
+    "width": 100,
+    "height": 141,
+    "fps": 8.0
+  },
+  "053": {
+    "frames": 4,
+    "width": 107,
+    "height": 141,
+    "fps": 8.0
+  },
+  "054": {
+    "frames": 4,
+    "width": 100,
+    "height": 141,
+    "fps": 8.0
+  },
+  "055": {
+    "frames": 4,
+    "width": 92,
+    "height": 128,
+    "fps": 8.0
+  },
+  "056": {
+    "frames": 4,
+    "width": 96,
+    "height": 128,
+    "fps": 8.0
+  },
+  "057": {
+    "frames": 12,
+    "width": 76,
+    "height": 70,
+    "fps": 8.0
+  },
+  "058": {
+    "frames": 12,
+    "width": 76,
+    "height": 70,
+    "fps": 8.0
+  },
+  "059": {
+    "frames": 12,
+    "width": 76,
+    "height": 68,
+    "fps": 8.0
+  },
+  "060": {
+    "frames": 12,
+    "width": 88,
+    "height": 82,
+    "fps": 8.0
+  },
+  "061": {
+    "frames": 10,
+    "width": 69,
+    "height": 106,
+    "fps": 8.0
+  },
+  "062": {
+    "frames": 10,
+    "width": 69,
+    "height": 106,
+    "fps": 8.0
+  },
+  "063": {
+    "frames": 10,
+    "width": 52,
+    "height": 104,
+    "fps": 8.0
+  },
+  "064": {
+    "frames": 10,
+    "width": 50,
+    "height": 102,
+    "fps": 8.0
+  },
+  "065": {
+    "frames": 10,
+    "width": 51,
+    "height": 102,
+    "fps": 8.0
+  },
+  "066": {
+    "frames": 10,
+    "width": 76,
+    "height": 108,
+    "fps": 8.0
+  },
+  "067": {
+    "frames": 10,
+    "width": 92,
+    "height": 113,
+    "fps": 8.0
+  },
+  "068": {
+    "frames": 10,
+    "width": 72,
+    "height": 100,
+    "fps": 8.0
+  },
+  "069": {
+    "frames": 10,
+    "width": 84,
+    "height": 101,
+    "fps": 8.0
+  },
+  "070": {
+    "frames": 10,
+    "width": 76,
+    "height": 108,
+    "fps": 8.0
+  },
+  "071": {
+    "frames": 6,
+    "width": 96,
+    "height": 64,
+    "fps": 8.0
+  },
+  "072": {
+    "frames": 6,
+    "width": 96,
+    "height": 64,
+    "fps": 8.0
+  },
+  "073": {
+    "frames": 12,
+    "width": 96,
+    "height": 64,
+    "fps": 8.0
+  },
+  "074": {
+    "frames": 12,
+    "width": 96,
+    "height": 64,
+    "fps": 8.0
+  },
+  "075": {
+    "frames": 12,
+    "width": 120,
+    "height": 145,
+    "fps": 8.0
+  },
+  "076": {
+    "frames": 12,
+    "width": 120,
+    "height": 145,
+    "fps": 8.0
+  },
+  "077": {
+    "frames": 12,
+    "width": 120,
+    "height": 145,
+    "fps": 8.0
+  },
+  "078": {
+    "frames": 12,
+    "width": 112,
+    "height": 147,
+    "fps": 8.0
+  },
+  "079": {
+    "frames": 12,
+    "width": 112,
+    "height": 147,
+    "fps": 8.0
+  },
+  "080": {
+    "frames": 12,
+    "width": 112,
+    "height": 147,
+    "fps": 8.0
+  },
+  "081": {
+    "frames": 12,
+    "width": 45,
+    "height": 72,
+    "fps": 8.0
+  },
+  "082": {
+    "frames": 12,
+    "width": 45,
+    "height": 72,
+    "fps": 8.0
+  },
+  "083": {
+    "frames": 12,
+    "width": 45,
+    "height": 72,
+    "fps": 8.0
+  },
+  "084": {
+    "frames": 12,
+    "width": 45,
+    "height": 72,
+    "fps": 8.0
+  },
+  "085": {
+    "frames": 7,
+    "width": 79,
+    "height": 96,
+    "fps": 8.0
+  },
+  "086": {
+    "frames": 12,
+    "width": 91,
+    "height": 93,
+    "fps": 8.0
+  },
+  "087": {
+    "frames": 6,
+    "width": 79,
+    "height": 96,
+    "fps": 8.0
+  },
+  "088": {
+    "frames": 12,
+    "width": 79,
+    "height": 100,
+    "fps": 8.0
+  },
+  "089": {
+    "frames": 12,
+    "width": 73,
+    "height": 123,
+    "fps": 8.0
+  },
+  "090": {
+    "frames": 6,
+    "width": 73,
+    "height": 102,
+    "fps": 8.0
+  },
+  "091": {
+    "frames": 12,
+    "width": 77,
+    "height": 123,
+    "fps": 8.0
+  },
+  "092": {
+    "frames": 6,
+    "width": 73,
+    "height": 112,
+    "fps": 8.0
+  },
+  "093": {
+    "frames": 12,
+    "width": 77,
+    "height": 123,
+    "fps": 8.0
+  },
+  "094": {
+    "frames": 8,
+    "width": 50,
+    "height": 44,
+    "fps": 8.0
+  },
+  "095": {
+    "frames": 8,
+    "width": 73,
+    "height": 64,
+    "fps": 8.0
+  },
+  "096": {
+    "frames": 8,
+    "width": 50,
+    "height": 44,
+    "fps": 8.0
+  },
+  "097": {
+    "frames": 8,
+    "width": 73,
+    "height": 64,
+    "fps": 8.0
+  },
+  "098": {
+    "frames": 6,
+    "width": 36,
+    "height": 75,
+    "fps": 8.0
+  },
+  "099": {
+    "frames": 6,
+    "width": 53,
+    "height": 79,
+    "fps": 8.0
+  },
+  "100": {
+    "frames": 6,
+    "width": 40,
+    "height": 72,
+    "fps": 8.0
+  },
+  "101": {
+    "frames": 6,
+    "width": 45,
+    "height": 74,
+    "fps": 8.0
+  },
+  "1012": {
+    "frames": 12,
+    "width": 51,
+    "height": 60,
+    "fps": 8.0
+  },
+  "1014": {
+    "frames": 12,
+    "width": 77,
+    "height": 71,
+    "fps": 8.0
+  },
+  "102": {
+    "frames": 12,
+    "width": 67,
+    "height": 83,
+    "fps": 8.0
+  },
+  "1021": {
+    "frames": 12,
+    "width": 82,
+    "height": 91,
+    "fps": 8.0
+  },
+  "1022": {
+    "frames": 6,
+    "width": 43,
+    "height": 66,
+    "fps": 8.0
+  },
+  "103": {
+    "frames": 12,
+    "width": 63,
+    "height": 78,
+    "fps": 8.0
+  },
+  "104": {
+    "frames": 12,
+    "width": 73,
+    "height": 91,
+    "fps": 8.0
+  },
+  "1047": {
+    "frames": 6,
+    "width": 67,
+    "height": 115,
+    "fps": 8.0
+  },
+  "1048": {
+    "frames": 6,
+    "width": 55,
+    "height": 98,
+    "fps": 8.0
+  },
+  "105": {
+    "frames": 12,
+    "width": 67,
+    "height": 83,
+    "fps": 8.0
+  },
+  "10501": {
+    "frames": 12,
+    "width": 85,
+    "height": 163,
+    "fps": 8.0
+  },
+  "10502": {
+    "frames": 12,
+    "width": 96,
+    "height": 188,
+    "fps": 8.0
+  },
+  "10503": {
+    "frames": 12,
+    "width": 152,
+    "height": 226,
+    "fps": 8.0
+  },
+  "10504": {
+    "frames": 12,
+    "width": 117,
+    "height": 199,
+    "fps": 8.0
+  },
+  "10505": {
+    "frames": 12,
+    "width": 158,
+    "height": 229,
+    "fps": 8.0
+  },
+  "10506": {
+    "frames": 12,
+    "width": 108,
+    "height": 133,
+    "fps": 8.0
+  },
+  "10507": {
+    "frames": 4,
+    "width": 40,
+    "height": 86,
+    "fps": 8.0
+  },
+  "10508": {
+    "frames": 4,
+    "width": 41,
+    "height": 83,
+    "fps": 8.0
+  },
+  "10513": {
+    "frames": 4,
+    "width": 40,
+    "height": 88,
+    "fps": 8.0
+  },
+  "10514": {
+    "frames": 4,
+    "width": 45,
+    "height": 74,
+    "fps": 8.0
+  },
+  "10515": {
+    "frames": 4,
+    "width": 48,
+    "height": 96,
+    "fps": 8.0
+  },
+  "10516": {
+    "frames": 4,
+    "width": 49,
+    "height": 100,
+    "fps": 8.0
+  },
+  "10517": {
+    "frames": 4,
+    "width": 92,
+    "height": 98,
+    "fps": 8.0
+  },
+  "10518": {
+    "frames": 5,
+    "width": 70,
+    "height": 97,
+    "fps": 8.0
+  },
+  "10520": {
+    "frames": 9,
+    "width": 125,
+    "height": 195,
+    "fps": 8.0
+  },
+  "10521": {
+    "frames": 8,
+    "width": 139,
+    "height": 147,
+    "fps": 8.0
+  },
+  "10522": {
+    "frames": 4,
+    "width": 37,
+    "height": 90,
+    "fps": 8.0
+  },
+  "10523": {
+    "frames": 4,
+    "width": 81,
+    "height": 90,
+    "fps": 8.0
+  },
+  "10524": {
+    "frames": 12,
+    "width": 152,
+    "height": 226,
+    "fps": 8.0
+  },
+  "10525": {
+    "frames": 6,
+    "width": 81,
+    "height": 84,
+    "fps": 8.0
+  },
+  "1059": {
+    "frames": 12,
+    "width": 76,
+    "height": 68,
+    "fps": 8.0
+  },
+  "106": {
+    "frames": 12,
+    "width": 60,
+    "height": 75,
+    "fps": 8.0
+  },
+  "1064": {
+    "frames": 10,
+    "width": 50,
+    "height": 102,
+    "fps": 8.0
+  },
+  "1066": {
+    "frames": 10,
+    "width": 76,
+    "height": 108,
+    "fps": 8.0
+  },
+  "107": {
+    "frames": 6,
+    "width": 100,
+    "height": 108,
+    "fps": 8.0
+  },
+  "1072": {
+    "frames": 6,
+    "width": 96,
+    "height": 64,
+    "fps": 8.0
+  },
+  "1075": {
+    "frames": 12,
+    "width": 120,
+    "height": 145,
+    "fps": 8.0
+  },
+  "1077": {
+    "frames": 12,
+    "width": 120,
+    "height": 145,
+    "fps": 8.0
+  },
+  "108": {
+    "frames": 6,
+    "width": 100,
+    "height": 112,
+    "fps": 8.0
+  },
+  "1085": {
+    "frames": 7,
+    "width": 79,
+    "height": 96,
+    "fps": 8.0
+  },
+  "109": {
+    "frames": 6,
+    "width": 100,
+    "height": 116,
+    "fps": 8.0
+  },
+  "1094": {
+    "frames": 8,
+    "width": 50,
+    "height": 44,
+    "fps": 8.0
+  },
+  "110": {
+    "frames": 6,
+    "width": 100,
+    "height": 117,
+    "fps": 8.0
+  },
+  "1105": {
+    "frames": 12,
+    "width": 67,
+    "height": 83,
+    "fps": 8.0
+  },
+  "1108": {
+    "frames": 6,
+    "width": 100,
+    "height": 112,
+    "fps": 8.0
+  },
+  "111": {
+    "frames": 10,
+    "width": 24,
+    "height": 86,
+    "fps": 8.0
+  },
+  "1110": {
+    "frames": 6,
+    "width": 100,
+    "height": 117,
+    "fps": 8.0
+  },
+  "112": {
+    "frames": 10,
+    "width": 24,
+    "height": 86,
+    "fps": 8.0
+  },
+  "1129": {
+    "frames": 6,
+    "width": 101,
+    "height": 122,
+    "fps": 8.0
+  },
+  "113": {
+    "frames": 10,
+    "width": 20,
+    "height": 82,
+    "fps": 8.0
+  },
+  "1134": {
+    "frames": 6,
+    "width": 124,
+    "height": 170,
+    "fps": 8.0
+  },
+  "1139": {
+    "frames": 12,
+    "width": 76,
+    "height": 51,
+    "fps": 8.0
+  },
+  "114": {
+    "frames": 10,
+    "width": 20,
+    "height": 82,
+    "fps": 8.0
+  },
+  "1142": {
+    "frames": 12,
+    "width": 56,
+    "height": 70,
+    "fps": 8.0
+  },
+  "1145": {
+    "frames": 12,
+    "width": 68,
+    "height": 80,
+    "fps": 8.0
+  },
+  "115": {
+    "frames": 12,
+    "width": 102,
+    "height": 117,
+    "fps": 8.0
+  },
+  "1150": {
+    "frames": 6,
+    "width": 62,
+    "height": 76,
+    "fps": 8.0
+  },
+  "11505": {
+    "frames": 3,
+    "width": 72,
+    "height": 85,
+    "fps": 8.0
+  },
+  "11509": {
+    "frames": 12,
+    "width": 93,
+    "height": 88,
+    "fps": 8.0
+  },
+  "11510": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "11514": {
+    "frames": 12,
+    "width": 219,
+    "height": 260,
+    "fps": 8.0
+  },
+  "11516": {
+    "frames": 8,
+    "width": 162,
+    "height": 203,
+    "fps": 8.0
+  },
+  "11519": {
+    "frames": 4,
+    "width": 44,
+    "height": 63,
+    "fps": 8.0
+  },
+  "11522": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "11523": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "11524": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "11525": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "11526": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "11527": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "1154": {
+    "frames": 6,
+    "width": 68,
+    "height": 109,
+    "fps": 8.0
+  },
+  "116": {
+    "frames": 12,
+    "width": 102,
+    "height": 117,
+    "fps": 8.0
+  },
+  "11608": {
+    "frames": 12,
+    "width": 96,
+    "height": 88,
+    "fps": 8.0
+  },
+  "11609": {
+    "frames": 12,
+    "width": 96,
+    "height": 88,
+    "fps": 8.0
+  },
+  "11610": {
+    "frames": 4,
+    "width": 165,
+    "height": 147,
+    "fps": 8.0
+  },
+  "117": {
+    "frames": 12,
+    "width": 98,
+    "height": 98,
+    "fps": 8.0
+  },
+  "118": {
+    "frames": 12,
+    "width": 98,
+    "height": 98,
+    "fps": 8.0
+  },
+  "1185": {
+    "frames": 12,
+    "width": 100,
+    "height": 91,
+    "fps": 8.0
+  },
+  "1188": {
+    "frames": 3,
+    "width": 41,
+    "height": 60,
+    "fps": 8.0
+  },
+  "119": {
+    "frames": 12,
+    "width": 98,
+    "height": 98,
+    "fps": 8.0
+  },
+  "1193": {
+    "frames": 4,
+    "width": 80,
+    "height": 120,
+    "fps": 8.0
+  },
+  "120": {
+    "frames": 12,
+    "width": 102,
+    "height": 117,
+    "fps": 8.0
+  },
+  "1202": {
+    "frames": 6,
+    "width": 73,
+    "height": 82,
+    "fps": 8.0
+  },
+  "121": {
+    "frames": 6,
+    "width": 92,
+    "height": 116,
+    "fps": 8.0
+  },
+  "1215": {
+    "frames": 4,
+    "width": 80,
+    "height": 62,
+    "fps": 8.0
+  },
+  "122": {
+    "frames": 12,
+    "width": 92,
+    "height": 116,
+    "fps": 8.0
+  },
+  "123": {
+    "frames": 6,
+    "width": 108,
+    "height": 152,
+    "fps": 8.0
+  },
+  "124": {
+    "frames": 12,
+    "width": 112,
+    "height": 151,
+    "fps": 8.0
+  },
+  "125": {
+    "frames": 10,
+    "width": 72,
+    "height": 61,
+    "fps": 8.0
+  },
+  "126": {
+    "frames": 10,
+    "width": 80,
+    "height": 64,
+    "fps": 8.0
+  },
+  "127": {
+    "frames": 10,
+    "width": 72,
+    "height": 61,
+    "fps": 8.0
+  },
+  "128": {
+    "frames": 10,
+    "width": 64,
+    "height": 62,
+    "fps": 8.0
+  },
+  "1283": {
+    "frames": 5,
+    "width": 57,
+    "height": 63,
+    "fps": 8.0
+  },
+  "129": {
+    "frames": 6,
+    "width": 101,
+    "height": 122,
+    "fps": 8.0
+  },
+  "130": {
+    "frames": 6,
+    "width": 101,
+    "height": 138,
+    "fps": 8.0
+  },
+  "13001": {
+    "frames": 9,
+    "width": 121,
+    "height": 91,
+    "fps": 8.0
+  },
+  "13016": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "13017": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "13018": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "13019": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "13020": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "1303": {
+    "frames": 5,
+    "width": 165,
+    "height": 152,
+    "fps": 8.0
+  },
+  "13036": {
+    "frames": 6,
+    "width": 33,
+    "height": 100,
+    "fps": 8.0
+  },
+  "13037": {
+    "frames": 10,
+    "width": 29,
+    "height": 72,
+    "fps": 8.0
+  },
+  "13038": {
+    "frames": 9,
+    "width": 121,
+    "height": 91,
+    "fps": 8.0
+  },
+  "13060": {
+    "frames": 10,
+    "width": 29,
+    "height": 72,
+    "fps": 8.0
+  },
+  "131": {
+    "frames": 6,
+    "width": 86,
+    "height": 136,
+    "fps": 8.0
+  },
+  "13101": {
+    "frames": 6,
+    "width": 68,
+    "height": 60,
+    "fps": 8.0
+  },
+  "13102": {
+    "frames": 6,
+    "width": 68,
+    "height": 60,
+    "fps": 8.0
+  },
+  "13103": {
+    "frames": 6,
+    "width": 61,
+    "height": 72,
+    "fps": 8.0
+  },
+  "13104": {
+    "frames": 6,
+    "width": 61,
+    "height": 72,
+    "fps": 8.0
+  },
+  "13105": {
+    "frames": 6,
+    "width": 129,
+    "height": 106,
+    "fps": 8.0
+  },
+  "13106": {
+    "frames": 6,
+    "width": 129,
+    "height": 106,
+    "fps": 8.0
+  },
+  "13112": {
+    "frames": 4,
+    "width": 60,
+    "height": 89,
+    "fps": 8.0
+  },
+  "13113": {
+    "frames": 6,
+    "width": 52,
+    "height": 93,
+    "fps": 8.0
+  },
+  "13120": {
+    "frames": 4,
+    "width": 57,
+    "height": 109,
+    "fps": 8.0
+  },
+  "13121": {
+    "frames": 4,
+    "width": 57,
+    "height": 109,
+    "fps": 8.0
+  },
+  "13122": {
+    "frames": 4,
+    "width": 57,
+    "height": 109,
+    "fps": 8.0
+  },
+  "13123": {
+    "frames": 4,
+    "width": 57,
+    "height": 109,
+    "fps": 8.0
+  },
+  "13124": {
+    "frames": 6,
+    "width": 92,
+    "height": 148,
+    "fps": 8.0
+  },
+  "13144": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "13145": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "13146": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "13147": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "13148": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "13154": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "13155": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "13156": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "13157": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "13158": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "13164": {
+    "frames": 9,
+    "width": 76,
+    "height": 98,
+    "fps": 8.0
+  },
+  "13165": {
+    "frames": 8,
+    "width": 81,
+    "height": 95,
+    "fps": 8.0
+  },
+  "13166": {
+    "frames": 9,
+    "width": 81,
+    "height": 116,
+    "fps": 8.0
+  },
+  "13167": {
+    "frames": 9,
+    "width": 81,
+    "height": 116,
+    "fps": 8.0
+  },
+  "13168": {
+    "frames": 9,
+    "width": 76,
+    "height": 98,
+    "fps": 8.0
+  },
+  "13169": {
+    "frames": 3,
+    "width": 80,
+    "height": 94,
+    "fps": 8.0
+  },
+  "13170": {
+    "frames": 6,
+    "width": 69,
+    "height": 81,
+    "fps": 8.0
+  },
+  "13171": {
+    "frames": 4,
+    "width": 208,
+    "height": 178,
+    "fps": 8.0
+  },
+  "13172": {
+    "frames": 6,
+    "width": 208,
+    "height": 273,
+    "fps": 8.0
+  },
+  "13173": {
+    "frames": 4,
+    "width": 100,
+    "height": 97,
+    "fps": 8.0
+  },
+  "13174": {
+    "frames": 4,
+    "width": 100,
+    "height": 97,
+    "fps": 8.0
+  },
+  "13175": {
+    "frames": 6,
+    "width": 57,
+    "height": 107,
+    "fps": 8.0
+  },
+  "13176": {
+    "frames": 6,
+    "width": 57,
+    "height": 103,
+    "fps": 8.0
+  },
+  "13177": {
+    "frames": 12,
+    "width": 58,
+    "height": 70,
+    "fps": 8.0
+  },
+  "13178": {
+    "frames": 12,
+    "width": 58,
+    "height": 70,
+    "fps": 8.0
+  },
+  "13179": {
+    "frames": 5,
+    "width": 245,
+    "height": 207,
+    "fps": 8.0
+  },
+  "13180": {
+    "frames": 6,
+    "width": 129,
+    "height": 106,
+    "fps": 8.0
+  },
+  "13181": {
+    "frames": 9,
+    "width": 81,
+    "height": 116,
+    "fps": 8.0
+  },
+  "13182": {
+    "frames": 6,
+    "width": 208,
+    "height": 273,
+    "fps": 8.0
+  },
+  "13183": {
+    "frames": 6,
+    "width": 208,
+    "height": 273,
+    "fps": 8.0
+  },
+  "13184": {
+    "frames": 3,
+    "width": 80,
+    "height": 94,
+    "fps": 8.0
+  },
+  "13185": {
+    "frames": 4,
+    "width": 49,
+    "height": 90,
+    "fps": 8.0
+  },
+  "13188": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "13189": {
+    "frames": 3,
+    "width": 104,
+    "height": 101,
+    "fps": 8.0
+  },
+  "13190": {
+    "frames": 3,
+    "width": 104,
+    "height": 101,
+    "fps": 8.0
+  },
+  "13191": {
+    "frames": 3,
+    "width": 104,
+    "height": 101,
+    "fps": 8.0
+  },
+  "13192": {
+    "frames": 3,
+    "width": 104,
+    "height": 101,
+    "fps": 8.0
+  },
+  "13193": {
+    "frames": 3,
+    "width": 124,
+    "height": 143,
+    "fps": 8.0
+  },
+  "13194": {
+    "frames": 3,
+    "width": 124,
+    "height": 143,
+    "fps": 8.0
+  },
+  "13195": {
+    "frames": 3,
+    "width": 124,
+    "height": 143,
+    "fps": 8.0
+  },
+  "13196": {
+    "frames": 3,
+    "width": 124,
+    "height": 143,
+    "fps": 8.0
+  },
+  "13197": {
+    "frames": 6,
+    "width": 100,
+    "height": 95,
+    "fps": 8.0
+  },
+  "13198": {
+    "frames": 4,
+    "width": 84,
+    "height": 106,
+    "fps": 8.0
+  },
+  "13199": {
+    "frames": 6,
+    "width": 40,
+    "height": 72,
+    "fps": 8.0
+  },
+  "132": {
+    "frames": 6,
+    "width": 86,
+    "height": 125,
+    "fps": 8.0
+  },
+  "13224": {
+    "frames": 8,
+    "width": 81,
+    "height": 95,
+    "fps": 8.0
+  },
+  "13225": {
+    "frames": 8,
+    "width": 81,
+    "height": 95,
+    "fps": 8.0
+  },
+  "133": {
+    "frames": 6,
+    "width": 123,
+    "height": 169,
+    "fps": 8.0
+  },
+  "134": {
+    "frames": 6,
+    "width": 124,
+    "height": 170,
+    "fps": 8.0
+  },
+  "135": {
+    "frames": 6,
+    "width": 142,
+    "height": 199,
+    "fps": 8.0
+  },
+  "136": {
+    "frames": 6,
+    "width": 142,
+    "height": 199,
+    "fps": 8.0
+  },
+  "137": {
+    "frames": 6,
+    "width": 142,
+    "height": 199,
+    "fps": 8.0
+  },
+  "138": {
+    "frames": 6,
+    "width": 80,
+    "height": 50,
+    "fps": 8.0
+  },
+  "139": {
+    "frames": 12,
+    "width": 76,
+    "height": 51,
+    "fps": 8.0
+  },
+  "140": {
+    "frames": 6,
+    "width": 87,
+    "height": 57,
+    "fps": 8.0
+  },
+  "1400": {
+    "frames": 4,
+    "width": 86,
+    "height": 95,
+    "fps": 8.0
+  },
+  "140001": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140002": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140003": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140004": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140005": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140006": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140007": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140008": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140009": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140010": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140011": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140012": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "140013": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140014": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140015": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140016": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140017": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140018": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140019": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140020": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140021": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140022": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140023": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140024": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "140025": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140026": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140027": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140028": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140029": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140030": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140031": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140032": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140033": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140034": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140035": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140036": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "140037": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140038": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140039": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140040": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140041": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140042": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140043": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140044": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140045": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140046": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140047": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140048": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "140049": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140050": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140051": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140052": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140053": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140054": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140055": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140056": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140057": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140058": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140059": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140060": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "140061": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140062": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140063": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140064": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140065": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140066": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140067": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140068": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140069": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140070": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140071": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140072": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "140073": {
+    "frames": 4,
+    "width": 196,
+    "height": 198,
+    "fps": 8.0
+  },
+  "140074": {
+    "frames": 4,
+    "width": 196,
+    "height": 198,
+    "fps": 8.0
+  },
+  "140075": {
+    "frames": 4,
+    "width": 196,
+    "height": 198,
+    "fps": 8.0
+  },
+  "140076": {
+    "frames": 4,
+    "width": 196,
+    "height": 198,
+    "fps": 8.0
+  },
+  "140077": {
+    "frames": 4,
+    "width": 108,
+    "height": 135,
+    "fps": 8.0
+  },
+  "140078": {
+    "frames": 4,
+    "width": 108,
+    "height": 135,
+    "fps": 8.0
+  },
+  "140079": {
+    "frames": 4,
+    "width": 108,
+    "height": 135,
+    "fps": 8.0
+  },
+  "140080": {
+    "frames": 4,
+    "width": 108,
+    "height": 135,
+    "fps": 8.0
+  },
+  "140081": {
+    "frames": 3,
+    "width": 168,
+    "height": 144,
+    "fps": 8.0
+  },
+  "140082": {
+    "frames": 3,
+    "width": 168,
+    "height": 144,
+    "fps": 8.0
+  },
+  "140083": {
+    "frames": 3,
+    "width": 168,
+    "height": 144,
+    "fps": 8.0
+  },
+  "140084": {
+    "frames": 3,
+    "width": 168,
+    "height": 144,
+    "fps": 8.0
+  },
+  "140085": {
+    "frames": 3,
+    "width": 148,
+    "height": 128,
+    "fps": 8.0
+  },
+  "140086": {
+    "frames": 3,
+    "width": 148,
+    "height": 128,
+    "fps": 8.0
+  },
+  "140087": {
+    "frames": 3,
+    "width": 148,
+    "height": 128,
+    "fps": 8.0
+  },
+  "140088": {
+    "frames": 3,
+    "width": 148,
+    "height": 128,
+    "fps": 8.0
+  },
+  "140089": {
+    "frames": 4,
+    "width": 364,
+    "height": 271,
+    "fps": 8.0
+  },
+  "140090": {
+    "frames": 4,
+    "width": 364,
+    "height": 271,
+    "fps": 8.0
+  },
+  "140091": {
+    "frames": 4,
+    "width": 364,
+    "height": 271,
+    "fps": 8.0
+  },
+  "140092": {
+    "frames": 4,
+    "width": 364,
+    "height": 271,
+    "fps": 8.0
+  },
+  "140093": {
+    "frames": 4,
+    "width": 224,
+    "height": 287,
+    "fps": 8.0
+  },
+  "140094": {
+    "frames": 4,
+    "width": 224,
+    "height": 287,
+    "fps": 8.0
+  },
+  "140095": {
+    "frames": 4,
+    "width": 224,
+    "height": 287,
+    "fps": 8.0
+  },
+  "140096": {
+    "frames": 4,
+    "width": 224,
+    "height": 287,
+    "fps": 8.0
+  },
+  "140097": {
+    "frames": 3,
+    "width": 252,
+    "height": 287,
+    "fps": 8.0
+  },
+  "140098": {
+    "frames": 3,
+    "width": 252,
+    "height": 287,
+    "fps": 8.0
+  },
+  "140099": {
+    "frames": 3,
+    "width": 252,
+    "height": 287,
+    "fps": 8.0
+  },
+  "140100": {
+    "frames": 3,
+    "width": 252,
+    "height": 287,
+    "fps": 8.0
+  },
+  "140101": {
+    "frames": 4,
+    "width": 360,
+    "height": 236,
+    "fps": 8.0
+  },
+  "140102": {
+    "frames": 4,
+    "width": 360,
+    "height": 236,
+    "fps": 8.0
+  },
+  "140103": {
+    "frames": 4,
+    "width": 360,
+    "height": 236,
+    "fps": 8.0
+  },
+  "140104": {
+    "frames": 4,
+    "width": 360,
+    "height": 236,
+    "fps": 8.0
+  },
+  "141": {
+    "frames": 12,
+    "width": 83,
+    "height": 60,
+    "fps": 8.0
+  },
+  "142": {
+    "frames": 12,
+    "width": 56,
+    "height": 70,
+    "fps": 8.0
+  },
+  "143": {
+    "frames": 12,
+    "width": 64,
+    "height": 77,
+    "fps": 8.0
+  },
+  "144": {
+    "frames": 12,
+    "width": 56,
+    "height": 70,
+    "fps": 8.0
+  },
+  "145": {
+    "frames": 12,
+    "width": 68,
+    "height": 80,
+    "fps": 8.0
+  },
+  "146": {
+    "frames": 12,
+    "width": 104,
+    "height": 164,
+    "fps": 8.0
+  },
+  "147": {
+    "frames": 12,
+    "width": 104,
+    "height": 164,
+    "fps": 8.0
+  },
+  "148": {
+    "frames": 12,
+    "width": 110,
+    "height": 164,
+    "fps": 8.0
+  },
+  "149": {
+    "frames": 12,
+    "width": 110,
+    "height": 164,
+    "fps": 8.0
+  },
+  "150": {
+    "frames": 6,
+    "width": 62,
+    "height": 76,
+    "fps": 8.0
+  },
+  "151": {
+    "frames": 6,
+    "width": 54,
+    "height": 76,
+    "fps": 8.0
+  },
+  "152": {
+    "frames": 6,
+    "width": 65,
+    "height": 76,
+    "fps": 8.0
+  },
+  "153": {
+    "frames": 5,
+    "width": 62,
+    "height": 75,
+    "fps": 8.0
+  },
+  "154": {
+    "frames": 6,
+    "width": 68,
+    "height": 109,
+    "fps": 8.0
+  },
+  "155": {
+    "frames": 6,
+    "width": 68,
+    "height": 109,
+    "fps": 8.0
+  },
+  "156": {
+    "frames": 6,
+    "width": 68,
+    "height": 109,
+    "fps": 8.0
+  },
+  "157": {
+    "frames": 6,
+    "width": 68,
+    "height": 109,
+    "fps": 8.0
+  },
+  "158": {
+    "frames": 6,
+    "width": 68,
+    "height": 109,
+    "fps": 8.0
+  },
+  "159": {
+    "frames": 12,
+    "width": 114,
+    "height": 122,
+    "fps": 8.0
+  },
+  "160": {
+    "frames": 12,
+    "width": 124,
+    "height": 125,
+    "fps": 8.0
+  },
+  "161": {
+    "frames": 12,
+    "width": 114,
+    "height": 122,
+    "fps": 8.0
+  },
+  "162": {
+    "frames": 12,
+    "width": 144,
+    "height": 148,
+    "fps": 8.0
+  },
+  "163": {
+    "frames": 6,
+    "width": 97,
+    "height": 73,
+    "fps": 8.0
+  },
+  "164": {
+    "frames": 6,
+    "width": 93,
+    "height": 73,
+    "fps": 8.0
+  },
+  "165": {
+    "frames": 6,
+    "width": 79,
+    "height": 64,
+    "fps": 8.0
+  },
+  "166": {
+    "frames": 6,
+    "width": 92,
+    "height": 74,
+    "fps": 8.0
+  },
+  "167": {
+    "frames": 6,
+    "width": 134,
+    "height": 151,
+    "fps": 8.0
+  },
+  "168": {
+    "frames": 6,
+    "width": 134,
+    "height": 151,
+    "fps": 8.0
+  },
+  "169": {
+    "frames": 6,
+    "width": 140,
+    "height": 168,
+    "fps": 8.0
+  },
+  "170": {
+    "frames": 6,
+    "width": 162,
+    "height": 194,
+    "fps": 8.0
+  },
+  "171": {
+    "frames": 8,
+    "width": 59,
+    "height": 44,
+    "fps": 8.0
+  },
+  "172": {
+    "frames": 6,
+    "width": 94,
+    "height": 78,
+    "fps": 8.0
+  },
+  "173": {
+    "frames": 6,
+    "width": 67,
+    "height": 58,
+    "fps": 8.0
+  },
+  "174": {
+    "frames": 8,
+    "width": 76,
+    "height": 58,
+    "fps": 8.0
+  },
+  "175": {
+    "frames": 12,
+    "width": 169,
+    "height": 175,
+    "fps": 8.0
+  },
+  "176": {
+    "frames": 12,
+    "width": 169,
+    "height": 175,
+    "fps": 8.0
+  },
+  "177": {
+    "frames": 12,
+    "width": 169,
+    "height": 175,
+    "fps": 8.0
+  },
+  "178": {
+    "frames": 12,
+    "width": 195,
+    "height": 203,
+    "fps": 8.0
+  },
+  "179": {
+    "frames": 6,
+    "width": 64,
+    "height": 118,
+    "fps": 8.0
+  },
+  "180": {
+    "frames": 6,
+    "width": 56,
+    "height": 102,
+    "fps": 8.0
+  },
+  "181": {
+    "frames": 6,
+    "width": 56,
+    "height": 91,
+    "fps": 8.0
+  },
+  "182": {
+    "frames": 6,
+    "width": 64,
+    "height": 105,
+    "fps": 8.0
+  },
+  "183": {
+    "frames": 12,
+    "width": 88,
+    "height": 79,
+    "fps": 8.0
+  },
+  "184": {
+    "frames": 12,
+    "width": 80,
+    "height": 78,
+    "fps": 8.0
+  },
+  "185": {
+    "frames": 12,
+    "width": 100,
+    "height": 91,
+    "fps": 8.0
+  },
+  "186": {
+    "frames": 12,
+    "width": 92,
+    "height": 90,
+    "fps": 8.0
+  },
+  "187": {
+    "frames": 3,
+    "width": 32,
+    "height": 53,
+    "fps": 8.0
+  },
+  "188": {
+    "frames": 3,
+    "width": 41,
+    "height": 60,
+    "fps": 8.0
+  },
+  "189": {
+    "frames": 3,
+    "width": 36,
+    "height": 54,
+    "fps": 8.0
+  },
+  "190": {
+    "frames": 3,
+    "width": 41,
+    "height": 60,
+    "fps": 8.0
+  },
+  "19013": {
+    "frames": 4,
+    "width": 105,
+    "height": 75,
+    "fps": 8.0
+  },
+  "19014": {
+    "frames": 5,
+    "width": 57,
+    "height": 63,
+    "fps": 8.0
+  },
+  "19017": {
+    "frames": 4,
+    "width": 43,
+    "height": 63,
+    "fps": 8.0
+  },
+  "19021": {
+    "frames": 12,
+    "width": 85,
+    "height": 163,
+    "fps": 8.0
+  },
+  "19024": {
+    "frames": 4,
+    "width": 132,
+    "height": 104,
+    "fps": 8.0
+  },
+  "19025": {
+    "frames": 12,
+    "width": 48,
+    "height": 52,
+    "fps": 8.0
+  },
+  "19026": {
+    "frames": 12,
+    "width": 65,
+    "height": 71,
+    "fps": 8.0
+  },
+  "19027": {
+    "frames": 12,
+    "width": 80,
+    "height": 90,
+    "fps": 8.0
+  },
+  "19028": {
+    "frames": 12,
+    "width": 97,
+    "height": 108,
+    "fps": 8.0
+  },
+  "19029": {
+    "frames": 12,
+    "width": 136,
+    "height": 161,
+    "fps": 8.0
+  },
+  "191": {
+    "frames": 4,
+    "width": 65,
+    "height": 102,
+    "fps": 8.0
+  },
+  "192": {
+    "frames": 4,
+    "width": 68,
+    "height": 104,
+    "fps": 8.0
+  },
+  "193": {
+    "frames": 4,
+    "width": 80,
+    "height": 120,
+    "fps": 8.0
+  },
+  "194": {
+    "frames": 4,
+    "width": 80,
+    "height": 120,
+    "fps": 8.0
+  },
+  "195": {
+    "frames": 12,
+    "width": 64,
+    "height": 75,
+    "fps": 8.0
+  },
+  "196": {
+    "frames": 12,
+    "width": 68,
+    "height": 75,
+    "fps": 8.0
+  },
+  "197": {
+    "frames": 12,
+    "width": 68,
+    "height": 75,
+    "fps": 8.0
+  },
+  "198": {
+    "frames": 12,
+    "width": 68,
+    "height": 75,
+    "fps": 8.0
+  },
+  "199": {
+    "frames": 12,
+    "width": 74,
+    "height": 81,
+    "fps": 8.0
+  },
+  "200": {
+    "frames": 6,
+    "width": 74,
+    "height": 82,
+    "fps": 8.0
+  },
+  "201": {
+    "frames": 6,
+    "width": 74,
+    "height": 82,
+    "fps": 8.0
+  },
+  "202": {
+    "frames": 6,
+    "width": 73,
+    "height": 82,
+    "fps": 8.0
+  },
+  "203": {
+    "frames": 12,
+    "width": 122,
+    "height": 149,
+    "fps": 8.0
+  },
+  "204": {
+    "frames": 12,
+    "width": 122,
+    "height": 149,
+    "fps": 8.0
+  },
+  "205": {
+    "frames": 12,
+    "width": 122,
+    "height": 148,
+    "fps": 8.0
+  },
+  "206": {
+    "frames": 12,
+    "width": 138,
+    "height": 170,
+    "fps": 8.0
+  },
+  "207": {
+    "frames": 12,
+    "width": 64,
+    "height": 67,
+    "fps": 8.0
+  },
+  "2072": {
+    "frames": 6,
+    "width": 96,
+    "height": 64,
+    "fps": 8.0
+  },
+  "208": {
+    "frames": 12,
+    "width": 64,
+    "height": 67,
+    "fps": 8.0
+  },
+  "209": {
+    "frames": 12,
+    "width": 64,
+    "height": 67,
+    "fps": 8.0
+  },
+  "210": {
+    "frames": 12,
+    "width": 64,
+    "height": 67,
+    "fps": 8.0
+  },
+  "211": {
+    "frames": 6,
+    "width": 64,
+    "height": 92,
+    "fps": 8.0
+  },
+  "212": {
+    "frames": 6,
+    "width": 65,
+    "height": 100,
+    "fps": 8.0
+  },
+  "213": {
+    "frames": 6,
+    "width": 64,
+    "height": 92,
+    "fps": 8.0
+  },
+  "214": {
+    "frames": 6,
+    "width": 65,
+    "height": 100,
+    "fps": 8.0
+  },
+  "215": {
+    "frames": 4,
+    "width": 80,
+    "height": 62,
+    "fps": 8.0
+  },
+  "216": {
+    "frames": 4,
+    "width": 80,
+    "height": 62,
+    "fps": 8.0
+  },
+  "217": {
+    "frames": 4,
+    "width": 80,
+    "height": 62,
+    "fps": 8.0
+  },
+  "218": {
+    "frames": 4,
+    "width": 80,
+    "height": 62,
+    "fps": 8.0
+  },
+  "219": {
+    "frames": 4,
+    "width": 52,
+    "height": 47,
+    "fps": 8.0
+  },
+  "220": {
+    "frames": 4,
+    "width": 52,
+    "height": 47,
+    "fps": 8.0
+  },
+  "221": {
+    "frames": 4,
+    "width": 52,
+    "height": 47,
+    "fps": 8.0
+  },
+  "222": {
+    "frames": 4,
+    "width": 52,
+    "height": 47,
+    "fps": 8.0
+  },
+  "223": {
+    "frames": 3,
+    "width": 48,
+    "height": 45,
+    "fps": 8.0
+  },
+  "224": {
+    "frames": 3,
+    "width": 48,
+    "height": 45,
+    "fps": 8.0
+  },
+  "225": {
+    "frames": 3,
+    "width": 45,
+    "height": 45,
+    "fps": 8.0
+  },
+  "226": {
+    "frames": 3,
+    "width": 48,
+    "height": 45,
+    "fps": 8.0
+  },
+  "227": {
+    "frames": 3,
+    "width": 80,
+    "height": 94,
+    "fps": 8.0
+  },
+  "228": {
+    "frames": 3,
+    "width": 80,
+    "height": 94,
+    "fps": 8.0
+  },
+  "229": {
+    "frames": 3,
+    "width": 80,
+    "height": 94,
+    "fps": 8.0
+  },
+  "230": {
+    "frames": 3,
+    "width": 80,
+    "height": 94,
+    "fps": 8.0
+  },
+  "231": {
+    "frames": 3,
+    "width": 68,
+    "height": 51,
+    "fps": 8.0
+  },
+  "232": {
+    "frames": 3,
+    "width": 68,
+    "height": 51,
+    "fps": 8.0
+  },
+  "233": {
+    "frames": 3,
+    "width": 68,
+    "height": 51,
+    "fps": 8.0
+  },
+  "234": {
+    "frames": 3,
+    "width": 68,
+    "height": 51,
+    "fps": 8.0
+  },
+  "235": {
+    "frames": 4,
+    "width": 44,
+    "height": 65,
+    "fps": 8.0
+  },
+  "236": {
+    "frames": 4,
+    "width": 44,
+    "height": 65,
+    "fps": 8.0
+  },
+  "237": {
+    "frames": 4,
+    "width": 44,
+    "height": 65,
+    "fps": 8.0
+  },
+  "238": {
+    "frames": 4,
+    "width": 44,
+    "height": 65,
+    "fps": 8.0
+  },
+  "239": {
+    "frames": 4,
+    "width": 52,
+    "height": 49,
+    "fps": 8.0
+  },
+  "240": {
+    "frames": 4,
+    "width": 41,
+    "height": 65,
+    "fps": 8.0
+  },
+  "241": {
+    "frames": 3,
+    "width": 48,
+    "height": 45,
+    "fps": 8.0
+  },
+  "242": {
+    "frames": 4,
+    "width": 52,
+    "height": 49,
+    "fps": 8.0
+  },
+  "243": {
+    "frames": 4,
+    "width": 132,
+    "height": 115,
+    "fps": 8.0
+  },
+  "244": {
+    "frames": 4,
+    "width": 132,
+    "height": 115,
+    "fps": 8.0
+  },
+  "245": {
+    "frames": 4,
+    "width": 132,
+    "height": 115,
+    "fps": 8.0
+  },
+  "246": {
+    "frames": 4,
+    "width": 132,
+    "height": 115,
+    "fps": 8.0
+  },
+  "247": {
+    "frames": 8,
+    "width": 132,
+    "height": 156,
+    "fps": 8.0
+  },
+  "248": {
+    "frames": 8,
+    "width": 132,
+    "height": 156,
+    "fps": 8.0
+  },
+  "249": {
+    "frames": 8,
+    "width": 132,
+    "height": 156,
+    "fps": 8.0
+  },
+  "250": {
+    "frames": 8,
+    "width": 132,
+    "height": 156,
+    "fps": 8.0
+  },
+  "251": {
+    "frames": 5,
+    "width": 176,
+    "height": 151,
+    "fps": 8.0
+  },
+  "252": {
+    "frames": 5,
+    "width": 176,
+    "height": 151,
+    "fps": 8.0
+  },
+  "253": {
+    "frames": 5,
+    "width": 176,
+    "height": 151,
+    "fps": 8.0
+  },
+  "254": {
+    "frames": 5,
+    "width": 176,
+    "height": 151,
+    "fps": 8.0
+  },
+  "255": {
+    "frames": 8,
+    "width": 88,
+    "height": 83,
+    "fps": 8.0
+  },
+  "256": {
+    "frames": 8,
+    "width": 88,
+    "height": 83,
+    "fps": 8.0
+  },
+  "257": {
+    "frames": 8,
+    "width": 88,
+    "height": 83,
+    "fps": 8.0
+  },
+  "258": {
+    "frames": 8,
+    "width": 88,
+    "height": 83,
+    "fps": 8.0
+  },
+  "259": {
+    "frames": 4,
+    "width": 100,
+    "height": 97,
+    "fps": 8.0
+  },
+  "260": {
+    "frames": 4,
+    "width": 100,
+    "height": 97,
+    "fps": 8.0
+  },
+  "261": {
+    "frames": 4,
+    "width": 100,
+    "height": 97,
+    "fps": 8.0
+  },
+  "262": {
+    "frames": 4,
+    "width": 100,
+    "height": 97,
+    "fps": 8.0
+  },
+  "263": {
+    "frames": 9,
+    "width": 121,
+    "height": 91,
+    "fps": 8.0
+  },
+  "264": {
+    "frames": 9,
+    "width": 118,
+    "height": 91,
+    "fps": 8.0
+  },
+  "265": {
+    "frames": 9,
+    "width": 121,
+    "height": 91,
+    "fps": 8.0
+  },
+  "266": {
+    "frames": 9,
+    "width": 118,
+    "height": 91,
+    "fps": 8.0
+  },
+  "267": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "268": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "269": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "270": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "271": {
+    "frames": 12,
+    "width": 96,
+    "height": 88,
+    "fps": 8.0
+  },
+  "272": {
+    "frames": 12,
+    "width": 96,
+    "height": 88,
+    "fps": 8.0
+  },
+  "273": {
+    "frames": 12,
+    "width": 96,
+    "height": 88,
+    "fps": 8.0
+  },
+  "274": {
+    "frames": 12,
+    "width": 93,
+    "height": 88,
+    "fps": 8.0
+  },
+  "275": {
+    "frames": 4,
+    "width": 44,
+    "height": 63,
+    "fps": 8.0
+  },
+  "276": {
+    "frames": 4,
+    "width": 44,
+    "height": 63,
+    "fps": 8.0
+  },
+  "277": {
+    "frames": 4,
+    "width": 44,
+    "height": 63,
+    "fps": 8.0
+  },
+  "278": {
+    "frames": 4,
+    "width": 43,
+    "height": 63,
+    "fps": 8.0
+  },
+  "279": {
+    "frames": 4,
+    "width": 124,
+    "height": 70,
+    "fps": 8.0
+  },
+  "280": {
+    "frames": 4,
+    "width": 124,
+    "height": 70,
+    "fps": 8.0
+  },
+  "281": {
+    "frames": 4,
+    "width": 124,
+    "height": 70,
+    "fps": 8.0
+  },
+  "282": {
+    "frames": 4,
+    "width": 124,
+    "height": 70,
+    "fps": 8.0
+  },
+  "283": {
+    "frames": 12,
+    "width": 21,
+    "height": 44,
+    "fps": 8.0
+  },
+  "284": {
+    "frames": 12,
+    "width": 21,
+    "height": 44,
+    "fps": 8.0
+  },
+  "285": {
+    "frames": 12,
+    "width": 21,
+    "height": 44,
+    "fps": 8.0
+  },
+  "286": {
+    "frames": 12,
+    "width": 21,
+    "height": 44,
+    "fps": 8.0
+  },
+  "287": {
+    "frames": 5,
+    "width": 57,
+    "height": 63,
+    "fps": 8.0
+  },
+  "288": {
+    "frames": 5,
+    "width": 58,
+    "height": 63,
+    "fps": 8.0
+  },
+  "289": {
+    "frames": 5,
+    "width": 57,
+    "height": 63,
+    "fps": 8.0
+  },
+  "290": {
+    "frames": 5,
+    "width": 58,
+    "height": 63,
+    "fps": 8.0
+  },
+  "29036": {
+    "frames": 5,
+    "width": 64,
+    "height": 74,
+    "fps": 8.0
+  },
+  "29039": {
+    "frames": 5,
+    "width": 72,
+    "height": 77,
+    "fps": 8.0
+  },
+  "291": {
+    "frames": 6,
+    "width": 36,
+    "height": 56,
+    "fps": 8.0
+  },
+  "292": {
+    "frames": 6,
+    "width": 36,
+    "height": 56,
+    "fps": 8.0
+  },
+  "293": {
+    "frames": 6,
+    "width": 36,
+    "height": 56,
+    "fps": 8.0
+  },
+  "294": {
+    "frames": 6,
+    "width": 36,
+    "height": 56,
+    "fps": 8.0
+  },
+  "295": {
+    "frames": 4,
+    "width": 108,
+    "height": 75,
+    "fps": 8.0
+  },
+  "296": {
+    "frames": 4,
+    "width": 108,
+    "height": 75,
+    "fps": 8.0
+  },
+  "297": {
+    "frames": 4,
+    "width": 105,
+    "height": 75,
+    "fps": 8.0
+  },
+  "298": {
+    "frames": 4,
+    "width": 105,
+    "height": 75,
+    "fps": 8.0
+  },
+  "299": {
+    "frames": 4,
+    "width": 121,
+    "height": 184,
+    "fps": 8.0
+  },
+  "300": {
+    "frames": 4,
+    "width": 121,
+    "height": 184,
+    "fps": 8.0
+  },
+  "301": {
+    "frames": 4,
+    "width": 121,
+    "height": 184,
+    "fps": 8.0
+  },
+  "302": {
+    "frames": 4,
+    "width": 121,
+    "height": 184,
+    "fps": 8.0
+  },
+  "303": {
+    "frames": 5,
+    "width": 165,
+    "height": 152,
+    "fps": 8.0
+  },
+  "304": {
+    "frames": 5,
+    "width": 165,
+    "height": 152,
+    "fps": 8.0
+  },
+  "305": {
+    "frames": 5,
+    "width": 165,
+    "height": 152,
+    "fps": 8.0
+  },
+  "306": {
+    "frames": 5,
+    "width": 165,
+    "height": 152,
+    "fps": 8.0
+  },
+  "307": {
+    "frames": 3,
+    "width": 72,
+    "height": 85,
+    "fps": 8.0
+  },
+  "308": {
+    "frames": 3,
+    "width": 69,
+    "height": 85,
+    "fps": 8.0
+  },
+  "309": {
+    "frames": 3,
+    "width": 69,
+    "height": 85,
+    "fps": 8.0
+  },
+  "310": {
+    "frames": 3,
+    "width": 69,
+    "height": 85,
+    "fps": 8.0
+  },
+  "311": {
+    "frames": 6,
+    "width": 76,
+    "height": 141,
+    "fps": 8.0
+  },
+  "312": {
+    "frames": 6,
+    "width": 78,
+    "height": 141,
+    "fps": 8.0
+  },
+  "313": {
+    "frames": 6,
+    "width": 79,
+    "height": 142,
+    "fps": 8.0
+  },
+  "314": {
+    "frames": 6,
+    "width": 78,
+    "height": 141,
+    "fps": 8.0
+  },
+  "315": {
+    "frames": 12,
+    "width": 100,
+    "height": 107,
+    "fps": 8.0
+  },
+  "316": {
+    "frames": 12,
+    "width": 100,
+    "height": 107,
+    "fps": 8.0
+  },
+  "317": {
+    "frames": 12,
+    "width": 100,
+    "height": 107,
+    "fps": 8.0
+  },
+  "318": {
+    "frames": 12,
+    "width": 100,
+    "height": 107,
+    "fps": 8.0
+  },
+  "319": {
+    "frames": 8,
+    "width": 48,
+    "height": 82,
+    "fps": 8.0
+  },
+  "320": {
+    "frames": 8,
+    "width": 48,
+    "height": 85,
+    "fps": 8.0
+  },
+  "321": {
+    "frames": 5,
+    "width": 72,
+    "height": 77,
+    "fps": 8.0
+  },
+  "322": {
+    "frames": 5,
+    "width": 64,
+    "height": 74,
+    "fps": 8.0
+  },
+  "323": {
+    "frames": 6,
+    "width": 72,
+    "height": 107,
+    "fps": 8.0
+  },
+  "324": {
+    "frames": 6,
+    "width": 76,
+    "height": 111,
+    "fps": 8.0
+  },
+  "325": {
+    "frames": 6,
+    "width": 50,
+    "height": 135,
+    "fps": 8.0
+  },
+  "326": {
+    "frames": 6,
+    "width": 79,
+    "height": 114,
+    "fps": 8.0
+  },
+  "327": {
+    "frames": 6,
+    "width": 69,
+    "height": 104,
+    "fps": 8.0
+  },
+  "328": {
+    "frames": 4,
+    "width": 57,
+    "height": 105,
+    "fps": 8.0
+  },
+  "329": {
+    "frames": 4,
+    "width": 57,
+    "height": 105,
+    "fps": 8.0
+  },
+  "330": {
+    "frames": 4,
+    "width": 57,
+    "height": 105,
+    "fps": 8.0
+  },
+  "3301": {
+    "frames": 4,
+    "width": 52,
+    "height": 47,
+    "fps": 8.0
+  },
+  "3302": {
+    "frames": 4,
+    "width": 52,
+    "height": 47,
+    "fps": 8.0
+  },
+  "331": {
+    "frames": 4,
+    "width": 57,
+    "height": 105,
+    "fps": 8.0
+  },
+  "332": {
+    "frames": 4,
+    "width": 57,
+    "height": 105,
+    "fps": 8.0
+  },
+  "333": {
+    "frames": 6,
+    "width": 67,
+    "height": 95,
+    "fps": 8.0
+  },
+  "334": {
+    "frames": 4,
+    "width": 71,
+    "height": 80,
+    "fps": 8.0
+  },
+  "335": {
+    "frames": 6,
+    "width": 67,
+    "height": 95,
+    "fps": 8.0
+  },
+  "336": {
+    "frames": 4,
+    "width": 49,
+    "height": 78,
+    "fps": 8.0
+  },
+  "337": {
+    "frames": 10,
+    "width": 45,
+    "height": 73,
+    "fps": 8.0
+  },
+  "338": {
+    "frames": 10,
+    "width": 45,
+    "height": 73,
+    "fps": 8.0
+  },
+  "339": {
+    "frames": 10,
+    "width": 45,
+    "height": 73,
+    "fps": 8.0
+  },
+  "340": {
+    "frames": 10,
+    "width": 45,
+    "height": 73,
+    "fps": 8.0
+  },
+  "341": {
+    "frames": 10,
+    "width": 68,
+    "height": 57,
+    "fps": 8.0
+  },
+  "342": {
+    "frames": 10,
+    "width": 68,
+    "height": 57,
+    "fps": 8.0
+  },
+  "343": {
+    "frames": 10,
+    "width": 68,
+    "height": 57,
+    "fps": 8.0
+  },
+  "344": {
+    "frames": 10,
+    "width": 68,
+    "height": 57,
+    "fps": 8.0
+  },
+  "345": {
+    "frames": 10,
+    "width": 68,
+    "height": 57,
+    "fps": 8.0
+  },
+  "346": {
+    "frames": 10,
+    "width": 68,
+    "height": 57,
+    "fps": 8.0
+  },
+  "347": {
+    "frames": 6,
+    "width": 40,
+    "height": 94,
+    "fps": 8.0
+  },
+  "348": {
+    "frames": 6,
+    "width": 40,
+    "height": 94,
+    "fps": 8.0
+  },
+  "349": {
+    "frames": 6,
+    "width": 40,
+    "height": 94,
+    "fps": 8.0
+  },
+  "350": {
+    "frames": 6,
+    "width": 40,
+    "height": 94,
+    "fps": 8.0
+  },
+  "351": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "352": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "353": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "354": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "355": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "356": {
+    "frames": 8,
+    "width": 56,
+    "height": 88,
+    "fps": 8.0
+  },
+  "357": {
+    "frames": 8,
+    "width": 56,
+    "height": 88,
+    "fps": 8.0
+  },
+  "358": {
+    "frames": 8,
+    "width": 56,
+    "height": 88,
+    "fps": 8.0
+  },
+  "359": {
+    "frames": 8,
+    "width": 56,
+    "height": 88,
+    "fps": 8.0
+  },
+  "360": {
+    "frames": 8,
+    "width": 56,
+    "height": 88,
+    "fps": 8.0
+  },
+  "361": {
+    "frames": 8,
+    "width": 76,
+    "height": 133,
+    "fps": 8.0
+  },
+  "362": {
+    "frames": 8,
+    "width": 80,
+    "height": 134,
+    "fps": 8.0
+  },
+  "363": {
+    "frames": 8,
+    "width": 76,
+    "height": 133,
+    "fps": 8.0
+  },
+  "364": {
+    "frames": 8,
+    "width": 76,
+    "height": 133,
+    "fps": 8.0
+  },
+  "365": {
+    "frames": 8,
+    "width": 76,
+    "height": 133,
+    "fps": 8.0
+  },
+  "366": {
+    "frames": 8,
+    "width": 40,
+    "height": 71,
+    "fps": 8.0
+  },
+  "367": {
+    "frames": 8,
+    "width": 48,
+    "height": 75,
+    "fps": 8.0
+  },
+  "368": {
+    "frames": 10,
+    "width": 56,
+    "height": 102,
+    "fps": 8.0
+  },
+  "369": {
+    "frames": 8,
+    "width": 44,
+    "height": 97,
+    "fps": 8.0
+  },
+  "370": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "371": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "372": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "373": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "374": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "375": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "376": {
+    "frames": 6,
+    "width": 68,
+    "height": 129,
+    "fps": 8.0
+  },
+  "377": {
+    "frames": 6,
+    "width": 68,
+    "height": 129,
+    "fps": 8.0
+  },
+  "378": {
+    "frames": 6,
+    "width": 68,
+    "height": 129,
+    "fps": 8.0
+  },
+  "379": {
+    "frames": 6,
+    "width": 68,
+    "height": 129,
+    "fps": 8.0
+  },
+  "380": {
+    "frames": 6,
+    "width": 68,
+    "height": 129,
+    "fps": 8.0
+  },
+  "381": {
+    "frames": 6,
+    "width": 68,
+    "height": 129,
+    "fps": 8.0
+  },
+  "382": {
+    "frames": 12,
+    "width": 72,
+    "height": 56,
+    "fps": 8.0
+  },
+  "383": {
+    "frames": 12,
+    "width": 72,
+    "height": 56,
+    "fps": 8.0
+  },
+  "384": {
+    "frames": 12,
+    "width": 72,
+    "height": 56,
+    "fps": 8.0
+  },
+  "385": {
+    "frames": 12,
+    "width": 72,
+    "height": 56,
+    "fps": 8.0
+  },
+  "386": {
+    "frames": 6,
+    "width": 84,
+    "height": 79,
+    "fps": 8.0
+  },
+  "387": {
+    "frames": 6,
+    "width": 84,
+    "height": 79,
+    "fps": 8.0
+  },
+  "388": {
+    "frames": 6,
+    "width": 84,
+    "height": 79,
+    "fps": 8.0
+  },
+  "389": {
+    "frames": 6,
+    "width": 84,
+    "height": 79,
+    "fps": 8.0
+  },
+  "390": {
+    "frames": 6,
+    "width": 84,
+    "height": 79,
+    "fps": 8.0
+  },
+  "391": {
+    "frames": 6,
+    "width": 84,
+    "height": 79,
+    "fps": 8.0
+  },
+  "392": {
+    "frames": 6,
+    "width": 98,
+    "height": 89,
+    "fps": 8.0
+  },
+  "393": {
+    "frames": 6,
+    "width": 111,
+    "height": 89,
+    "fps": 8.0
+  },
+  "394": {
+    "frames": 6,
+    "width": 97,
+    "height": 90,
+    "fps": 8.0
+  },
+  "395": {
+    "frames": 6,
+    "width": 108,
+    "height": 91,
+    "fps": 8.0
+  },
+  "396": {
+    "frames": 6,
+    "width": 98,
+    "height": 89,
+    "fps": 8.0
+  },
+  "397": {
+    "frames": 10,
+    "width": 84,
+    "height": 115,
+    "fps": 8.0
+  },
+  "398": {
+    "frames": 10,
+    "width": 84,
+    "height": 115,
+    "fps": 8.0
+  },
+  "399": {
+    "frames": 10,
+    "width": 84,
+    "height": 115,
+    "fps": 8.0
+  },
+  "400": {
+    "frames": 10,
+    "width": 84,
+    "height": 115,
+    "fps": 8.0
+  },
+  "401": {
+    "frames": 6,
+    "width": 136,
+    "height": 117,
+    "fps": 8.0
+  },
+  "402": {
+    "frames": 6,
+    "width": 136,
+    "height": 117,
+    "fps": 8.0
+  },
+  "403": {
+    "frames": 6,
+    "width": 136,
+    "height": 117,
+    "fps": 8.0
+  },
+  "404": {
+    "frames": 6,
+    "width": 136,
+    "height": 117,
+    "fps": 8.0
+  },
+  "405": {
+    "frames": 6,
+    "width": 136,
+    "height": 117,
+    "fps": 8.0
+  },
+  "406": {
+    "frames": 6,
+    "width": 136,
+    "height": 117,
+    "fps": 8.0
+  },
+  "407": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "408": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "409": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "410": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "411": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "412": {
+    "frames": 6,
+    "width": 60,
+    "height": 66,
+    "fps": 8.0
+  },
+  "413": {
+    "frames": 6,
+    "width": 60,
+    "height": 66,
+    "fps": 8.0
+  },
+  "414": {
+    "frames": 6,
+    "width": 60,
+    "height": 66,
+    "fps": 8.0
+  },
+  "415": {
+    "frames": 6,
+    "width": 60,
+    "height": 66,
+    "fps": 8.0
+  },
+  "416": {
+    "frames": 6,
+    "width": 60,
+    "height": 66,
+    "fps": 8.0
+  },
+  "417": {
+    "frames": 6,
+    "width": 76,
+    "height": 60,
+    "fps": 8.0
+  },
+  "418": {
+    "frames": 6,
+    "width": 76,
+    "height": 60,
+    "fps": 8.0
+  },
+  "419": {
+    "frames": 6,
+    "width": 76,
+    "height": 60,
+    "fps": 8.0
+  },
+  "420": {
+    "frames": 6,
+    "width": 76,
+    "height": 60,
+    "fps": 8.0
+  },
+  "421": {
+    "frames": 6,
+    "width": 76,
+    "height": 60,
+    "fps": 8.0
+  },
+  "422": {
+    "frames": 8,
+    "width": 92,
+    "height": 74,
+    "fps": 8.0
+  },
+  "423": {
+    "frames": 8,
+    "width": 92,
+    "height": 80,
+    "fps": 8.0
+  },
+  "424": {
+    "frames": 8,
+    "width": 96,
+    "height": 80,
+    "fps": 8.0
+  },
+  "425": {
+    "frames": 8,
+    "width": 96,
+    "height": 80,
+    "fps": 8.0
+  },
+  "426": {
+    "frames": 8,
+    "width": 108,
+    "height": 91,
+    "fps": 8.0
+  },
+  "427": {
+    "frames": 6,
+    "width": 60,
+    "height": 102,
+    "fps": 8.0
+  },
+  "428": {
+    "frames": 6,
+    "width": 60,
+    "height": 102,
+    "fps": 8.0
+  },
+  "429": {
+    "frames": 6,
+    "width": 60,
+    "height": 102,
+    "fps": 8.0
+  },
+  "430": {
+    "frames": 6,
+    "width": 60,
+    "height": 102,
+    "fps": 8.0
+  },
+  "431": {
+    "frames": 12,
+    "width": 51,
+    "height": 60,
+    "fps": 8.0
+  },
+  "432": {
+    "frames": 12,
+    "width": 77,
+    "height": 71,
+    "fps": 8.0
+  },
+  "433": {
+    "frames": 12,
+    "width": 82,
+    "height": 91,
+    "fps": 8.0
+  },
+  "434": {
+    "frames": 6,
+    "width": 43,
+    "height": 66,
+    "fps": 8.0
+  },
+  "435": {
+    "frames": 6,
+    "width": 67,
+    "height": 115,
+    "fps": 8.0
+  },
+  "436": {
+    "frames": 6,
+    "width": 84,
+    "height": 80,
+    "fps": 8.0
+  },
+  "437": {
+    "frames": 6,
+    "width": 84,
+    "height": 80,
+    "fps": 8.0
+  },
+  "438": {
+    "frames": 12,
+    "width": 96,
+    "height": 188,
+    "fps": 8.0
+  },
+  "439": {
+    "frames": 12,
+    "width": 152,
+    "height": 226,
+    "fps": 8.0
+  },
+  "440": {
+    "frames": 12,
+    "width": 117,
+    "height": 199,
+    "fps": 8.0
+  },
+  "441": {
+    "frames": 12,
+    "width": 158,
+    "height": 229,
+    "fps": 8.0
+  },
+  "442": {
+    "frames": 12,
+    "width": 108,
+    "height": 133,
+    "fps": 8.0
+  },
+  "443": {
+    "frames": 4,
+    "width": 40,
+    "height": 86,
+    "fps": 8.0
+  },
+  "444": {
+    "frames": 4,
+    "width": 41,
+    "height": 83,
+    "fps": 8.0
+  },
+  "445": {
+    "frames": 4,
+    "width": 40,
+    "height": 88,
+    "fps": 8.0
+  },
+  "44507": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "44508": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "44509": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "44510": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "44511": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "44512": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "446": {
+    "frames": 4,
+    "width": 45,
+    "height": 74,
+    "fps": 8.0
+  },
+  "447": {
+    "frames": 4,
+    "width": 48,
+    "height": 96,
+    "fps": 8.0
+  },
+  "448": {
+    "frames": 4,
+    "width": 49,
+    "height": 100,
+    "fps": 8.0
+  },
+  "449": {
+    "frames": 4,
+    "width": 92,
+    "height": 98,
+    "fps": 8.0
+  },
+  "450": {
+    "frames": 5,
+    "width": 70,
+    "height": 97,
+    "fps": 8.0
+  },
+  "451": {
+    "frames": 9,
+    "width": 125,
+    "height": 195,
+    "fps": 8.0
+  },
+  "452": {
+    "frames": 8,
+    "width": 139,
+    "height": 147,
+    "fps": 8.0
+  },
+  "453": {
+    "frames": 4,
+    "width": 37,
+    "height": 90,
+    "fps": 8.0
+  },
+  "454": {
+    "frames": 4,
+    "width": 81,
+    "height": 90,
+    "fps": 8.0
+  },
+  "455": {
+    "frames": 12,
+    "width": 152,
+    "height": 226,
+    "fps": 8.0
+  },
+  "456": {
+    "frames": 6,
+    "width": 81,
+    "height": 84,
+    "fps": 8.0
+  },
+  "457": {
+    "frames": 12,
+    "width": 76,
+    "height": 68,
+    "fps": 8.0
+  },
+  "458": {
+    "frames": 10,
+    "width": 50,
+    "height": 102,
+    "fps": 8.0
+  },
+  "459": {
+    "frames": 10,
+    "width": 76,
+    "height": 108,
+    "fps": 8.0
+  },
+  "460": {
+    "frames": 6,
+    "width": 96,
+    "height": 64,
+    "fps": 8.0
+  },
+  "461": {
+    "frames": 12,
+    "width": 120,
+    "height": 145,
+    "fps": 8.0
+  },
+  "462": {
+    "frames": 12,
+    "width": 120,
+    "height": 145,
+    "fps": 8.0
+  },
+  "463": {
+    "frames": 7,
+    "width": 79,
+    "height": 96,
+    "fps": 8.0
+  },
+  "464": {
+    "frames": 8,
+    "width": 50,
+    "height": 44,
+    "fps": 8.0
+  },
+  "465": {
+    "frames": 12,
+    "width": 67,
+    "height": 83,
+    "fps": 8.0
+  },
+  "466": {
+    "frames": 6,
+    "width": 100,
+    "height": 112,
+    "fps": 8.0
+  },
+  "467": {
+    "frames": 6,
+    "width": 100,
+    "height": 117,
+    "fps": 8.0
+  },
+  "468": {
+    "frames": 6,
+    "width": 101,
+    "height": 122,
+    "fps": 8.0
+  },
+  "469": {
+    "frames": 6,
+    "width": 124,
+    "height": 170,
+    "fps": 8.0
+  },
+  "470": {
+    "frames": 12,
+    "width": 76,
+    "height": 51,
+    "fps": 8.0
+  },
+  "471": {
+    "frames": 12,
+    "width": 56,
+    "height": 70,
+    "fps": 8.0
+  },
+  "472": {
+    "frames": 12,
+    "width": 68,
+    "height": 80,
+    "fps": 8.0
+  },
+  "473": {
+    "frames": 6,
+    "width": 62,
+    "height": 76,
+    "fps": 8.0
+  },
+  "474": {
+    "frames": 3,
+    "width": 72,
+    "height": 85,
+    "fps": 8.0
+  },
+  "475": {
+    "frames": 12,
+    "width": 93,
+    "height": 88,
+    "fps": 8.0
+  },
+  "476": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "477": {
+    "frames": 12,
+    "width": 219,
+    "height": 260,
+    "fps": 8.0
+  },
+  "478": {
+    "frames": 8,
+    "width": 162,
+    "height": 203,
+    "fps": 8.0
+  },
+  "479": {
+    "frames": 4,
+    "width": 44,
+    "height": 63,
+    "fps": 8.0
+  },
+  "480": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "481": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "482": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "483": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "484": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "485": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "486": {
+    "frames": 6,
+    "width": 68,
+    "height": 109,
+    "fps": 8.0
+  },
+  "487": {
+    "frames": 12,
+    "width": 96,
+    "height": 88,
+    "fps": 8.0
+  },
+  "488": {
+    "frames": 12,
+    "width": 96,
+    "height": 88,
+    "fps": 8.0
+  },
+  "489": {
+    "frames": 4,
+    "width": 165,
+    "height": 147,
+    "fps": 8.0
+  },
+  "490": {
+    "frames": 12,
+    "width": 100,
+    "height": 91,
+    "fps": 8.0
+  },
+  "491": {
+    "frames": 3,
+    "width": 41,
+    "height": 60,
+    "fps": 8.0
+  },
+  "492": {
+    "frames": 4,
+    "width": 80,
+    "height": 120,
+    "fps": 8.0
+  },
+  "493": {
+    "frames": 6,
+    "width": 73,
+    "height": 82,
+    "fps": 8.0
+  },
+  "494": {
+    "frames": 4,
+    "width": 80,
+    "height": 62,
+    "fps": 8.0
+  },
+  "495": {
+    "frames": 5,
+    "width": 57,
+    "height": 63,
+    "fps": 8.0
+  },
+  "496": {
+    "frames": 9,
+    "width": 121,
+    "height": 91,
+    "fps": 8.0
+  },
+  "497": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "498": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "499": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "500": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "5004": {
+    "frames": 12,
+    "width": 64,
+    "height": 77,
+    "fps": 8.0
+  },
+  "501": {
+    "frames": 6,
+    "width": 28,
+    "height": 73,
+    "fps": 8.0
+  },
+  "502": {
+    "frames": 5,
+    "width": 165,
+    "height": 152,
+    "fps": 8.0
+  },
+  "503": {
+    "frames": 6,
+    "width": 33,
+    "height": 100,
+    "fps": 8.0
+  },
+  "504": {
+    "frames": 10,
+    "width": 29,
+    "height": 72,
+    "fps": 8.0
+  },
+  "505": {
+    "frames": 9,
+    "width": 121,
+    "height": 91,
+    "fps": 8.0
+  },
+  "506": {
+    "frames": 10,
+    "width": 29,
+    "height": 72,
+    "fps": 8.0
+  },
+  "507": {
+    "frames": 6,
+    "width": 68,
+    "height": 60,
+    "fps": 8.0
+  },
+  "5075": {
+    "frames": 12,
+    "width": 120,
+    "height": 145,
+    "fps": 8.0
+  },
+  "508": {
+    "frames": 6,
+    "width": 68,
+    "height": 60,
+    "fps": 8.0
+  },
+  "509": {
+    "frames": 6,
+    "width": 61,
+    "height": 72,
+    "fps": 8.0
+  },
+  "510": {
+    "frames": 6,
+    "width": 61,
+    "height": 72,
+    "fps": 8.0
+  },
+  "511": {
+    "frames": 6,
+    "width": 129,
+    "height": 106,
+    "fps": 8.0
+  },
+  "512": {
+    "frames": 6,
+    "width": 129,
+    "height": 106,
+    "fps": 8.0
+  },
+  "513": {
+    "frames": 4,
+    "width": 60,
+    "height": 89,
+    "fps": 8.0
+  },
+  "514": {
+    "frames": 6,
+    "width": 52,
+    "height": 93,
+    "fps": 8.0
+  },
+  "515": {
+    "frames": 4,
+    "width": 57,
+    "height": 109,
+    "fps": 8.0
+  },
+  "516": {
+    "frames": 4,
+    "width": 57,
+    "height": 109,
+    "fps": 8.0
+  },
+  "517": {
+    "frames": 4,
+    "width": 57,
+    "height": 109,
+    "fps": 8.0
+  },
+  "518": {
+    "frames": 4,
+    "width": 57,
+    "height": 109,
+    "fps": 8.0
+  },
+  "519": {
+    "frames": 6,
+    "width": 92,
+    "height": 148,
+    "fps": 8.0
+  },
+  "520": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "5208": {
+    "frames": 6,
+    "width": 64,
+    "height": 105,
+    "fps": 8.0
+  },
+  "521": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "522": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "523": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "524": {
+    "frames": 4,
+    "width": 61,
+    "height": 75,
+    "fps": 8.0
+  },
+  "525": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "526": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "527": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "528": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "529": {
+    "frames": 6,
+    "width": 88,
+    "height": 108,
+    "fps": 8.0
+  },
+  "530": {
+    "frames": 9,
+    "width": 76,
+    "height": 98,
+    "fps": 8.0
+  },
+  "531": {
+    "frames": 8,
+    "width": 81,
+    "height": 95,
+    "fps": 8.0
+  },
+  "532": {
+    "frames": 9,
+    "width": 81,
+    "height": 116,
+    "fps": 8.0
+  },
+  "533": {
+    "frames": 9,
+    "width": 81,
+    "height": 116,
+    "fps": 8.0
+  },
+  "534": {
+    "frames": 9,
+    "width": 76,
+    "height": 98,
+    "fps": 8.0
+  },
+  "535": {
+    "frames": 3,
+    "width": 80,
+    "height": 94,
+    "fps": 8.0
+  },
+  "536": {
+    "frames": 6,
+    "width": 69,
+    "height": 81,
+    "fps": 8.0
+  },
+  "537": {
+    "frames": 4,
+    "width": 208,
+    "height": 178,
+    "fps": 8.0
+  },
+  "538": {
+    "frames": 6,
+    "width": 208,
+    "height": 273,
+    "fps": 8.0
+  },
+  "539": {
+    "frames": 4,
+    "width": 100,
+    "height": 97,
+    "fps": 8.0
+  },
+  "540": {
+    "frames": 4,
+    "width": 100,
+    "height": 97,
+    "fps": 8.0
+  },
+  "541": {
+    "frames": 6,
+    "width": 57,
+    "height": 107,
+    "fps": 8.0
+  },
+  "542": {
+    "frames": 6,
+    "width": 57,
+    "height": 103,
+    "fps": 8.0
+  },
+  "543": {
+    "frames": 12,
+    "width": 58,
+    "height": 70,
+    "fps": 8.0
+  },
+  "544": {
+    "frames": 12,
+    "width": 58,
+    "height": 70,
+    "fps": 8.0
+  },
+  "545": {
+    "frames": 5,
+    "width": 245,
+    "height": 207,
+    "fps": 8.0
+  },
+  "546": {
+    "frames": 6,
+    "width": 129,
+    "height": 106,
+    "fps": 8.0
+  },
+  "547": {
+    "frames": 9,
+    "width": 81,
+    "height": 116,
+    "fps": 8.0
+  },
+  "548": {
+    "frames": 6,
+    "width": 208,
+    "height": 273,
+    "fps": 8.0
+  },
+  "549": {
+    "frames": 6,
+    "width": 208,
+    "height": 273,
+    "fps": 8.0
+  },
+  "550": {
+    "frames": 3,
+    "width": 80,
+    "height": 94,
+    "fps": 8.0
+  },
+  "551": {
+    "frames": 4,
+    "width": 49,
+    "height": 90,
+    "fps": 8.0
+  },
+  "554": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "555": {
+    "frames": 3,
+    "width": 104,
+    "height": 101,
+    "fps": 8.0
+  },
+  "55501": {
+    "frames": 8,
+    "width": 179,
+    "height": 182,
+    "fps": 8.0
+  },
+  "55502": {
+    "frames": 8,
+    "width": 179,
+    "height": 182,
+    "fps": 8.0
+  },
+  "55503": {
+    "frames": 8,
+    "width": 179,
+    "height": 182,
+    "fps": 8.0
+  },
+  "55504": {
+    "frames": 8,
+    "width": 179,
+    "height": 182,
+    "fps": 8.0
+  },
+  "556": {
+    "frames": 3,
+    "width": 104,
+    "height": 101,
+    "fps": 8.0
+  },
+  "557": {
+    "frames": 3,
+    "width": 104,
+    "height": 101,
+    "fps": 8.0
+  },
+  "558": {
+    "frames": 3,
+    "width": 104,
+    "height": 101,
+    "fps": 8.0
+  },
+  "559": {
+    "frames": 3,
+    "width": 124,
+    "height": 143,
+    "fps": 8.0
+  },
+  "560": {
+    "frames": 3,
+    "width": 124,
+    "height": 143,
+    "fps": 8.0
+  },
+  "561": {
+    "frames": 3,
+    "width": 124,
+    "height": 143,
+    "fps": 8.0
+  },
+  "562": {
+    "frames": 3,
+    "width": 124,
+    "height": 143,
+    "fps": 8.0
+  },
+  "563": {
+    "frames": 6,
+    "width": 100,
+    "height": 95,
+    "fps": 8.0
+  },
+  "564": {
+    "frames": 4,
+    "width": 84,
+    "height": 106,
+    "fps": 8.0
+  },
+  "565": {
+    "frames": 6,
+    "width": 40,
+    "height": 72,
+    "fps": 8.0
+  },
+  "566": {
+    "frames": 8,
+    "width": 81,
+    "height": 95,
+    "fps": 8.0
+  },
+  "567": {
+    "frames": 8,
+    "width": 81,
+    "height": 95,
+    "fps": 8.0
+  },
+  "568": {
+    "frames": 4,
+    "width": 86,
+    "height": 95,
+    "fps": 8.0
+  },
+  "569": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "570": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "571": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "572": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "573": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "574": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "575": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "576": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "577": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "578": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "579": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "580": {
+    "frames": 4,
+    "width": 44,
+    "height": 54,
+    "fps": 8.0
+  },
+  "581": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "582": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "583": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "584": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "585": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "586": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "587": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "588": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "589": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "590": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "591": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "592": {
+    "frames": 6,
+    "width": 36,
+    "height": 45,
+    "fps": 8.0
+  },
+  "593": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "594": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "595": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "596": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "597": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "598": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "599": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "600": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "6004": {
+    "frames": 12,
+    "width": 64,
+    "height": 77,
+    "fps": 8.0
+  },
+  "601": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "602": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "603": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "604": {
+    "frames": 4,
+    "width": 52,
+    "height": 44,
+    "fps": 8.0
+  },
+  "605": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "606": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "607": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "608": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "609": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "610": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "611": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "612": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "613": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "614": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "615": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "616": {
+    "frames": 7,
+    "width": 36,
+    "height": 31,
+    "fps": 8.0
+  },
+  "617": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "618": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "619": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "620": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "621": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "622": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "623": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "624": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "625": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "626": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "627": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "628": {
+    "frames": 8,
+    "width": 40,
+    "height": 38,
+    "fps": 8.0
+  },
+  "629": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "630": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "631": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "632": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "633": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "634": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "635": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "636": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "637": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "638": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "639": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "640": {
+    "frames": 6,
+    "width": 40,
+    "height": 37,
+    "fps": 8.0
+  },
+  "641": {
+    "frames": 4,
+    "width": 196,
+    "height": 198,
+    "fps": 8.0
+  },
+  "6410": {
+    "frames": 8,
+    "width": 80,
+    "height": 96,
+    "fps": 8.0
+  },
+  "642": {
+    "frames": 4,
+    "width": 196,
+    "height": 198,
+    "fps": 8.0
+  },
+  "643": {
+    "frames": 4,
+    "width": 196,
+    "height": 198,
+    "fps": 8.0
+  },
+  "644": {
+    "frames": 4,
+    "width": 196,
+    "height": 198,
+    "fps": 8.0
+  },
+  "645": {
+    "frames": 4,
+    "width": 108,
+    "height": 135,
+    "fps": 8.0
+  },
+  "646": {
+    "frames": 4,
+    "width": 108,
+    "height": 135,
+    "fps": 8.0
+  },
+  "647": {
+    "frames": 4,
+    "width": 108,
+    "height": 135,
+    "fps": 8.0
+  },
+  "648": {
+    "frames": 4,
+    "width": 108,
+    "height": 135,
+    "fps": 8.0
+  },
+  "649": {
+    "frames": 3,
+    "width": 168,
+    "height": 144,
+    "fps": 8.0
+  },
+  "650": {
+    "frames": 3,
+    "width": 168,
+    "height": 144,
+    "fps": 8.0
+  },
+  "651": {
+    "frames": 3,
+    "width": 168,
+    "height": 144,
+    "fps": 8.0
+  },
+  "652": {
+    "frames": 3,
+    "width": 168,
+    "height": 144,
+    "fps": 8.0
+  },
+  "653": {
+    "frames": 3,
+    "width": 148,
+    "height": 128,
+    "fps": 8.0
+  },
+  "654": {
+    "frames": 3,
+    "width": 148,
+    "height": 128,
+    "fps": 8.0
+  },
+  "655": {
+    "frames": 3,
+    "width": 148,
+    "height": 128,
+    "fps": 8.0
+  },
+  "656": {
+    "frames": 3,
+    "width": 148,
+    "height": 128,
+    "fps": 8.0
+  },
+  "657": {
+    "frames": 4,
+    "width": 364,
+    "height": 271,
+    "fps": 8.0
+  },
+  "658": {
+    "frames": 4,
+    "width": 364,
+    "height": 271,
+    "fps": 8.0
+  },
+  "659": {
+    "frames": 4,
+    "width": 364,
+    "height": 271,
+    "fps": 8.0
+  },
+  "660": {
+    "frames": 4,
+    "width": 364,
+    "height": 271,
+    "fps": 8.0
+  },
+  "661": {
+    "frames": 4,
+    "width": 224,
+    "height": 287,
+    "fps": 8.0
+  },
+  "662": {
+    "frames": 4,
+    "width": 224,
+    "height": 287,
+    "fps": 8.0
+  },
+  "663": {
+    "frames": 4,
+    "width": 224,
+    "height": 287,
+    "fps": 8.0
+  },
+  "664": {
+    "frames": 4,
+    "width": 224,
+    "height": 287,
+    "fps": 8.0
+  },
+  "665": {
+    "frames": 3,
+    "width": 252,
+    "height": 287,
+    "fps": 8.0
+  },
+  "66502": {
+    "frames": 4,
+    "width": 86,
+    "height": 95,
+    "fps": 8.0
+  },
+  "666": {
+    "frames": 3,
+    "width": 252,
+    "height": 287,
+    "fps": 8.0
+  },
+  "667": {
+    "frames": 3,
+    "width": 252,
+    "height": 287,
+    "fps": 8.0
+  },
+  "668": {
+    "frames": 3,
+    "width": 252,
+    "height": 287,
+    "fps": 8.0
+  },
+  "669": {
+    "frames": 4,
+    "width": 360,
+    "height": 236,
+    "fps": 8.0
+  },
+  "670": {
+    "frames": 4,
+    "width": 360,
+    "height": 236,
+    "fps": 8.0
+  },
+  "671": {
+    "frames": 4,
+    "width": 360,
+    "height": 236,
+    "fps": 8.0
+  },
+  "672": {
+    "frames": 4,
+    "width": 360,
+    "height": 236,
+    "fps": 8.0
+  },
+  "673": {
+    "frames": 4,
+    "width": 105,
+    "height": 75,
+    "fps": 8.0
+  },
+  "674": {
+    "frames": 5,
+    "width": 57,
+    "height": 63,
+    "fps": 8.0
+  },
+  "675": {
+    "frames": 4,
+    "width": 43,
+    "height": 63,
+    "fps": 8.0
+  },
+  "676": {
+    "frames": 12,
+    "width": 85,
+    "height": 163,
+    "fps": 8.0
+  },
+  "677": {
+    "frames": 4,
+    "width": 132,
+    "height": 104,
+    "fps": 8.0
+  },
+  "678": {
+    "frames": 12,
+    "width": 48,
+    "height": 52,
+    "fps": 8.0
+  },
+  "679": {
+    "frames": 12,
+    "width": 65,
+    "height": 71,
+    "fps": 8.0
+  },
+  "680": {
+    "frames": 12,
+    "width": 80,
+    "height": 90,
+    "fps": 8.0
+  },
+  "681": {
+    "frames": 12,
+    "width": 97,
+    "height": 108,
+    "fps": 8.0
+  },
+  "682": {
+    "frames": 12,
+    "width": 136,
+    "height": 161,
+    "fps": 8.0
+  },
+  "683": {
+    "frames": 6,
+    "width": 96,
+    "height": 64,
+    "fps": 8.0
+  },
+  "684": {
+    "frames": 5,
+    "width": 64,
+    "height": 74,
+    "fps": 8.0
+  },
+  "685": {
+    "frames": 5,
+    "width": 72,
+    "height": 77,
+    "fps": 8.0
+  },
+  "686": {
+    "frames": 4,
+    "width": 52,
+    "height": 47,
+    "fps": 8.0
+  },
+  "687": {
+    "frames": 4,
+    "width": 52,
+    "height": 47,
+    "fps": 8.0
+  },
+  "688": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "689": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "690": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "691": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "692": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "693": {
+    "frames": 10,
+    "width": 68,
+    "height": 44,
+    "fps": 8.0
+  },
+  "694": {
+    "frames": 12,
+    "width": 64,
+    "height": 77,
+    "fps": 8.0
+  },
+  "695": {
+    "frames": 12,
+    "width": 120,
+    "height": 145,
+    "fps": 8.0
+  },
+  "696": {
+    "frames": 6,
+    "width": 64,
+    "height": 105,
+    "fps": 8.0
+  },
+  "697": {
+    "frames": 8,
+    "width": 179,
+    "height": 182,
+    "fps": 8.0
+  },
+  "698": {
+    "frames": 8,
+    "width": 179,
+    "height": 182,
+    "fps": 8.0
+  },
+  "699": {
+    "frames": 8,
+    "width": 179,
+    "height": 182,
+    "fps": 8.0
+  },
+  "700": {
+    "frames": 8,
+    "width": 179,
+    "height": 182,
+    "fps": 8.0
+  },
+  "701": {
+    "frames": 12,
+    "width": 64,
+    "height": 77,
+    "fps": 8.0
+  },
+  "702": {
+    "frames": 8,
+    "width": 80,
+    "height": 96,
+    "fps": 8.0
+  },
+  "703": {
+    "frames": 4,
+    "width": 86,
+    "height": 95,
+    "fps": 8.0
+  },
+  "704": {
+    "frames": 12,
+    "width": 169,
+    "height": 125,
+    "fps": 8.0
+  },
+  "705": {
+    "frames": 5,
+    "width": 224,
+    "height": 162,
+    "fps": 8.0
+  },
+  "706": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "707": {
+    "frames": 4,
+    "width": 124,
+    "height": 70,
+    "fps": 8.0
+  },
+  "708": {
+    "frames": 4,
+    "width": 124,
+    "height": 70,
+    "fps": 8.0
+  },
+  "709": {
+    "frames": 6,
+    "width": 136,
+    "height": 140,
+    "fps": 8.0
+  },
+  "710": {
+    "frames": 6,
+    "width": 208,
+    "height": 243,
+    "fps": 8.0
+  },
+  "711": {
+    "frames": 6,
+    "width": 212,
+    "height": 243,
+    "fps": 8.0
+  },
+  "712": {
+    "frames": 6,
+    "width": 208,
+    "height": 243,
+    "fps": 8.0
+  },
+  "713": {
+    "frames": 6,
+    "width": 212,
+    "height": 243,
+    "fps": 8.0
+  },
+  "714": {
+    "frames": 6,
+    "width": 212,
+    "height": 243,
+    "fps": 8.0
+  },
+  "715": {
+    "frames": 6,
+    "width": 212,
+    "height": 243,
+    "fps": 8.0
+  },
+  "716": {
+    "frames": 6,
+    "width": 283,
+    "height": 321,
+    "fps": 8.0
+  },
+  "717": {
+    "frames": 6,
+    "width": 283,
+    "height": 321,
+    "fps": 8.0
+  },
+  "718": {
+    "frames": 6,
+    "width": 282,
+    "height": 320,
+    "fps": 8.0
+  },
+  "719": {
+    "frames": 6,
+    "width": 283,
+    "height": 321,
+    "fps": 8.0
+  },
+  "720": {
+    "frames": 6,
+    "width": 283,
+    "height": 321,
+    "fps": 8.0
+  },
+  "721": {
+    "frames": 12,
+    "width": 105,
+    "height": 166,
+    "fps": 8.0
+  },
+  "722": {
+    "frames": 10,
+    "width": 65,
+    "height": 106,
+    "fps": 8.0
+  },
+  "723": {
+    "frames": 10,
+    "width": 68,
+    "height": 89,
+    "fps": 8.0
+  },
+  "724": {
+    "frames": 10,
+    "width": 64,
+    "height": 101,
+    "fps": 8.0
+  },
+  "725": {
+    "frames": 10,
+    "width": 60,
+    "height": 91,
+    "fps": 8.0
+  },
+  "726": {
+    "frames": 12,
+    "width": 96,
+    "height": 88,
+    "fps": 8.0
+  },
+  "727": {
+    "frames": 8,
+    "width": 170,
+    "height": 124,
+    "fps": 8.0
+  },
+  "728": {
+    "frames": 8,
+    "width": 156,
+    "height": 139,
+    "fps": 8.0
+  },
+  "729": {
+    "frames": 8,
+    "width": 214,
+    "height": 169,
+    "fps": 8.0
+  },
+  "730": {
+    "frames": 8,
+    "width": 196,
+    "height": 190,
+    "fps": 8.0
+  },
+  "731": {
+    "frames": 4,
+    "width": 44,
+    "height": 98,
+    "fps": 8.0
+  },
+  "732": {
+    "frames": 12,
+    "width": 40,
+    "height": 94,
+    "fps": 8.0
+  },
+  "733": {
+    "frames": 10,
+    "width": 177,
+    "height": 213,
+    "fps": 8.0
+  },
+  "734": {
+    "frames": 10,
+    "width": 198,
+    "height": 232,
+    "fps": 8.0
+  },
+  "735": {
+    "frames": 10,
+    "width": 177,
+    "height": 213,
+    "fps": 8.0
+  },
+  "736": {
+    "frames": 10,
+    "width": 199,
+    "height": 232,
+    "fps": 8.0
+  },
+  "737": {
+    "frames": 12,
+    "width": 238,
+    "height": 279,
+    "fps": 8.0
+  },
+  "738": {
+    "frames": 6,
+    "width": 280,
+    "height": 324,
+    "fps": 8.0
+  },
+  "739": {
+    "frames": 12,
+    "width": 240,
+    "height": 291,
+    "fps": 8.0
+  },
+  "740": {
+    "frames": 8,
+    "width": 162,
+    "height": 203,
+    "fps": 8.0
+  },
+  "741": {
+    "frames": 10,
+    "width": 68,
+    "height": 86,
+    "fps": 8.0
+  },
+  "742": {
+    "frames": 12,
+    "width": 51,
+    "height": 60,
+    "fps": 8.0
+  },
+  "743": {
+    "frames": 12,
+    "width": 240,
+    "height": 291,
+    "fps": 8.0
+  },
+  "744": {
+    "frames": 12,
+    "width": 51,
+    "height": 60,
+    "fps": 8.0
+  },
+  "745": {
+    "frames": 12,
+    "width": 77,
+    "height": 71,
+    "fps": 8.0
+  },
+  "746": {
+    "frames": 12,
+    "width": 82,
+    "height": 91,
+    "fps": 8.0
+  },
+  "747": {
+    "frames": 6,
+    "width": 43,
+    "height": 66,
+    "fps": 8.0
+  },
+  "748": {
+    "frames": 6,
+    "width": 67,
+    "height": 115,
+    "fps": 8.0
+  },
+  "749": {
+    "frames": 6,
+    "width": 55,
+    "height": 98,
+    "fps": 8.0
+  },
+  "7501": {
+    "frames": 12,
+    "width": 169,
+    "height": 125,
+    "fps": 8.0
+  },
+  "77001": {
+    "frames": 5,
+    "width": 224,
+    "height": 162,
+    "fps": 8.0
+  },
+  "77505": {
+    "frames": 4,
+    "width": 108,
+    "height": 110,
+    "fps": 8.0
+  },
+  "77506": {
+    "frames": 4,
+    "width": 124,
+    "height": 70,
+    "fps": 8.0
+  },
+  "77507": {
+    "frames": 4,
+    "width": 124,
+    "height": 70,
+    "fps": 8.0
+  },
+  "8401": {
+    "frames": 6,
+    "width": 136,
+    "height": 140,
+    "fps": 8.0
+  },
+  "8402": {
+    "frames": 6,
+    "width": 208,
+    "height": 243,
+    "fps": 8.0
+  },
+  "8403": {
+    "frames": 6,
+    "width": 212,
+    "height": 243,
+    "fps": 8.0
+  },
+  "8404": {
+    "frames": 6,
+    "width": 208,
+    "height": 243,
+    "fps": 8.0
+  },
+  "8405": {
+    "frames": 6,
+    "width": 212,
+    "height": 243,
+    "fps": 8.0
+  },
+  "8406": {
+    "frames": 6,
+    "width": 212,
+    "height": 243,
+    "fps": 8.0
+  },
+  "8407": {
+    "frames": 6,
+    "width": 212,
+    "height": 243,
+    "fps": 8.0
+  },
+  "8408": {
+    "frames": 6,
+    "width": 283,
+    "height": 321,
+    "fps": 8.0
+  },
+  "8409": {
+    "frames": 6,
+    "width": 283,
+    "height": 321,
+    "fps": 8.0
+  },
+  "8410": {
+    "frames": 6,
+    "width": 282,
+    "height": 320,
+    "fps": 8.0
+  },
+  "8411": {
+    "frames": 6,
+    "width": 283,
+    "height": 321,
+    "fps": 8.0
+  },
+  "8412": {
+    "frames": 6,
+    "width": 283,
+    "height": 321,
+    "fps": 8.0
+  },
+  "8413": {
+    "frames": 12,
+    "width": 105,
+    "height": 166,
+    "fps": 8.0
+  },
+  "8414": {
+    "frames": 10,
+    "width": 65,
+    "height": 106,
+    "fps": 8.0
+  },
+  "8415": {
+    "frames": 10,
+    "width": 68,
+    "height": 89,
+    "fps": 8.0
+  },
+  "8416": {
+    "frames": 10,
+    "width": 64,
+    "height": 101,
+    "fps": 8.0
+  },
+  "8417": {
+    "frames": 10,
+    "width": 60,
+    "height": 91,
+    "fps": 8.0
+  },
+  "8502": {
+    "frames": 12,
+    "width": 96,
+    "height": 88,
+    "fps": 8.0
+  },
+  "9001": {
+    "frames": 8,
+    "width": 170,
+    "height": 124,
+    "fps": 8.0
+  },
+  "9002": {
+    "frames": 8,
+    "width": 156,
+    "height": 139,
+    "fps": 8.0
+  },
+  "9003": {
+    "frames": 8,
+    "width": 214,
+    "height": 169,
+    "fps": 8.0
+  },
+  "9004": {
+    "frames": 8,
+    "width": 196,
+    "height": 190,
+    "fps": 8.0
+  },
+  "9005": {
+    "frames": 4,
+    "width": 44,
+    "height": 98,
+    "fps": 8.0
+  },
+  "9006": {
+    "frames": 12,
+    "width": 40,
+    "height": 94,
+    "fps": 8.0
+  },
+  "9040": {
+    "frames": 10,
+    "width": 177,
+    "height": 213,
+    "fps": 8.0
+  },
+  "9041": {
+    "frames": 10,
+    "width": 198,
+    "height": 232,
+    "fps": 8.0
+  },
+  "9042": {
+    "frames": 10,
+    "width": 177,
+    "height": 213,
+    "fps": 8.0
+  },
+  "9043": {
+    "frames": 10,
+    "width": 199,
+    "height": 232,
+    "fps": 8.0
+  },
+  "9044": {
+    "frames": 12,
+    "width": 238,
+    "height": 279,
+    "fps": 8.0
+  },
+  "9045": {
+    "frames": 6,
+    "width": 280,
+    "height": 324,
+    "fps": 8.0
+  },
+  "9046": {
+    "frames": 12,
+    "width": 240,
+    "height": 291,
+    "fps": 8.0
+  },
+  "950": {
+    "frames": 6,
+    "width": 58,
+    "height": 76,
+    "fps": 8.0
+  },
+  "951": {
+    "frames": 6,
+    "width": 58,
+    "height": 76,
+    "fps": 8.0
+  },
+  "952": {
+    "frames": 6,
+    "width": 58,
+    "height": 76,
+    "fps": 8.0
+  },
+  "953": {
+    "frames": 6,
+    "width": 58,
+    "height": 76,
+    "fps": 8.0
+  },
+  "954": {
+    "frames": 6,
+    "width": 58,
+    "height": 76,
+    "fps": 8.0
+  },
+  "955": {
+    "frames": 6,
+    "width": 58,
+    "height": 76,
+    "fps": 8.0
+  },
+  "956": {
+    "frames": 9,
+    "width": 52,
+    "height": 67,
+    "fps": 8.0
+  },
+  "957": {
+    "frames": 9,
+    "width": 52,
+    "height": 67,
+    "fps": 8.0
+  },
+  "958": {
+    "frames": 9,
+    "width": 52,
+    "height": 67,
+    "fps": 8.0
+  },
+  "959": {
+    "frames": 9,
+    "width": 52,
+    "height": 67,
+    "fps": 8.0
+  },
+  "99508": {
+    "frames": 8,
+    "width": 162,
+    "height": 203,
+    "fps": 8.0
+  },
+  "99513": {
+    "frames": 10,
+    "width": 68,
+    "height": 86,
+    "fps": 8.0
+  },
+  "99514": {
+    "frames": 12,
+    "width": 51,
+    "height": 60,
+    "fps": 8.0
+  },
+  "99999": {
+    "frames": 12,
+    "width": 240,
+    "height": 291,
+    "fps": 8.0
+  }
+}

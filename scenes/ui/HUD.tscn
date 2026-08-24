@@ -283,9 +283,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -500.0
+offset_left = -540.0
 offset_top = -68.0
-offset_right = 500.0
+offset_right = 540.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -306,62 +306,67 @@ theme_override_constants/separation = 6
 alignment = 1
 
 [node name="BtnAttack" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "[左鍵] 普攻"
 
 [node name="BtnSkill1" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "[1] 連擊"
 
 [node name="BtnSkill2" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "[2] 乾坤一擲"
 
 [node name="BtnSkill3" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "[3] 氣功彈"
 
 [node name="BtnSkill4" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "[4] 隕石魔法"
 
 [node name="BtnSeal" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "[G] 封印卡"
 
 [node name="BtnDodge" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(70, 0)
+custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 text = "[Space] 翻滾"
 
 [node name="BtnPetTactic" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "[T] 進攻"
 
 [node name="BtnMap" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "[M] 地圖"
 
+[node name="BtnSkin" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "[K] 造型"
+
 [node name="BtnBag" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 text = "[I] 背包"
 
 [node name="BtnChar" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 text = "[C] 狀態"
 
 [node name="BtnPet" type="Button" parent="BottomBar/HBox"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 text = "[P] 寵物"
 

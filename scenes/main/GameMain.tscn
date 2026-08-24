@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://petwin001" path="res://scenes/ui/PetWindow.tscn" id="9_pw01"]
 [ext_resource type="PackedScene" uid="uid://buffselwin001" path="res://scenes/ui/BuffSelectionWindow.tscn" id="10_bw01"]
 [ext_resource type="PackedScene" uid="uid://mapswitchwin01" path="res://scenes/ui/MapSwitchWindow.tscn" id="11_ms01"]
-[ext_resource type="Script" path="res://scripts/core/WaveManager.gd" id="12_wm02"]
+[ext_resource type="PackedScene" uid="uid://skinselwin001" path="res://scenes/ui/SkinSelectionWindow.tscn" id="12_sk01"]
+[ext_resource type="Script" path="res://scripts/core/WaveManager.gd" id="13_wm02"]
 
 [node name="GameMain" type="Node2D"]
 script = ExtResource("1_gm01")
@@ -19,7 +20,7 @@ script = ExtResource("1_gm01")
 [node name="WorldMap" parent="." instance=ExtResource("2_wm01")]
 
 [node name="WaveManager" type="Node" parent="."]
-script = ExtResource("12_wm02")
+script = ExtResource("13_wm02")
 
 [node name="Player" parent="." instance=ExtResource("3_pl01")]
 position = Vector2(600, 500)
@@ -47,3 +48,5 @@ position_smoothing_enabled = true
 [node name="BuffSelectionWindow" parent="CanvasLayer" instance=ExtResource("10_bw01")]
 
 [node name="MapSwitchWindow" parent="CanvasLayer" instance=ExtResource("11_ms01")]
+
+[node name="SkinSelectionWindow" parent="CanvasLayer" instance=ExtResource("12_sk01")]
