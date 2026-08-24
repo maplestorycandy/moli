@@ -6,7 +6,7 @@ var boss_phase: int = 1
 func _on_init_custom() -> void:
 	stats.character_name = "熱砂之歐茲那克"
 	stats.level = 10
-	stats.max_hp = 1500
+	stats.max_hp = 4500
 	stats.max_mp = 500
 	stats.atk = 85
 	stats.def = 45

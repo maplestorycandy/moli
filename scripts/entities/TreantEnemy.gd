@@ -3,7 +3,7 @@ extends "res://scripts/entities/EnemyBase.gd"
 func _on_init_custom() -> void:
 	stats.character_name = "樹精"
 	stats.level = 3
-	stats.max_hp = 200
+	stats.max_hp = 600
 	stats.max_mp = 60
 	stats.atk = 28
 	stats.def = 22
