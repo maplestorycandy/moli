@@ -1,8 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
+@export var move_speed: float = 260.0
 @export var acceleration: float = 2400.0
-@export var friction: float = 1600.0
+@export var friction: float = 1800.0
 
 enum ActionState {
 	IDLE,
@@ -10,8 +11,7 @@ enum ActionState {
 	ATTACK,
 	DODGE,
 	SKILL_COMBO,
-	SKILL_FORCE_STRIKE,
-	CAST_MAGIC
+	SKILL_FORCE_STRIKE
 }
 
 var current_state: ActionState = ActionState.IDLE
@@ -21,7 +21,7 @@ var aim_direction: Vector2 = Vector2.RIGHT
 var state_timer: float = 0.0
 var combo_step: int = 0
 var dodge_direction: Vector2 = Vector2.ZERO
-var dodge_speed: float = 420.0
+var dodge_speed: float = 440.0
 var is_invulnerable: bool = false
 var anim_timer: float = 0.0
 var i_frame_timer: float = 0.0
@@ -75,13 +75,8 @@ func _on_skin_changed(new_skin: Dictionary) -> void:
 				
 	EventBus.player_stats_changed.emit()
 
-func _input(event: InputEvent) -> void:
-	# 處理滑鼠瞄準
-	if event is InputEventMouse:
-		var mouse_pos = get_global_mouse_position()
-		aim_direction = (mouse_pos - global_position).normalized()
-		
-	# 處理按鍵直接施法與操作
+func _unhandled_input(event: InputEvent) -> void:
+	# 鍵盤直接按鍵響應
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_SPACE: _start_dodge()
@@ -89,20 +84,20 @@ func _input(event: InputEvent) -> void:
 			KEY_2: _start_skill_force_strike()
 			KEY_3: _start_skill_kiblast()
 			KEY_4: _cast_rapid_fire()
-			KEY_5: _cast_magic(MagicSpell.SpellType.DRAIN, MagicSpell.SpellTier.SINGLE, 6.0, 20)
-			KEY_6: _cast_magic(MagicSpell.SpellType.MIND_WAVE, MagicSpell.SpellTier.STRONG, 9.5, 30)
-			KEY_7: _cast_magic(MagicSpell.SpellType.METEOR, MagicSpell.SpellTier.STRONG, 8.5, 25)
-			KEY_8: _cast_magic(MagicSpell.SpellType.ICE, MagicSpell.SpellTier.STRONG, 8.5, 25)
-			KEY_9: _cast_magic(MagicSpell.SpellType.FIRE, MagicSpell.SpellTier.STRONG, 8.5, 25)
-			KEY_0: _cast_magic(MagicSpell.SpellType.WIND, MagicSpell.SpellTier.STRONG, 8.5, 25)
-			KEY_Q: _cast_magic(MagicSpell.SpellType.METEOR, MagicSpell.SpellTier.MEGA, 20.0, 50)
-			KEY_E: _cast_magic(MagicSpell.SpellType.ICE, MagicSpell.SpellTier.MEGA, 20.0, 50)
-			KEY_R: _cast_magic(MagicSpell.SpellType.FIRE, MagicSpell.SpellTier.MEGA, 20.0, 50)
-			KEY_F: _cast_magic(MagicSpell.SpellType.WIND, MagicSpell.SpellTier.MEGA, 20.0, 50)
+			KEY_5: _cast_magic(MagicSpell.SpellType.DRAIN, MagicSpell.SpellTier.SINGLE, 6.0, 15)
+			KEY_6: _cast_magic(MagicSpell.SpellType.MIND_WAVE, MagicSpell.SpellTier.STRONG, 9.5, 25)
+			KEY_7: _cast_magic(MagicSpell.SpellType.METEOR, MagicSpell.SpellTier.STRONG, 8.5, 20)
+			KEY_8: _cast_magic(MagicSpell.SpellType.ICE, MagicSpell.SpellTier.STRONG, 8.5, 20)
+			KEY_9: _cast_magic(MagicSpell.SpellType.FIRE, MagicSpell.SpellTier.STRONG, 8.5, 20)
+			KEY_0: _cast_magic(MagicSpell.SpellType.WIND, MagicSpell.SpellTier.STRONG, 8.5, 20)
+			KEY_Q: _cast_magic(MagicSpell.SpellType.METEOR, MagicSpell.SpellTier.MEGA, 20.0, 45)
+			KEY_E: _cast_magic(MagicSpell.SpellType.ICE, MagicSpell.SpellTier.MEGA, 20.0, 45)
+			KEY_R: _cast_magic(MagicSpell.SpellType.FIRE, MagicSpell.SpellTier.MEGA, 20.0, 45)
+			KEY_F: _cast_magic(MagicSpell.SpellType.WIND, MagicSpell.SpellTier.MEGA, 20.0, 45)
 			KEY_G: _use_seal_card()
 			KEY_T: _cycle_pet_command()
 
-	# 滑鼠左鍵普攻 (若未點擊在 UI 上)
+	# 滑鼠左鍵普攻
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		_start_attack()
 
@@ -120,7 +115,7 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 func _physics_process(delta: float) -> void:
-	# 永遠支援 WASD / 方向鍵 / 滑鼠右鍵移動
+	# 優先讀取 WASD / 方向鍵 / 滑鼠右鍵移動
 	var move_vec = Vector2.ZERO
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP) or Input.is_action_pressed("move_up"): move_vec.y -= 1.0
 	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN) or Input.is_action_pressed("move_down"): move_vec.y += 1.0
@@ -136,14 +131,16 @@ func _physics_process(delta: float) -> void:
 	if move_vec != Vector2.ZERO:
 		facing_direction = move_vec.normalized()
 		
+	var spd = Global.move_speed if ("move_speed" in Global and Global.move_speed > 0) else move_speed
+
 	match current_state:
 		ActionState.DODGE:
 			velocity = dodge_direction * dodge_speed
 		ActionState.SKILL_COMBO:
-			velocity = facing_direction * (Global.move_speed * 1.5)
+			velocity = facing_direction * (spd * 1.5)
 		_:
 			if move_vec != Vector2.ZERO:
-				velocity = velocity.move_toward(move_vec.normalized() * Global.move_speed, acceleration * delta)
+				velocity = velocity.move_toward(move_vec.normalized() * spd, acceleration * delta)
 				current_state = ActionState.MOVE
 			else:
 				velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
@@ -174,17 +171,16 @@ func _start_attack() -> void:
 	facing_direction = aim_direction
 	
 	var is_dual = BuffManager.has_buff("dual_attack")
-	var dmg_mult = 2.5 if not is_dual else 3.8
-	_trigger_weapon_hitbox("普通攻擊", dmg_mult, 0.1, 0.22)
+	var dmg_mult = 3.0 if not is_dual else 4.5
+	_trigger_weapon_hitbox("普通攻擊", dmg_mult, 0.08, 0.22)
 	SoundManager.play_swing()
 
 func _start_skill_combo() -> void:
 	var mp_cost = 15
-	if Global.mp < mp_cost:
+	if not Global.consume_mp(mp_cost):
 		_show_not_enough_mp()
 		return
-	Global.consume_mp(mp_cost)
-	
+		
 	current_state = ActionState.SKILL_COMBO
 	state_timer = 0.0
 	combo_step = 0
@@ -196,7 +192,7 @@ func _process_combo_step() -> void:
 	var is_master = BuffManager.has_buff("combo_master")
 	var max_step = 6 if is_master else 4
 	
-	_trigger_weapon_hitbox("連擊", 3.5 + (combo_step * 0.4), 0.03, 0.12)
+	_trigger_weapon_hitbox("連擊", 3.8 + (combo_step * 0.5), 0.02, 0.12)
 	SoundManager.play_swing()
 	EventBus.screen_shake_requested.emit(6.0, 0.1)
 	
@@ -213,11 +209,10 @@ func _process_combo_step() -> void:
 
 func _start_skill_force_strike() -> void:
 	var mp_cost = 25
-	if Global.mp < mp_cost:
+	if not Global.consume_mp(mp_cost):
 		_show_not_enough_mp()
 		return
-	Global.consume_mp(mp_cost)
-	
+		
 	current_state = ActionState.SKILL_FORCE_STRIKE
 	state_timer = 0.0
 	facing_direction = aim_direction
@@ -225,11 +220,10 @@ func _start_skill_force_strike() -> void:
 
 func _start_skill_kiblast() -> void:
 	var mp_cost = 20
-	if Global.mp < mp_cost:
+	if not Global.consume_mp(mp_cost):
 		_show_not_enough_mp()
 		return
-	Global.consume_mp(mp_cost)
-	
+		
 	facing_direction = aim_direction
 	var blast = kiblast_scene.instantiate()
 	blast.global_position = global_position + aim_direction * 20.0
@@ -237,20 +231,19 @@ func _start_skill_kiblast() -> void:
 	
 	var is_master = BuffManager.has_buff("qigong_split")
 	var count = 5 if is_master else 3
-	var atk_val = int(Global.atk * 6.5)
+	var atk_val = int(Global.atk * 7.5)
 	blast.setup(aim_direction, atk_val, count)
 	SoundManager.play_magic()
 
 func _cast_rapid_fire() -> void:
 	var mp_cost = 25
-	if Global.mp < mp_cost:
+	if not Global.consume_mp(mp_cost):
 		_show_not_enough_mp()
 		return
-	Global.consume_mp(mp_cost)
-	
+		
 	facing_direction = aim_direction
 	var arrow_count = 8
-	var dmg_per_arrow = int(Global.atk * 3.2)
+	var dmg_per_arrow = int(Global.atk * 3.5)
 	
 	for i in range(arrow_count):
 		var spread_angle = randf_range(-0.45, 0.45)
@@ -264,11 +257,10 @@ func _cast_rapid_fire() -> void:
 	EventBus.screen_shake_requested.emit(8.0, 0.2)
 
 func _cast_magic(spell_type: int, spell_tier: int, dmg_multiplier: float, mp_cost: int) -> void:
-	if Global.mp < mp_cost:
+	if not Global.consume_mp(mp_cost):
 		_show_not_enough_mp()
 		return
-	Global.consume_mp(mp_cost)
-	
+		
 	facing_direction = aim_direction
 	var target_p = get_global_mouse_position()
 	
@@ -354,7 +346,6 @@ func _on_hit_received(dmg: int, _is_crit: bool, _is_effective: bool, knock_dir: 
 	EventBus.screen_shake_requested.emit(5.0, 0.15)
 	SoundManager.play_hurt()
 	
-	# 給予 0.35 秒無敵受擊冷卻，不再打斷玩家移動！
 	i_frame_timer = 0.35
 	hurtbox.is_invulnerable = true
 	is_invulnerable = true
@@ -370,18 +361,14 @@ func _on_hit_received(dmg: int, _is_crit: bool, _is_effective: bool, knock_dir: 
 func _draw() -> void:
 	var p_scale = skin_data.get("scale", 1.0)
 	
-	# 陰影
 	draw_custom_ellipse(Vector2(0, 20), 24.0 * p_scale, 12.0 * p_scale, Color(0, 0, 0, 0.35))
 	
-	# 翻滾殘影
 	if current_state == ActionState.DODGE:
 		draw_circle(Vector2.ZERO, 26.0 * p_scale, Color(0.4, 0.8, 1.0, 0.35))
 		
-	# 受擊閃白
 	if i_frame_timer > 0.0 and fmod(i_frame_timer, 0.1) > 0.05:
 		draw_circle(Vector2(0, -10), 22.0 * p_scale, Color(1.0, 0.3, 0.3, 0.4))
 		
-	# 乾坤一擲蓄力氣場
 	if current_state == ActionState.SKILL_FORCE_STRIKE and state_timer < 0.35:
 		var aura_r = (38.0 + sin(state_timer * 25.0) * 8.0) * p_scale
 		draw_arc(Vector2.ZERO, aura_r, 0, TAU, 28, Color(1.0, 0.7, 0.1, 0.85), 4.5)
@@ -428,7 +415,6 @@ func _draw() -> void:
 		draw_circle(shield_pos, 8.0, Color(0.85, 0.7, 0.2))
 		draw_circle(shield_pos, 5.0, Color(0.2, 0.45, 0.95))
 
-	# 揮劍刀光弧線特效
 	if current_state in [ActionState.ATTACK, ActionState.SKILL_COMBO, ActionState.SKILL_FORCE_STRIKE] and not weapon_collision.disabled:
 		var slash_col = Color(0.6, 0.9, 1.0, 0.9)
 		var s_angle = facing_direction.angle()
