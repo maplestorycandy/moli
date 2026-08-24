@@ -22,17 +22,17 @@ var stat_agi: int = 10 # 速度 (敏捷/攻速/移速/迴避)
 var stat_mag: int = 5  # 魔法 (MP/精神/魔攻)
 
 # 動態衍生戰鬥數值
-var hp: int = 240
-var max_hp: int = 240
-var mp: int = 120
-var max_mp: int = 120
-var atk: int = 48
-var def: int = 22
-var agi_speed: float = 160.0
+var hp: int = 500
+var max_hp: int = 500
+var mp: int = 500
+var max_mp: int = 500
+var atk: int = 80
+var def: int = 35
+var agi_speed: float = 200.0
 var spirit: int = 100
 var recovery: int = 100
-var crit_rate: float = 0.08
-var dodge_rate: float = 0.05
+var crit_rate: float = 0.12
+var dodge_rate: float = 0.08
 
 # 玩家水晶屬性分佈 (純地/水/火/風 或 雙屬性，總和 10 點)
 var player_crystal = {
@@ -193,3 +193,13 @@ func get_active_pet() -> Dictionary:
 	if active_pet_index >= 0 and active_pet_index < pets.size():
 		return pets[active_pet_index]
 	return {}
+
+var mp_regen_timer: float = 0.0
+
+func _process(delta: float) -> void:
+	mp_regen_timer += delta
+	if mp_regen_timer >= 0.3:
+		mp_regen_timer = 0.0
+		if mp < max_mp:
+			mp = min(max_mp, mp + 8)
+			EventBus.player_mana_changed.emit(mp, max_mp)

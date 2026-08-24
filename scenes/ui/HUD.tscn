@@ -221,7 +221,8 @@ theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
 theme_override_font_sizes/font_size = 12
 text = "⚡ 立即出怪"
 
-[node name="GoddessBar" type="ProgressBar" parent="TopCenter"]
+
+focus_mode = 0[node name="GoddessBar" type="ProgressBar" parent="TopCenter"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 0
 offset_left = 12.0
@@ -315,57 +316,68 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "[左] 普攻"
 
-[node name="BtnSkill1" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill1" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 text = "[1] 連擊"
 
-[node name="BtnSkill2" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill2" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 text = "[2] 乾坤"
 
-[node name="BtnSkill3" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill3" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(68, 0)
 layout_mode = 2
 text = "[3] 氣功彈"
 
-[node name="BtnSkill4" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill4" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 text = "[4] 亂射"
 
-[node name="BtnSkill5" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill5" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 text = "[5] 吸血"
 
-[node name="BtnSkill6" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill6" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(68, 0)
 layout_mode = 2
 text = "[6] 衝擊波"
 
-[node name="BtnSkill7" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill7" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 text = "[7] 隕石"
 
-[node name="BtnSkill8" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill8" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 text = "[8] 冰凍"
 
-[node name="BtnSkill9" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill9" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 text = "[9] 火焰"
 
-[node name="BtnSkill0" type="Button" parent="BottomBar/VBox/Row1"]
+
+focus_mode = 0[node name="BtnSkill0" type="Button" parent="BottomBar/VBox/Row1"]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 text = "[0] 風刃"
 
-[node name="Row2" type="HBoxContainer" parent="BottomBar/VBox"]
+
+focus_mode = 0[node name="Row2" type="HBoxContainer" parent="BottomBar/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 4
@@ -376,62 +388,74 @@ custom_minimum_size = Vector2(68, 0)
 layout_mode = 2
 text = "[Q] 超隕石"
 
-[node name="BtnMegaIce" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnMegaIce" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(68, 0)
 layout_mode = 2
 text = "[E] 超冰凍"
 
-[node name="BtnMegaFire" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnMegaFire" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(68, 0)
 layout_mode = 2
 text = "[R] 超火海"
 
-[node name="BtnMegaWind" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnMegaWind" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(68, 0)
 layout_mode = 2
 text = "[F] 超風刃"
 
-[node name="BtnSeal" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnSeal" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "[G] 封印卡"
 
-[node name="BtnDodge" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnDodge" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "[空] 翻滾"
 
-[node name="BtnPetTactic" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnPetTactic" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "[T] 戰術"
 
-[node name="BtnMap" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnMap" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "[M] 地圖"
 
-[node name="BtnSkin" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnSkin" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "[K] 造型"
 
-[node name="BtnBag" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnBag" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "[I] 包"
 
-[node name="BtnChar" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnChar" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "[C] 人"
 
-[node name="BtnPet" type="Button" parent="BottomBar/VBox/Row2"]
+
+focus_mode = 0[node name="BtnPet" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "[P] 寵"
 
-[node name="BannerNotification" type="Panel" parent="."]
+
+focus_mode = 0[node name="BannerNotification" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
