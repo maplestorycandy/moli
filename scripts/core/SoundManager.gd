@@ -10,7 +10,7 @@ var current_playing_wave: int = 1
 
 # 音量控制與靜音設定 (0.0 ~ 1.0)
 var bgm_volume: float = 0.8
-var sfx_volume: float = 0.1 # 預設音效音 10%
+var sfx_volume: float = 0.05 # 預設音效音 5% (再小聲 50%)
 var is_bgm_muted: bool = false
 var is_sfx_muted: bool = false
 

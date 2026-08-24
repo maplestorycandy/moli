@@ -117,14 +117,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_mode = 0
-value = 10.0
+value = 5.0
 
 [node name="SFXLabel" type="Label" parent="Panel/VBox/SFXSection/HBox"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
 theme_override_font_sizes/font_size = 13
-text = "10%"
+text = "5%"
 horizontal_alignment = 2
 
 [node name="SFXMuteCheck" type="CheckBox" parent="Panel/VBox/SFXSection"]
