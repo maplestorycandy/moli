@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://gamemain001"]
+
+[ext_resource type="Script" path="res://scripts/main/GameMain.gd" id="1_gm01"]
+[ext_resource type="PackedScene" uid="uid://worldmap001" path="res://scenes/maps/WorldMap.tscn" id="2_wm01"]
+[ext_resource type="PackedScene" uid="uid://playerchar001" path="res://scenes/characters/Player.tscn" id="3_pl01"]
+[ext_resource type="PackedScene" uid="uid://petcompanion001" path="res://scenes/characters/Pet.tscn" id="4_pt01"]
+[ext_resource type="PackedScene" uid="uid://hudmain001" path="res://scenes/ui/HUD.tscn" id="5_hd01"]
+[ext_resource type="PackedScene" uid="uid://dialogwin001" path="res://scenes/ui/DialogWindow.tscn" id="6_dw01"]
+[ext_resource type="PackedScene" uid="uid://charwin001" path="res://scenes/ui/CharacterWindow.tscn" id="7_cw01"]
+[ext_resource type="PackedScene" uid="uid://invwin001" path="res://scenes/ui/InventoryWindow.tscn" id="8_iw01"]
+[ext_resource type="PackedScene" uid="uid://petwin001" path="res://scenes/ui/PetWindow.tscn" id="9_pw01"]
+[ext_resource type="PackedScene" uid="uid://buffselwin001" path="res://scenes/ui/BuffSelectionWindow.tscn" id="10_bw01"]
+[ext_resource type="Script" path="res://scripts/core/WaveManager.gd" id="11_wm02"]
+
+[node name="GameMain" type="Node2D"]
+script = ExtResource("1_gm01")
+
+[node name="WorldMap" parent="." instance=ExtResource("2_wm01")]
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("11_wm02")
+
+[node name="Player" parent="." instance=ExtResource("3_pl01")]
+position = Vector2(400, 480)
+
+[node name="Pet" parent="." instance=ExtResource("4_pt01")]
+position = Vector2(370, 500)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 400)
+zoom = Vector2(1.2, 1.2)
+position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_hd01")]
+
+[node name="DialogWindow" parent="CanvasLayer" instance=ExtResource("6_dw01")]
+
+[node name="CharacterWindow" parent="CanvasLayer" instance=ExtResource("7_cw01")]
+
+[node name="InventoryWindow" parent="CanvasLayer" instance=ExtResource("8_iw01")]
+
+[node name="PetWindow" parent="CanvasLayer" instance=ExtResource("9_pw01")]
+
+[node name="BuffSelectionWindow" parent="CanvasLayer" instance=ExtResource("10_bw01")]

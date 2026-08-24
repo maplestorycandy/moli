@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://sealcard001"]
+
+[ext_resource type="Script" path="res://scripts/combat/SealCardProjectile.gd" id="1_s01"]
+
+[node name="SealCardProjectile" type="Node2D"]
+z_index = 40
+script = ExtResource("1_s01")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://kiblast001"]
+
+[ext_resource type="Script" path="res://scripts/combat/KiBlastProjectile.gd" id="1_k01"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="2_h01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k01"]
+radius = 16.0
+
+[node name="KiBlastProjectile" type="Node2D"]
+z_index = 20
+script = ExtResource("1_k01")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_h01")
+hit_sound_type = "hit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_k01")

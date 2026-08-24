@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://invwin001"]
+
+[ext_resource type="Script" path="res://scripts/ui/InventoryWindow.gd" id="1_iw01"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.06, 0.1, 0.25, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9, 0.75, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="InventoryWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -220.0
+offset_right = 280.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iw01")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="HeaderLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 14.0
+offset_right = 220.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 17
+text = "冒險者背包 (道具與裝備)"
+
+[node name="CloseBtn" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 10.0
+offset_right = 545.0
+offset_bottom = 41.0
+text = "X"
+
+[node name="ItemList" type="ItemList" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 52.0
+offset_right = 290.0
+offset_bottom = 415.0
+
+[node name="Details" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 52.0
+offset_right = 540.0
+offset_bottom = 415.0
+
+[node name="NameLabel" type="Label" parent="Panel/Details"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 220.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 15
+text = "請選擇道具"
+
+[node name="DescLabel" type="Label" parent="Panel/Details"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 46.0
+offset_right = 220.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 3
+
+[node name="PriceLabel" type="Label" parent="Panel/Details"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 260.0
+offset_right = 220.0
+offset_bottom = 285.0
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+
+[node name="UseBtn" type="Button" parent="Panel/Details"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 310.0
+offset_right = 215.0
+offset_bottom = 345.0
+disabled = true
+text = "使用道具"

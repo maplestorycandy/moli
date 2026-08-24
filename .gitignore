@@ -1,0 +1,11 @@
+# Godot 4
+.godot/
+*.import
+
+# Tools / Binaries
+tools/godot/*.exe
+tools/godot/*.zip
+
+# Temp files
+*.tmp
+*.log

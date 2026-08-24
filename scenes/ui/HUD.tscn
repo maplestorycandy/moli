@@ -1,0 +1,396 @@
+[gd_scene format=3 uid="uid://hudmain001"]
+
+[ext_resource type="Script" path="res://scripts/ui/HUD.gd" id="1_hd01"]
+[ext_resource type="PackedScene" uid="uid://radarmini001" path="res://scenes/ui/RadarMinimap.tscn" id="2_rm01"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.08, 0.12, 0.28, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.2, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp"]
+bg_color = Color(0.85, 0.15, 0.15, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mp"]
+bg_color = Color(0.15, 0.45, 0.95, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exp"]
+bg_color = Color(0.9, 0.75, 0.15, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_goddess"]
+bg_color = Color(1, 0.8, 0.1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.05, 0.05, 0.08, 0.8)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hd01")
+
+[node name="TopLeft" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 130.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="NameLabel" type="Label" parent="TopLeft"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "辛 (Shin)"
+
+[node name="LevelLabel" type="Label" parent="TopLeft"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 190.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Lv. 1"
+
+[node name="TitleLabel" type="Label" parent="TopLeft"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 9.0
+offset_right = 296.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.5, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "【初心之冒險者】"
+
+[node name="CrystalLabel" type="Label" parent="TopLeft"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 32.0
+offset_right = 160.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0.4, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "💎 風地水晶 (5:5)"
+
+[node name="VBox" type="VBoxContainer" parent="TopLeft"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 292.0
+offset_bottom = 118.0
+theme_override_constants/separation = 4
+
+[node name="HPBar" type="ProgressBar" parent="TopLeft/VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp")
+max_value = 240.0
+value = 240.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="TopLeft/VBox/HPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+text = "240 / 240"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MPBar" type="ProgressBar" parent="TopLeft/VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mp")
+max_value = 120.0
+value = 120.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="TopLeft/VBox/MPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+text = "120 / 120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EXPBar" type="ProgressBar" parent="TopLeft/VBox"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_exp")
+max_value = 100.0
+value = 0.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="TopLeft/VBox/EXPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "EXP: 0 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopCenter" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -220.0
+offset_top = 16.0
+offset_right = 220.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="WaveLabel" type="Label" parent="TopCenter"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 15
+text = "⚔️ 第 1 / 50 波"
+
+[node name="StatusLabel" type="Label" parent="TopCenter"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 8.0
+offset_right = 320.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.9, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "下一波倒數: 6s"
+horizontal_alignment = 2
+
+[node name="BtnRush" type="Button" parent="TopCenter"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 4.0
+offset_right = 428.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 12
+text = "⚡ 立即出怪"
+
+[node name="GoddessBar" type="ProgressBar" parent="TopCenter"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 36.0
+offset_right = 428.0
+offset_bottom = 54.0
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_goddess")
+max_value = 8000.0
+value = 8000.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="TopCenter/GoddessBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.15, 1)
+theme_override_font_sizes/font_size = 11
+text = "愛謝拉女神 HP: 8000 / 8000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RadarMinimap" parent="." instance=ExtResource("2_rm01")]
+layout_mode = 1
+
+[node name="GoldPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -236.0
+offset_top = 206.0
+offset_right = -16.0
+offset_bottom = 246.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="GoldLabel" type="Label" parent="GoldPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.3, 1)
+theme_override_font_sizes/font_size = 14
+text = "💰 2000 G"
+vertical_alignment = 1
+
+[node name="BottomBar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -460.0
+offset_top = -68.0
+offset_right = 460.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="HBox" type="HBoxContainer" parent="BottomBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = -10.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="BtnAttack" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "[左鍵] 普攻"
+
+[node name="BtnSkill1" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "[1] 連擊"
+
+[node name="BtnSkill2" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "[2] 乾坤一擲"
+
+[node name="BtnSkill3" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "[3] 氣功彈"
+
+[node name="BtnSkill4" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "[4] 隕石魔法"
+
+[node name="BtnSeal" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "[G] 封印卡"
+
+[node name="BtnDodge" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "[Space] 翻滾"
+
+[node name="BtnPetTactic" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "[T] 進攻"
+
+[node name="BtnBag" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+text = "[I] 背包"
+
+[node name="BtnChar" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+text = "[C] 狀態"
+
+[node name="BtnPet" type="Button" parent="BottomBar/HBox"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+text = "[P] 寵物"
+
+[node name="BannerNotification" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -220.0
+offset_top = 100.0
+offset_right = 220.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="BannerNotification"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="BannerNotification/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 16
+text = "通知標題"
+horizontal_alignment = 1
+
+[node name="Sub" type="Label" parent="BannerNotification/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "詳細內容訊息"
+horizontal_alignment = 1

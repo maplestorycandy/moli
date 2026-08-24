@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://playerchar001"]
+
+[ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_p01"]
+[ext_resource type="Script" path="res://scripts/components/HurtboxComponent.gd" id="2_h01"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="3_hb01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbody"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurt"]
+radius = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sword"]
+radius = 20.0
+height = 50.0
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 10
+collision_layer = 1
+collision_mask = 1
+script = ExtResource("1_p01")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_pbody")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("2_h01")
+is_player_team = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_hurt")
+
+[node name="WeaponHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_hb01")
+is_player_team = true
+hit_sound_type = "slash"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponHitbox"]
+shape = SubResource("CapsuleShape2D_sword")

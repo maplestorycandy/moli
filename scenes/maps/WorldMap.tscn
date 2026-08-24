@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://worldmap001"]
+
+[ext_resource type="Script" path="res://scripts/world/WorldMap.gd" id="1_wm01"]
+[ext_resource type="PackedScene" uid="uid://npcentity001" path="res://scenes/entities/NPC.tscn" id="2_np01"]
+[ext_resource type="PackedScene" uid="uid://goddess001" path="res://scenes/entities/GoddessStatue.tscn" id="3_gs01"]
+
+[node name="WorldMap" type="Node2D"]
+script = ExtResource("1_wm01")
+
+[node name="GoddessStatue" parent="." instance=ExtResource("3_gs01")]
+position = Vector2(400, 400)
+
+[node name="NPC_Nurse" parent="." instance=ExtResource("2_np01")]
+position = Vector2(180, 170)
+npc_name = "醫院護士 瑪塔"
+npc_role = "NURSE"
+npc_color = Color(0.95, 0.45, 0.65, 1)
+
+[node name="NPC_Merchant" parent="." instance=ExtResource("2_np01")]
+position = Vector2(180, 570)
+npc_name = "魔石商人 達克"
+npc_role = "MERCHANT"
+npc_color = Color(0.85, 0.7, 0.2, 1)
+
+[node name="NPC_Guard" parent="." instance=ExtResource("2_np01")]
+position = Vector2(740, 360)
+npc_name = "東門守衛 傑克"
+npc_role = "GUARD"
+npc_color = Color(0.3, 0.5, 0.9, 1)
+
+[node name="NPC_Trainer" parent="." instance=ExtResource("2_np01")]
+position = Vector2(400, 290)
+npc_name = "封印使者 希爾"
+npc_role = "TRAINER"
+npc_color = Color(0.3, 0.8, 0.5, 1)
+
+[node name="NPC_Teleport" parent="." instance=ExtResource("2_np01")]
+position = Vector2(400, 580)
+npc_name = "全域傳送石"
+npc_role = "TELEPORT"
+npc_color = Color(0.2, 0.8, 1.0, 1)

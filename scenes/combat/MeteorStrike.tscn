@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://meteor001"]
+
+[ext_resource type="Script" path="res://scripts/combat/MeteorStrike.gd" id="1_m01"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="2_h01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m01"]
+radius = 75.0
+
+[node name="MeteorStrike" type="Node2D"]
+z_index = 30
+script = ExtResource("1_m01")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_h01")
+hit_sound_type = "crit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_m01")

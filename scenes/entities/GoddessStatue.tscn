@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://goddess001"]
+
+[ext_resource type="Script" path="res://scripts/entities/GoddessStatue.gd" id="1_gs01"]
+[ext_resource type="Script" path="res://scripts/components/HurtboxComponent.gd" id="2_hu01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_base"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurt"]
+radius = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aura"]
+radius = 180.0
+
+[node name="GoddessStatue" type="StaticBody2D"]
+z_index = 8
+collision_layer = 1
+collision_mask = 1
+script = ExtResource("1_gs01")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_base")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("2_hu01")
+is_player_team = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_hurt")
+
+[node name="BlessingAura" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlessingAura"]
+shape = SubResource("CircleShape2D_aura")
