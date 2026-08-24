@@ -85,10 +85,13 @@ func _start_next_wave() -> void:
 	total_wave_enemies_to_spawn = spawn_queue.size()
 	
 	if is_boss_wave:
+		var is_final = (current_wave >= 30)
+		SoundManager.play_boss_bgm(is_final)
 		EventBus.show_banner_notification.emit("⚠️ 四方領主突襲警報 ⚠️", "第 %d 波：強大 BOSS 與魔軍自四方裂隙大舉進攻！" % current_wave)
 		SoundManager.play_crit()
 		EventBus.screen_shake_requested.emit(15.0, 0.4)
 	else:
+		SoundManager.resume_normal_playlist()
 		EventBus.show_banner_notification.emit("第 %d 波 四面八方魔潮來襲！" % current_wave, "魔物正自【西南/東北/西北/東南】四座城外裂隙湧出！")
 		
 	wave_started.emit(current_wave, is_boss_wave)
@@ -126,8 +129,9 @@ func _on_wave_cleared() -> void:
 	EventBus.show_banner_notification.emit("第 %d 波 四方防守大捷！" % current_wave, "獲得結算獎勵: +%d G, +%d EXP！" % [reward_gold, reward_exp])
 	SoundManager.play_level_up()
 	
-	# 每 5 波通關觸發一次天賦三選一
+	# 每 5 波通關觸發一次天賦三選一並切換回常規音樂
 	if current_wave % 5 == 0:
+		SoundManager.resume_normal_playlist()
 		var b_win = get_parent().get_node_or_null("CanvasLayer/BuffSelectionWindow")
 		if b_win:
 			b_win.open_selection()

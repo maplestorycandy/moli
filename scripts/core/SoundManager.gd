@@ -1,12 +1,36 @@
 extends Node
 
-# 程序化合成經典復古音效生成器 (無須額外音效檔即可發聲)
+# 經典魔力寶貝音效與高傳真 BGM 輪播 / Boss 音樂切換管理器
 var sfx_players: Array[AudioStreamPlayer] = []
 var bgm_player: AudioStreamPlayer = null
+var current_playlist_idx: int = 0
+var is_in_boss_mode: bool = false
+var has_user_interacted: bool = false
+
 const MAX_PLAYERS = 12
+
+const PLAYLIST = [
+	{ "id": "bgm_01", "path": "res://assets/audio/bgm/bgm_01.ogg", "name": "法蘭城 主題曲 (啟程)" },
+	{ "id": "bgm_02", "path": "res://assets/audio/bgm/bgm_02.ogg", "name": "法蘭城 東門 (熱血戰鬥)" },
+	{ "id": "bgm_03", "path": "res://assets/audio/bgm/bgm_03.ogg", "name": "芙蕾雅島 (野外探索)" },
+	{ "id": "bgm_04", "path": "res://assets/audio/bgm/bgm_04.ogg", "name": "索奇亞 (迷宮冒險)" },
+	{ "id": "bgm_05", "path": "res://assets/audio/bgm/bgm_05.ogg", "name": "亞諾曼 (寧靜村莊)" },
+	{ "id": "bgm_06", "path": "res://assets/audio/bgm/bgm_06.ogg", "name": "召喚之間 (聖詔之音)" },
+	{ "id": "bgm_07", "path": "res://assets/audio/bgm/bgm_07.ogg", "name": "靈堂 (神秘地宮)" },
+	{ "id": "bgm_08", "path": "res://assets/audio/bgm/bgm_08.ogg", "name": "阿巴尼斯 (雪山高原)" },
+	{ "id": "bgm_09", "path": "res://assets/audio/bgm/bgm_09.ogg", "name": "黃昏暮色 (靜謐之夜)" },
+	{ "id": "bgm_10", "path": "res://assets/audio/bgm/bgm_10.ogg", "name": "勇者激戰 (神之鬥志)" },
+	{ "id": "bgm_11", "path": "res://assets/audio/bgm/bgm_11.ogg", "name": "傳奇終曲 (冒險勝利)" }
+]
+
+const BOSS_TRACKS = [
+	{ "id": "boss_01", "path": "res://assets/audio/bgm/boss_01.ogg", "name": "Boss 戰鬥曲 (熱鬥決戰)" },
+	{ "id": "boss_02", "path": "res://assets/audio/bgm/boss_02.ogg", "name": "Boss 戰鬥曲 (李貝留斯神戰)" }
+]
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	for i in range(MAX_PLAYERS):
 		var asp = AudioStreamPlayer.new()
 		asp.bus = "Master"
@@ -15,8 +39,59 @@ func _ready() -> void:
 		
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.bus = "Master"
-	bgm_player.volume_db = -12.0
+	bgm_player.volume_db = -8.0
+	bgm_player.finished.connect(_on_bgm_finished)
 	add_child(bgm_player)
+	
+	# 初次載入播放清單第一首
+	play_playlist_track(0)
+
+func _input(event: InputEvent) -> void:
+	if not has_user_interacted:
+		if (event is InputEventKey and event.pressed) or (event is InputEventMouseButton and event.pressed):
+			has_user_interacted = true
+			if not bgm_player.playing:
+				play_playlist_track(current_playlist_idx)
+
+func play_playlist_track(idx: int) -> void:
+	is_in_boss_mode = false
+	current_playlist_idx = idx % PLAYLIST.size()
+	var track = PLAYLIST[current_playlist_idx]
+	
+	if ResourceLoader.exists(track["path"]):
+		var stream = load(track["path"])
+		if stream:
+			bgm_player.stream = stream
+			bgm_player.play()
+			EventBus.show_banner_notification.emit("🎵 正在播放 BGM", "【%s】" % track["name"])
+
+func play_boss_bgm(is_final_boss: bool = false) -> void:
+	is_in_boss_mode = true
+	var track = BOSS_TRACKS[1 if is_final_boss else 0]
+	
+	if ResourceLoader.exists(track["path"]):
+		var stream = load(track["path"])
+		if stream:
+			bgm_player.stream = stream
+			bgm_player.play()
+			EventBus.show_banner_notification.emit("🔥 BOSS 決戰降臨！", "戰鬥曲目: 【%s】" % track["name"])
+
+func resume_normal_playlist() -> void:
+	if is_in_boss_mode:
+		is_in_boss_mode = false
+		play_playlist_track(current_playlist_idx)
+
+func next_playlist_track() -> void:
+	current_playlist_idx = (current_playlist_idx + 1) % PLAYLIST.size()
+	play_playlist_track(current_playlist_idx)
+
+func _on_bgm_finished() -> void:
+	if is_in_boss_mode:
+		# Boss 曲結束則重播 Boss 曲
+		bgm_player.play()
+	else:
+		# 一般清單輪流播放下一首
+		next_playlist_track()
 
 func get_free_player() -> AudioStreamPlayer:
 	for p in sfx_players:
@@ -24,7 +99,7 @@ func get_free_player() -> AudioStreamPlayer:
 			return p
 	return sfx_players[0]
 
-# 生成單音頻樣本流
+# --- 經典復古音效生成器 (無須額外音效檔即可發聲) ---
 func generate_tone(freq: float, duration: float, wave_type: String = "sine", decay: float = 0.05, vibrato: float = 0.0) -> AudioStreamWAV:
 	var sample_rate = 22050
 	var total_samples = int(sample_rate * duration)
@@ -57,14 +132,12 @@ func generate_tone(freq: float, duration: float, wave_type: String = "sine", dec
 		elif wave_type == "noise":
 			sample_val = randf_range(-1.0, 1.0)
 			
-		# 轉為 8-bit unsigned (0..255)
 		var byte_val = int(clamp((sample_val * env * 0.75 + 1.0) * 127.5, 0, 255))
 		data[i] = byte_val
 		
 	stream.data = data
 	return stream
 
-# 複合音效生成 (序列音符)
 func generate_arpeggio(freqs: Array, note_duration: float, wave_type: String = "square") -> AudioStreamWAV:
 	var sample_rate = 22050
 	var total_samples = int(sample_rate * (note_duration * freqs.size()))
@@ -103,7 +176,6 @@ func generate_arpeggio(freqs: Array, note_duration: float, wave_type: String = "
 	stream.data = data
 	return stream
 
-# 播放各種經典動作與戰鬥音效
 func play_swing() -> void:
 	var p = get_free_player()
 	p.stream = generate_tone(350.0, 0.12, "noise", 0.15)
