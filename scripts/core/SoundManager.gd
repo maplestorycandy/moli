@@ -6,6 +6,7 @@ var bgm_player: AudioStreamPlayer = null
 var current_playlist_idx: int = 0
 var is_in_boss_mode: bool = false
 var has_user_interacted: bool = false
+var current_playing_wave: int = 1
 
 const MAX_PLAYERS = 12
 
@@ -43,15 +44,43 @@ func _ready() -> void:
 	bgm_player.finished.connect(_on_bgm_finished)
 	add_child(bgm_player)
 	
-	# 初次載入播放清單第一首
-	play_playlist_track(0)
+	play_for_wave(1)
 
 func _input(event: InputEvent) -> void:
 	if not has_user_interacted:
 		if (event is InputEventKey and event.pressed) or (event is InputEventMouseButton and event.pressed):
 			has_user_interacted = true
 			if not bgm_player.playing:
-				play_playlist_track(current_playlist_idx)
+				play_for_wave(current_playing_wave)
+
+func play_for_wave(wave_num: int) -> void:
+	current_playing_wave = wave_num
+	var is_boss_wave = (wave_num % 5 == 0)
+	
+	if is_boss_wave:
+		# 波次 5, 15, 25, 35, 45 -> boss_01 (熱鬥決戰)
+		# 波次 10, 20, 30, 40, 50 -> boss_02 (李貝留斯)
+		var boss_idx = (int(wave_num / 5) - 1) % 2
+		play_boss_track(boss_idx)
+	else:
+		# 一般波次依序播放 bgm_01.ogg ~ bgm_11.ogg
+		# 1~4 -> 0..3 (bgm_01..04)
+		# 6~9 -> 4..7 (bgm_05..08)
+		# 11~14 -> 8..11%11 (bgm_09..11, 01)
+		var non_boss_order = (wave_num - 1) - int((wave_num - 1) / 5)
+		var playlist_idx = non_boss_order % PLAYLIST.size()
+		play_playlist_track(playlist_idx)
+
+func play_boss_track(idx: int) -> void:
+	is_in_boss_mode = true
+	var track = BOSS_TRACKS[idx % BOSS_TRACKS.size()]
+	
+	if ResourceLoader.exists(track["path"]):
+		var stream = load(track["path"])
+		if stream:
+			bgm_player.stream = stream
+			bgm_player.play()
+			EventBus.show_banner_notification.emit("🔥 BOSS 決戰降臨！", "戰鬥曲目: 【%s】" % track["name"])
 
 func play_playlist_track(idx: int) -> void:
 	is_in_boss_mode = false
@@ -65,21 +94,10 @@ func play_playlist_track(idx: int) -> void:
 			bgm_player.play()
 			EventBus.show_banner_notification.emit("🎵 正在播放 BGM", "【%s】" % track["name"])
 
-func play_boss_bgm(is_final_boss: bool = false) -> void:
-	is_in_boss_mode = true
-	var track = BOSS_TRACKS[1 if is_final_boss else 0]
-	
-	if ResourceLoader.exists(track["path"]):
-		var stream = load(track["path"])
-		if stream:
-			bgm_player.stream = stream
-			bgm_player.play()
-			EventBus.show_banner_notification.emit("🔥 BOSS 決戰降臨！", "戰鬥曲目: 【%s】" % track["name"])
-
 func resume_normal_playlist() -> void:
 	if is_in_boss_mode:
 		is_in_boss_mode = false
-		play_playlist_track(current_playlist_idx)
+		play_for_wave(current_playing_wave)
 
 func next_playlist_track() -> void:
 	current_playlist_idx = (current_playlist_idx + 1) % PLAYLIST.size()
@@ -87,10 +105,8 @@ func next_playlist_track() -> void:
 
 func _on_bgm_finished() -> void:
 	if is_in_boss_mode:
-		# Boss 曲結束則重播 Boss 曲
 		bgm_player.play()
 	else:
-		# 一般清單輪流播放下一首
 		next_playlist_track()
 
 func get_free_player() -> AudioStreamPlayer:

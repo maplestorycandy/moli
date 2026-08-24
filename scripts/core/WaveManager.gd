@@ -84,14 +84,13 @@ func _start_next_wave() -> void:
 		
 	total_wave_enemies_to_spawn = spawn_queue.size()
 	
+	SoundManager.play_for_wave(current_wave)
+	
 	if is_boss_wave:
-		var is_final = (current_wave >= 30)
-		SoundManager.play_boss_bgm(is_final)
 		EventBus.show_banner_notification.emit("⚠️ 四方領主突襲警報 ⚠️", "第 %d 波：強大 BOSS 與魔軍自四方裂隙大舉進攻！" % current_wave)
 		SoundManager.play_crit()
 		EventBus.screen_shake_requested.emit(15.0, 0.4)
 	else:
-		SoundManager.resume_normal_playlist()
 		EventBus.show_banner_notification.emit("第 %d 波 四面八方魔潮來襲！" % current_wave, "魔物正自【西南/東北/西北/東南】四座城外裂隙湧出！")
 		
 	wave_started.emit(current_wave, is_boss_wave)
