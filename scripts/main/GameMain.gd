@@ -9,11 +9,19 @@ extends Node2D
 @onready var inv_win: Control = $CanvasLayer/InventoryWindow
 @onready var pet_win: Control = $CanvasLayer/PetWindow
 @onready var buff_win: Control = $CanvasLayer/BuffSelectionWindow
+@onready var map_win: Control = $CanvasLayer/MapSwitchWindow
 
 var damage_number_scene = preload("res://scenes/combat/DamageNumber.tscn")
 
 var shake_intensity: float = 0.0
 var shake_timer: float = 0.0
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_M:
+			map_win.visible = not map_win.visible
+			if map_win.visible and map_win.has_method("open_window"):
+				map_win.open_window()
 
 func _ready() -> void:
 	EventBus.damage_spawned.connect(_on_damage_spawned)
@@ -29,11 +37,17 @@ func _ready() -> void:
 	var btn_bag = hud.get_node("BottomBar/HBox/BtnBag")
 	var btn_pet = hud.get_node("BottomBar/HBox/BtnPet")
 	var btn_tactic = hud.get_node("BottomBar/HBox/BtnPetTactic")
+	var btn_map = hud.get_node("BottomBar/HBox/BtnMap")
 	
 	btn_char.pressed.connect(func(): char_win.toggle_window())
 	btn_bag.pressed.connect(func(): inv_win.toggle_window())
 	btn_pet.pressed.connect(func(): pet_win.toggle_window())
 	btn_tactic.pressed.connect(func(): player._cycle_pet_command())
+	btn_map.pressed.connect(func():
+		map_win.visible = not map_win.visible
+		if map_win.visible and map_win.has_method("open_window"):
+			map_win.open_window()
+	)
 	
 	EventBus.show_banner_notification.emit("歡迎來到法蘭王國！", "【女神防守戰】已啟動！擊退 50 波入侵魔物！")
 

@@ -24,6 +24,7 @@ CombatMath="*res://scripts/core/CombatMath.gd"
 EventBus="*res://scripts/core/EventBus.gd"
 SoundManager="*res://scripts/core/SoundManager.gd"
 BuffManager="*res://scripts/core/BuffManager.gd"
+MapManager="*res://scripts/world/MapManager.gd"
 
 [gui]
 

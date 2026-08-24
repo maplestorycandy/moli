@@ -117,23 +117,14 @@ func _interact() -> void:
 			
 		"TELEPORT":
 			var lines = [
-				"【法蘭王國 全域傳送石矩陣】",
-				"請選擇你想傳送的目的地："
+				"【魔力寶貝 3D 世界全域傳送矩陣】",
+				"開啟全地圖矩陣，自由穿梭於法蘭城、馬斯城、阿凱魯法城、哥拉爾城、雪山之巔與神域深淵！"
 			]
-			var opts = [
-				"1. 東門原野", "2. 哈巴魯洞穴", "3. 靈堂迷宮", "4. 24號坑道",
-				"5. 維諾亞洞穴", "6. 忍者之里", "7. 奇利沙漠", "8. 莎蓮娜雪山", "9. 神域深淵", "取消"
-			]
-			var targets = [
-				Vector2(1200, 450), Vector2(2400, 450), Vector2(300, 1300), Vector2(1300, 1300),
-				Vector2(2500, 1300), Vector2(300, 2300), Vector2(1300, 2300), Vector2(2500, 2300), Vector2(1500, 3300)
-			]
-			EventBus.dialog_started.emit(npc_name, lines, opts, func(idx):
-				if idx >= 0 and idx < targets.size():
-					if Global.player:
-						Global.player.global_position = targets[idx]
-						SoundManager.play_magic()
-						EventBus.damage_spawned.emit(Global.player.global_position, "✨ 傳送抵達！", Color(0.3, 0.9, 1.0), false, false)
+			EventBus.dialog_started.emit(npc_name, lines, ["開啟 3D 地圖矩陣", "離開"], func(idx):
+				if idx == 0:
+					var map_win = get_tree().root.find_child("MapSwitchWindow", true, false)
+					if map_win and map_win.has_method("open_window"):
+						map_win.open_window()
 			)
 
 func _draw() -> void:

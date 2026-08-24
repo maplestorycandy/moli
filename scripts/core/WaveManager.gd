@@ -19,8 +19,13 @@ var total_wave_enemies_to_spawn: int = 0
 
 var enemy_base_scene = preload("res://scenes/enemies/SlimeEnemy.tscn")
 
-# 城外集中出怪傳送門座標 (東門城外荒野)
-const OUTSIDE_INVASION_PORTAL = Vector2(1300, 500)
+# 四面城外集中出怪魔界裂隙 (西南、東北、西北、東南 4 方跨海長橋起點)
+const SPAWN_GATES = [
+	Vector2(-150, 1050), # 西南方城外裂隙
+	Vector2(1350, -50),  # 東北方城外裂隙
+	Vector2(-150, -50),  # 西北方城外裂隙
+	Vector2(1350, 1050)  # 東南方城外裂隙
+]
 
 func _ready() -> void:
 	pass
@@ -33,7 +38,7 @@ func _process(delta: float) -> void:
 		if wave_countdown <= 0.0:
 			_start_next_wave()
 	else:
-		# 急速隊列出怪 (0.15 秒急速湧出)
+		# 急速隊列出怪 (0.15 秒自四面八方急速湧出)
 		if spawn_queue.size() > 0:
 			spawn_interval_timer -= delta
 			if spawn_interval_timer <= 0.0:
@@ -67,10 +72,10 @@ func _start_next_wave() -> void:
 	
 	spawn_queue.clear()
 	
-	# 波次怪量隨波數提升 (波次 1 為 8 隻，波次 50 為 35+ 隻)
-	var count = 8 + int(current_wave * 0.9)
+	# 波次怪量隨波數提升 (波次 1 為 12 隻，波次 50 為 48+ 隻)
+	var count = 12 + int(current_wave * 0.9)
 	if is_boss_wave:
-		count += 5
+		count += 6
 		
 	for i in range(count):
 		var m_id = monster_ids[i % monster_ids.size()]
@@ -80,42 +85,56 @@ func _start_next_wave() -> void:
 	total_wave_enemies_to_spawn = spawn_queue.size()
 	
 	if is_boss_wave:
-		EventBus.show_banner_notification.emit("⚠️ 領主入侵警報 ⚠️", "第 %d 波：強大 BOSS 降臨城外裂隙！全軍備戰！" % current_wave)
+		EventBus.show_banner_notification.emit("⚠️ 四方領主突襲警報 ⚠️", "第 %d 波：強大 BOSS 與魔軍自四方裂隙大舉進攻！" % current_wave)
 		SoundManager.play_crit()
-		EventBus.screen_shake_requested.emit(14.0, 0.4)
+		EventBus.screen_shake_requested.emit(15.0, 0.4)
 	else:
-		EventBus.show_banner_notification.emit("第 %d 波 魔物衝鋒！" % current_wave, "魔物正自【城外魔界裂隙】蜂擁湧出衝向女神像！")
+		EventBus.show_banner_notification.emit("第 %d 波 四面八方魔潮來襲！" % current_wave, "魔物正自【西南/東北/西北/東南】四座城外裂隙湧出！")
 		
 	wave_started.emit(current_wave, is_boss_wave)
 
 func _spawn_wave_monster(m_data: Dictionary) -> void:
 	var enemy = enemy_base_scene.instantiate() as EnemyBase
-	var offset = Vector2(randf_range(-35, 35), randf_range(-35, 35))
-	enemy.global_position = OUTSIDE_INVASION_PORTAL + offset
+	var gate_pos = SPAWN_GATES[randi() % SPAWN_GATES.size()]
+	var offset = Vector2(randf_range(-40, 40), randf_range(-40, 40))
+	enemy.global_position = gate_pos + offset
 	enemy.is_wave_attacker = true
-	get_parent().get_node("WorldMap").add_child(enemy)
-	enemy.setup_from_monster_data(m_data, current_wave)
+	
+	var world_map = get_parent().get_node_or_null("WorldMap")
+	if world_map:
+		world_map.add_child(enemy)
+	else:
+		get_parent().add_child(enemy)
+		
+	# 根據地圖等級倍率與波次調整怪獸強度
+	var base_lvl = current_wave
+	if has_node("/root/MapManager"):
+		var map_d = get_node("/root/MapManager").get_current_map()
+		base_lvl = max(current_wave, map_d.get("level_min", 1))
+	enemy.setup_from_monster_data(m_data, base_lvl)
 
 func _on_wave_cleared() -> void:
 	is_wave_active = false
 	wave_cleared.emit(current_wave)
 	
 	# 給予波次結算獎勵
-	var reward_gold = 120 + (current_wave * 60)
-	var reward_exp = 100 + (current_wave * 50)
+	var reward_gold = 150 + (current_wave * 70)
+	var reward_exp = 120 + (current_wave * 60)
 	Global.add_gold(reward_gold)
 	Global.add_exp(reward_exp)
 	
-	EventBus.show_banner_notification.emit("第 %d 波 防守成功！" % current_wave, "獲得獎勵: +%d G, +%d EXP！" % [reward_gold, reward_exp])
+	EventBus.show_banner_notification.emit("第 %d 波 四方防守大捷！" % current_wave, "獲得結算獎勵: +%d G, +%d EXP！" % [reward_gold, reward_exp])
 	SoundManager.play_level_up()
 	
 	# 每 5 波通關觸發一次天賦三選一
 	if current_wave % 5 == 0:
-		get_parent().get_node("CanvasLayer/BuffSelectionWindow").open_selection()
+		var b_win = get_parent().get_node_or_null("CanvasLayer/BuffSelectionWindow")
+		if b_win:
+			b_win.open_selection()
 		
 	if current_wave >= MAX_WAVES:
 		all_waves_completed.emit()
-		EventBus.show_banner_notification.emit("🏆 傳奇守護者 🏆", "恭喜成功防守全部 50 波！拯救了法蘭王國與愛謝拉女神！")
+		EventBus.show_banner_notification.emit("🏆 傳奇守護者 🏆", "成功抵禦 50 波四方魔潮！拯救了全魔力寶貝世界！")
 	else:
 		current_wave += 1
 		wave_countdown = 6.0 # 6 秒整備時間

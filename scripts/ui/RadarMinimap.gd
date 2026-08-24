@@ -47,13 +47,19 @@ func _draw() -> void:
 	var scale_factor = (rect_size.x / map_world_size.x) * zoom_level
 	var radar_center = rect_pos + (rect_size / 2.0)
 	
-	# 1. 繪製城外魔界出怪傳送門 (紅黑旋渦光圈)
-	var portal_world_pos = Vector2(1300, 500)
-	var portal_radar_pos = radar_center + (portal_world_pos - center_world_pos) * scale_factor
-	if _is_inside_radar(portal_radar_pos, rect_pos, rect_size):
-		var p_r = 6.0 + sin(anim_timer * 10.0) * 2.0
-		draw_circle(portal_radar_pos, p_r, Color(1.0, 0.1, 0.1, 0.7))
-		draw_arc(portal_radar_pos, p_r + 2.0, 0, TAU, 12, Color(1.0, 0.8, 0.2), 1.5)
+	# 1. 繪製 4 個城外魔界出怪傳送門 (紅黑旋渦光圈)
+	var gates = [
+		Vector2(-200, 1100), # 西南方城外裂隙
+		Vector2(1400, -100), # 東北方城外裂隙
+		Vector2(-200, -100), # 西北方城外裂隙
+		Vector2(1400, 1100)  # 東南方城外裂隙
+	]
+	for g_pos in gates:
+		var portal_radar_pos = radar_center + (g_pos - center_world_pos) * scale_factor
+		if _is_inside_radar(portal_radar_pos, rect_pos, rect_size):
+			var p_r = 5.0 + sin(anim_timer * 10.0) * 1.5
+			draw_circle(portal_radar_pos, p_r, Color(1.0, 0.1, 0.1, 0.75))
+			draw_arc(portal_radar_pos, p_r + 1.5, 0, TAU, 12, Color(1.0, 0.8, 0.2), 1.2)
 		
 	# 2. 繪製中央愛謝拉女神像 (湛藍星形)
 	var goddess = get_tree().get_first_node_in_group("goddess")

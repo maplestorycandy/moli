@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://invwin001" path="res://scenes/ui/InventoryWindow.tscn" id="8_iw01"]
 [ext_resource type="PackedScene" uid="uid://petwin001" path="res://scenes/ui/PetWindow.tscn" id="9_pw01"]
 [ext_resource type="PackedScene" uid="uid://buffselwin001" path="res://scenes/ui/BuffSelectionWindow.tscn" id="10_bw01"]
-[ext_resource type="Script" path="res://scripts/core/WaveManager.gd" id="11_wm02"]
+[ext_resource type="PackedScene" uid="uid://mapswitchwin01" path="res://scenes/ui/MapSwitchWindow.tscn" id="11_ms01"]
+[ext_resource type="Script" path="res://scripts/core/WaveManager.gd" id="12_wm02"]
 
 [node name="GameMain" type="Node2D"]
 script = ExtResource("1_gm01")
@@ -18,17 +19,17 @@ script = ExtResource("1_gm01")
 [node name="WorldMap" parent="." instance=ExtResource("2_wm01")]
 
 [node name="WaveManager" type="Node" parent="."]
-script = ExtResource("11_wm02")
+script = ExtResource("12_wm02")
 
 [node name="Player" parent="." instance=ExtResource("3_pl01")]
-position = Vector2(400, 480)
+position = Vector2(600, 500)
 
 [node name="Pet" parent="." instance=ExtResource("4_pt01")]
-position = Vector2(370, 500)
+position = Vector2(570, 520)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(400, 400)
-zoom = Vector2(1.2, 1.2)
+position = Vector2(600, 500)
+zoom = Vector2(1.25, 1.25)
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -44,3 +45,5 @@ position_smoothing_enabled = true
 [node name="PetWindow" parent="CanvasLayer" instance=ExtResource("9_pw01")]
 
 [node name="BuffSelectionWindow" parent="CanvasLayer" instance=ExtResource("10_bw01")]
+
+[node name="MapSwitchWindow" parent="CanvasLayer" instance=ExtResource("11_ms01")]
