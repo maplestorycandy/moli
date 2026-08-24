@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/MapSwitchWindow.gd" id="1_mapsw"]
 
 [node name="MapSwitchWindow" type="Panel"]
+visible = false
 custom_minimum_size = Vector2(560, 480)
 anchors_preset = 8
 anchor_left = 0.5
@@ -15,6 +16,7 @@ offset_right = 280.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 script = ExtResource("1_mapsw")
 
 [node name="TitleLabel" type="Label" parent="."]
@@ -38,6 +40,7 @@ offset_right = -20.0
 offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 
 [node name="MapListContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -57,4 +60,5 @@ offset_right = 60.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_mode = 0
 text = "關閉"

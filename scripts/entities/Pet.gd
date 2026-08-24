@@ -7,12 +7,7 @@ const ProceduralMonsterDrawer = preload("res://scripts/world/ProceduralMonsterDr
 @export var speed: float = 180.0
 
 var pet_data: Dictionary = {}
-var pet_texture: Texture2D = null
-var anim_texture: Texture2D = null
-var anim_frame_count: int = 1
-var anim_frame_w: float = 64.0
-var anim_frame_h: float = 64.0
-var anim_fps: float = 8.0
+var anim_frames: Array[Texture2D] = []
 
 var target_enemy: Node2D = null
 var attack_timer: float = 0.0
@@ -42,8 +37,7 @@ func _load_active_pet_data() -> void:
 	if pet_data.is_empty():
 		visible = false
 		set_physics_process(false)
-		pet_texture = null
-		anim_texture = null
+		anim_frames.clear()
 	else:
 		visible = true
 		set_physics_process(true)
@@ -51,22 +45,17 @@ func _load_active_pet_data() -> void:
 		if Global.player and is_instance_valid(Global.player):
 			global_position = Global.player.global_position + Vector2(-30, 20)
 			
+		anim_frames.clear()
 		var num_str = str(pet_data.get("num", ""))
 		if num_str != "":
-			var anim_res = "res://assets/sprites/monsters/%s_anim.png" % num_str
-			if ResourceLoader.exists(anim_res):
-				anim_texture = load(anim_res)
-				var f_sz = anim_texture.get_size()
-				anim_frame_h = max(1.0, f_sz.y)
-				anim_frame_count = max(1, int(round(f_sz.x / anim_frame_h)))
-				anim_frame_w = f_sz.x / float(anim_frame_count)
-			else:
-				var png_res = "res://assets/sprites/monsters/%s.png" % num_str
-				if ResourceLoader.exists(png_res):
-					pet_texture = load(png_res)
-		else:
-			pet_texture = null
-			anim_texture = null
+			for i in range(4):
+				var f_path = "res://assets/sprites/monsters/%s_%d.png" % [num_str, i]
+				if ResourceLoader.exists(f_path):
+					anim_frames.append(load(f_path))
+			if anim_frames.is_empty():
+				var single_path = "res://assets/sprites/monsters/%s.png" % num_str
+				if ResourceLoader.exists(single_path):
+					anim_frames.append(load(single_path))
 
 func _on_command_changed(_new_mode: String) -> void:
 	pass
@@ -157,28 +146,21 @@ func _draw() -> void:
 		return
 		
 	var m_scale = pet_data.get("scale", 1.0)
-	
-	if anim_texture:
+	var cur_tex: Texture2D = null
+	if not anim_frames.is_empty():
+		var f_idx = int(fmod(anim_timer * 5.0, float(anim_frames.size())))
+		cur_tex = anim_frames[f_idx]
+		
+	if cur_tex:
 		draw_circle(Vector2(0, 12), 14.0 * m_scale, Color(0, 0, 0, 0.3))
-		var target_h = 72.0 * m_scale
-		var tex_scale = target_h / max(1.0, anim_frame_h)
-		var draw_w = anim_frame_w * tex_scale
-		var draw_h = target_h
-		var bounce = sin(anim_timer * 6.0) * 1.5
-		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 12 + bounce, draw_w, draw_h)
-		var cur_frame = int(fmod(anim_timer * anim_fps, float(anim_frame_count)))
-		var src_rect = Rect2(cur_frame * anim_frame_w, 0, anim_frame_w, anim_frame_h)
-		draw_texture_rect_region(anim_texture, dest_rect, src_rect)
-	elif pet_texture:
-		draw_circle(Vector2(0, 12), 14.0 * m_scale, Color(0, 0, 0, 0.3))
-		var tex_size = pet_texture.get_size()
+		var tex_size = cur_tex.get_size()
 		var target_h = 72.0 * m_scale
 		var tex_scale = target_h / max(1.0, tex_size.y)
 		var draw_w = tex_size.x * tex_scale
 		var draw_h = target_h
-		var bounce = sin(anim_timer * 7.0) * 2.5
+		var bounce = sin(anim_timer * 6.0) * 1.5
 		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 12 + bounce, draw_w, draw_h)
-		draw_texture_rect(pet_texture, dest_rect, false)
+		draw_texture_rect(cur_tex, dest_rect, false)
 	else:
 		var d_type = pet_data.get("drawer_type", "humanoid")
 		var c_main = pet_data.get("color_main", Color(0.25, 0.75, 0.35))

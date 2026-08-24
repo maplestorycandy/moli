@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
-@export var acceleration: float = 1200.0
-@export var friction: float = 1000.0
+@export var acceleration: float = 1800.0
+@export var friction: float = 1200.0
 
 enum ActionState {
 	IDLE,
@@ -23,18 +23,13 @@ var state_timer: float = 0.0
 var combo_step: int = 0
 var attack_charge_time: float = 0.0
 var dodge_direction: Vector2 = Vector2.ZERO
-var dodge_speed: float = 360.0
+var dodge_speed: float = 380.0
 var is_invulnerable: bool = false
 var anim_timer: float = 0.0
 
 # 英雄 Skin 外觀系統
 var skin_data: Dictionary = {}
-var skin_texture: Texture2D = null
-var skin_anim_texture: Texture2D = null
-var skin_frame_count: int = 1
-var skin_frame_w: float = 64.0
-var skin_frame_h: float = 64.0
-var skin_fps: float = 8.0
+var skin_anim_frames: Array[Texture2D] = []
 
 # 預載技能與投射物場景
 var kiblast_scene = preload("res://scenes/combat/KiBlastProjectile.tscn")
@@ -66,23 +61,17 @@ func _on_skin_changed(new_skin: Dictionary) -> void:
 	Global.player_name = new_skin.get("name", "辛 (Shin)").split(" ")[0]
 	var num_str = str(new_skin.get("num", "001"))
 	
+	skin_anim_frames.clear()
 	if not new_skin.get("is_custom_draw", false) and num_str != "":
-		var anim_res = "res://assets/sprites/monsters/%s_anim.png" % num_str
-		if ResourceLoader.exists(anim_res):
-			skin_anim_texture = load(anim_res)
-			var f_sz = skin_anim_texture.get_size()
-			skin_frame_h = max(1.0, f_sz.y)
-			skin_frame_count = max(1, int(round(f_sz.x / skin_frame_h)))
-			skin_frame_w = f_sz.x / float(skin_frame_count)
-			skin_texture = null
-		else:
-			var png_res = "res://assets/sprites/monsters/%s.png" % num_str
-			if ResourceLoader.exists(png_res):
-				skin_texture = load(png_res)
-			skin_anim_texture = null
-	else:
-		skin_anim_texture = null
-		skin_texture = null
+		for i in range(4):
+			var f_path = "res://assets/sprites/monsters/%s_%d.png" % [num_str, i]
+			if ResourceLoader.exists(f_path):
+				skin_anim_frames.append(load(f_path))
+		if skin_anim_frames.is_empty():
+			var s_path = "res://assets/sprites/monsters/%s.png" % num_str
+			if ResourceLoader.exists(s_path):
+				skin_anim_frames.append(load(s_path))
+				
 	EventBus.player_stats_changed.emit()
 
 func _process(delta: float) -> void:
@@ -102,10 +91,10 @@ func _physics_process(delta: float) -> void:
 			velocity = dodge_direction * dodge_speed
 			move_and_slide()
 		ActionState.ATTACK, ActionState.SKILL_FORCE_STRIKE, ActionState.CAST_MAGIC:
-			velocity = velocity.move_toward(Vector2.ZERO, friction * 2 * delta)
+			velocity = velocity.move_toward(Vector2.ZERO, friction * 2.0 * delta)
 			move_and_slide()
 		ActionState.SKILL_COMBO:
-			velocity = facing_direction * (Global.move_speed * 1.6)
+			velocity = facing_direction * (Global.move_speed * 1.5)
 			move_and_slide()
 		ActionState.HURT:
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
@@ -116,7 +105,7 @@ func _handle_input() -> void:
 		return
 		
 	# 翻滾閃避
-	if Input.is_action_just_pressed("dodge"):
+	if Input.is_action_just_pressed("dodge") or Input.is_key_pressed(KEY_SPACE):
 		_start_dodge()
 		return
 		
@@ -126,48 +115,77 @@ func _handle_input() -> void:
 		return
 		
 	# 技能1: 連擊
-	if Input.is_action_just_pressed("skill_1"):
+	if Input.is_action_just_pressed("skill_1") or Input.is_key_pressed(KEY_1):
 		_start_skill_combo()
 		return
 		
 	# 技能2: 乾坤一擲
-	if Input.is_action_just_pressed("skill_2"):
+	if Input.is_action_just_pressed("skill_2") or Input.is_key_pressed(KEY_2):
 		_start_skill_force_strike()
 		return
 		
 	# 技能3: 氣功彈
-	if Input.is_action_just_pressed("skill_3"):
+	if Input.is_action_just_pressed("skill_3") or Input.is_key_pressed(KEY_3):
 		_start_skill_kiblast()
 		return
 		
 	# 技能4: 超強隕石魔法
-	if Input.is_action_just_pressed("skill_4"):
+	if Input.is_action_just_pressed("skill_4") or Input.is_key_pressed(KEY_4):
 		_start_skill_meteor()
 		return
 		
 	# 封印卡投擲
-	if Input.is_action_just_pressed("seal_monster"):
+	if Input.is_action_just_pressed("seal_monster") or Input.is_key_pressed(KEY_G):
 		_use_seal_card()
 		return
 		
 	# 寵物指令切換
-	if Input.is_action_just_pressed("pet_command"):
+	if Input.is_action_just_pressed("pet_command") or Input.is_key_pressed(KEY_T):
 		_cycle_pet_command()
 
 func _process_movement(delta: float) -> void:
-	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if input_vector != Vector2.ZERO:
-		facing_direction = input_vector.normalized()
-		velocity = velocity.move_toward(input_vector * Global.move_speed, acceleration * delta)
+	# 支援 WASD、方向鍵、InputMap 與滑鼠右鍵點擊移動
+	var move_vec = Vector2.ZERO
+	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
+		move_vec.y -= 1.0
+	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
+		move_vec.y += 1.0
+	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+		move_vec.x -= 1.0
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+		move_vec.x += 1.0
+		
+	if move_vec == Vector2.ZERO:
+		move_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		
+	# 滑鼠右鍵持續按住走動
+	if move_vec == Vector2.ZERO and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		var mouse_pos = get_global_mouse_position()
+		var diff = mouse_pos - global_position
+		if diff.length() > 15.0:
+			move_vec = diff.normalized()
+
+	if move_vec != Vector2.ZERO:
+		move_vec = move_vec.normalized()
+		facing_direction = move_vec
+		velocity = velocity.move_toward(move_vec * Global.move_speed, acceleration * delta)
 		current_state = ActionState.MOVE
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		current_state = ActionState.IDLE
+		
 	move_and_slide()
 
 func _start_dodge() -> void:
-	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	dodge_direction = input_vector.normalized() if input_vector != Vector2.ZERO else facing_direction
+	var move_vec = Vector2.ZERO
+	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP): move_vec.y -= 1.0
+	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN): move_vec.y += 1.0
+	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT): move_vec.x -= 1.0
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT): move_vec.x += 1.0
+	if move_vec == Vector2.ZERO:
+		move_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		
+	dodge_direction = move_vec.normalized() if move_vec != Vector2.ZERO else facing_direction
 	current_state = ActionState.DODGE
 	state_timer = 0.0
 	is_invulnerable = true
@@ -346,7 +364,7 @@ func _on_hit_received(dmg: int, _is_crit: bool, _is_effective: bool, knock_dir: 
 		current_state = ActionState.HURT
 		state_timer = 0.0
 
-# --- 繪製主角 Skin 視覺造型 (支援多幀動畫 Sprite Sheet 與經典辛手繪) ---
+# --- 繪製主角 Skin 視覺造型 ---
 func _draw() -> void:
 	var p_scale = skin_data.get("scale", 1.0)
 	
@@ -363,37 +381,28 @@ func _draw() -> void:
 		draw_arc(Vector2.ZERO, aura_r, 0, TAU, 28, Color(1.0, 0.7, 0.1, 0.85), 3.5)
 		draw_circle(Vector2.ZERO, aura_r * 0.6, Color(1.0, 0.4, 0.1, 0.35))
 		
-	if skin_anim_texture:
-		# 1. 繪製動態多幀真實英雄 Skin
-		var target_h = 76.0 * p_scale
-		var tex_scale = target_h / max(1.0, skin_frame_h)
-		var draw_w = skin_frame_w * tex_scale
-		var draw_h = target_h
-		var bounce = sin(anim_timer * 6.0) * 1.5
-		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 16 + bounce, draw_w, draw_h)
+	var cur_tex: Texture2D = null
+	if not skin_anim_frames.is_empty():
+		var f_idx = int(fmod(anim_timer * 5.0, float(skin_anim_frames.size())))
+		cur_tex = skin_anim_frames[f_idx]
 		
-		var cur_frame = int(fmod(anim_timer * skin_fps, float(skin_frame_count)))
-		var src_rect = Rect2(cur_frame * skin_frame_w, 0, skin_frame_w, skin_frame_h)
-		draw_texture_rect_region(skin_anim_texture, dest_rect, src_rect)
-		
-	elif skin_texture:
-		var tex_size = skin_texture.get_size()
+	if cur_tex:
+		# 1. 繪製單一完整英雄 Skin 精靈圖
+		var tex_size = cur_tex.get_size()
 		var target_h = 76.0 * p_scale
 		var tex_scale = target_h / max(1.0, tex_size.y)
 		var draw_w = tex_size.x * tex_scale
 		var draw_h = target_h
-		var bounce = sin(anim_timer * 7.0) * 2.0
+		var bounce = sin(anim_timer * 6.0) * 1.5
 		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 16 + bounce, draw_w, draw_h)
-		draw_texture_rect(skin_texture, dest_rect, false)
-		
+		draw_texture_rect(cur_tex, dest_rect, false)
 	else:
 		# 2. 經典主角 辛 (Shin) 藍斗篷金髮勇者手繪
 		var cape_off = -facing_direction * 9.0
 		draw_circle(cape_off + Vector2(0, 3), 18.0, Color(0.15, 0.35, 0.85))
 		draw_circle(Vector2(0, 3), 16.0, Color(0.2, 0.45, 0.95))
-		draw_circle(Vector2(0, 6), 10.0, Color(0.85, 0.85, 0.95)) # 胸甲
+		draw_circle(Vector2(0, 6), 10.0, Color(0.85, 0.85, 0.95))
 		
-		# 頭部與金髮
 		draw_circle(Vector2(0, -14), 14.0, Color(1.0, 0.85, 0.2))
 		draw_circle(Vector2(0, -11), 11.0, Color(0.98, 0.8, 0.68))
 		draw_circle(Vector2(3, -20), 8.0, Color(1.0, 0.88, 0.2))
@@ -403,7 +412,6 @@ func _draw() -> void:
 		draw_circle(Vector2(-3, -12) + eye_offset, 2.2, Color(0.1, 0.2, 0.5))
 		draw_circle(Vector2(3, -12) + eye_offset, 2.2, Color(0.1, 0.2, 0.5))
 		
-		# 佩劍與盾
 		var sword_pos = facing_direction * 24.0 + Vector2(0, 3)
 		var sword_angle = facing_direction.angle()
 		var hilt = sword_pos

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/SkinSelectionWindow.gd" id="1_skwin"]
 
 [node name="SkinSelectionWindow" type="Panel"]
+visible = false
 custom_minimum_size = Vector2(580, 500)
 anchors_preset = 8
 anchor_left = 0.5
@@ -15,6 +16,7 @@ offset_right = 290.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 script = ExtResource("1_skwin")
 
 [node name="TitleLabel" type="Label" parent="."]
@@ -38,6 +40,7 @@ offset_right = -20.0
 offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 
 [node name="SkinListContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -57,4 +60,5 @@ offset_right = 60.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_mode = 0
 text = "關閉"
