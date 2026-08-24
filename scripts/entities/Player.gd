@@ -76,7 +76,6 @@ func _on_skin_changed(new_skin: Dictionary) -> void:
 	EventBus.player_stats_changed.emit()
 
 func _unhandled_input(event: InputEvent) -> void:
-	# 鍵盤直接按鍵響應
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_SPACE: _start_dodge()
@@ -97,7 +96,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_G: _use_seal_card()
 			KEY_T: _cycle_pet_command()
 
-	# 滑鼠左鍵普攻
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		_start_attack()
 
@@ -115,7 +113,6 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 func _physics_process(delta: float) -> void:
-	# 優先讀取 WASD / 方向鍵 / 滑鼠右鍵移動
 	var move_vec = Vector2.ZERO
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP) or Input.is_action_pressed("move_up"): move_vec.y -= 1.0
 	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN) or Input.is_action_pressed("move_down"): move_vec.y += 1.0
@@ -225,15 +222,19 @@ func _start_skill_kiblast() -> void:
 		return
 		
 	facing_direction = aim_direction
-	var blast = kiblast_scene.instantiate()
-	blast.global_position = global_position + aim_direction * 20.0
-	get_parent().add_child(blast)
-	
 	var is_master = BuffManager.has_buff("qigong_split")
-	var count = 5 if is_master else 3
-	var atk_val = int(Global.atk * 7.5)
-	blast.setup(aim_direction, atk_val, count)
+	var angles = [-0.22, 0.0, 0.22]
+	if is_master:
+		angles = [-0.36, -0.18, 0.0, 0.18, 0.36]
+		
+	for ang in angles:
+		var blast = kiblast_scene.instantiate()
+		blast.global_position = global_position + aim_direction.rotated(ang) * 22.0
+		get_parent().add_child(blast)
+		blast.setup(aim_direction.rotated(ang), 7.5, 1)
+		
 	SoundManager.play_magic()
+	EventBus.screen_shake_requested.emit(7.0, 0.2)
 
 func _cast_rapid_fire() -> void:
 	var mp_cost = 25
@@ -243,7 +244,6 @@ func _cast_rapid_fire() -> void:
 		
 	facing_direction = aim_direction
 	var arrow_count = 8
-	var dmg_per_arrow = int(Global.atk * 3.5)
 	
 	for i in range(arrow_count):
 		var spread_angle = randf_range(-0.45, 0.45)
@@ -251,7 +251,7 @@ func _cast_rapid_fire() -> void:
 		var arrow = rapid_arrow_scene.instantiate()
 		arrow.global_position = global_position + arrow_dir * 18.0
 		get_parent().add_child(arrow)
-		arrow.setup(arrow_dir, dmg_per_arrow)
+		arrow.setup(arrow_dir, 3.5)
 		
 	SoundManager.play_swing()
 	EventBus.screen_shake_requested.emit(8.0, 0.2)
@@ -271,8 +271,7 @@ func _cast_magic(spell_type: int, spell_tier: int, dmg_multiplier: float, mp_cos
 	spell.global_position = target_p
 	get_parent().add_child(spell)
 	
-	var dmg = int(Global.atk * dmg_multiplier)
-	spell.setup(spell_type, spell_tier, dmg)
+	spell.setup(spell_type, spell_tier, dmg_multiplier)
 
 func _use_seal_card() -> void:
 	var card_item = null

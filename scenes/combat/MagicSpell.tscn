@@ -7,11 +7,12 @@
 radius = 80.0
 
 [node name="MagicSpell" type="Node2D"]
+z_index = 25
 script = ExtResource("1_msp01")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 4
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("2_hbx01")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
