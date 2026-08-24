@@ -145,23 +145,23 @@ func _draw() -> void:
 	if pet_data.is_empty():
 		return
 		
-	var m_scale = pet_data.get("scale", 0.95)
+	var m_scale = pet_data.get("scale", 1.0)
 	
 	if pet_texture:
-		draw_circle(Vector2(0, 10), 10.0 * m_scale, Color(0, 0, 0, 0.3))
+		draw_circle(Vector2(0, 12), 14.0 * m_scale, Color(0, 0, 0, 0.3))
 		var tex_size = pet_texture.get_size()
-		var target_h = 42.0 * m_scale
+		var target_h = 72.0 * m_scale
 		var tex_scale = target_h / max(1.0, tex_size.y)
 		var draw_w = tex_size.x * tex_scale
 		var draw_h = target_h
-		var bounce = sin(anim_timer * 7.0) * 2.0
-		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 10 + bounce, draw_w, draw_h)
+		var bounce = sin(anim_timer * 7.0) * 2.5
+		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 12 + bounce, draw_w, draw_h)
 		draw_texture_rect(pet_texture, dest_rect, false)
 	else:
 		var d_type = pet_data.get("drawer_type", "humanoid")
 		var c_main = pet_data.get("color_main", Color(0.25, 0.75, 0.35))
 		var c_sub = pet_data.get("color_sub", Color(0.6, 1.0, 0.7))
-		ProceduralMonsterDrawer.draw_monster(self, d_type, c_main, c_sub, anim_timer, m_scale, false)
+		ProceduralMonsterDrawer.draw_monster(self, d_type, c_main, c_sub, anim_timer, m_scale * 1.5, false)
 	
 	# 寵物忠誠綠點
-	draw_circle(Vector2(0, -30 * m_scale), 3.0, Color(0.2, 1.0, 0.4))
+	draw_circle(Vector2(0, -46 * m_scale), 3.5, Color(0.2, 1.0, 0.4))

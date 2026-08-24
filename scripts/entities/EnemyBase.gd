@@ -273,26 +273,26 @@ func _spawn_drops() -> void:
 func _draw() -> void:
 	if monster_texture:
 		# 陰影
-		draw_circle(Vector2(0, 10), 12.0 * monster_scale, Color(0, 0, 0, 0.35))
+		draw_circle(Vector2(0, 12), 16.0 * monster_scale, Color(0, 0, 0, 0.35))
 		if is_boss:
-			var aura_r = 32.0 * monster_scale + sin(anim_timer * 10.0) * 4.0
-			draw_arc(Vector2.ZERO, aura_r, 0, TAU, 32, color_sub, 3.0)
+			var aura_r = 45.0 * monster_scale + sin(anim_timer * 10.0) * 5.0
+			draw_arc(Vector2.ZERO, aura_r, 0, TAU, 32, color_sub, 3.5)
 		var tex_size = monster_texture.get_size()
-		var target_h = 44.0 * monster_scale
+		var target_h = 76.0 * monster_scale
 		var tex_scale = target_h / max(1.0, tex_size.y)
 		var draw_w = tex_size.x * tex_scale
 		var draw_h = target_h
-		var bounce = sin(anim_timer * 7.0) * 2.0
-		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 10 + bounce, draw_w, draw_h)
+		var bounce = sin(anim_timer * 7.0) * 2.5
+		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 12 + bounce, draw_w, draw_h)
 		draw_texture_rect(monster_texture, dest_rect, false)
 	else:
-		ProceduralMonsterDrawer.draw_monster(self, drawer_type, color_main, color_sub, anim_timer, monster_scale, is_boss)
+		ProceduralMonsterDrawer.draw_monster(self, drawer_type, color_main, color_sub, anim_timer, monster_scale * 1.5, is_boss)
 	
 	# 繪製怪物頭頂血條與名稱
 	if ai_state != AIState.DEAD and health and stats:
-		var bar_w = 40.0 * monster_scale
-		var bar_h = 4.0
-		var bar_pos = Vector2(-bar_w / 2.0, -32.0 * monster_scale)
+		var bar_w = 56.0 * monster_scale
+		var bar_h = 5.0
+		var bar_pos = Vector2(-bar_w / 2.0, -48.0 * monster_scale)
 		var hp_r = health.get_hp_ratio()
 		
 		draw_rect(Rect2(bar_pos, Vector2(bar_w, bar_h)), Color(0.1, 0.1, 0.1, 0.8), true)

@@ -25,6 +25,10 @@ EventBus="*res://scripts/core/EventBus.gd"
 SoundManager="*res://scripts/core/SoundManager.gd"
 BuffManager="*res://scripts/core/BuffManager.gd"
 
+[gui]
+
+theme/custom_font="res://assets/fonts/game_font.ttf"
+
 [display]
 
 window/size/viewport_width=1280

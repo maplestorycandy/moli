@@ -327,40 +327,40 @@ func _on_hit_received(dmg: int, _is_crit: bool, _is_effective: bool, knock_dir: 
 # --- 繪製魔力寶貝經典主角 辛 (Shin) 視覺造型 ---
 func _draw() -> void:
 	# 陰影
-	draw_custom_ellipse(Vector2(0, 14), 16.0, 8.0, Color(0, 0, 0, 0.35))
+	draw_custom_ellipse(Vector2(0, 20), 24.0, 12.0, Color(0, 0, 0, 0.35))
 	
 	# 翻滾殘影
 	if current_state == ActionState.DODGE:
-		draw_circle(Vector2.ZERO, 18.0, Color(0.4, 0.8, 1.0, 0.3))
+		draw_circle(Vector2.ZERO, 26.0, Color(0.4, 0.8, 1.0, 0.35))
 		
 	# 乾坤一擲蓄力氣場
 	if current_state == ActionState.SKILL_FORCE_STRIKE and state_timer < 0.45:
-		var aura_r = 24.0 + sin(state_timer * 25.0) * 5.0
-		draw_arc(Vector2.ZERO, aura_r, 0, TAU, 24, Color(1.0, 0.7, 0.1, 0.8), 2.5)
-		draw_circle(Vector2.ZERO, aura_r * 0.6, Color(1.0, 0.4, 0.1, 0.3))
+		var aura_r = 36.0 + sin(state_timer * 25.0) * 8.0
+		draw_arc(Vector2.ZERO, aura_r, 0, TAU, 28, Color(1.0, 0.7, 0.1, 0.85), 3.5)
+		draw_circle(Vector2.ZERO, aura_r * 0.6, Color(1.0, 0.4, 0.1, 0.35))
 		
 	# 主角身軀 (藍色勇者斗篷與輕鎧)
 	# 斗篷
-	var cape_off = -facing_direction * 6.0
-	draw_circle(cape_off + Vector2(0, 2), 12.0, Color(0.15, 0.35, 0.85))
+	var cape_off = -facing_direction * 9.0
+	draw_circle(cape_off + Vector2(0, 3), 18.0, Color(0.15, 0.35, 0.85))
 	
 	# 身體/輕鎧 (白金與鋼藍)
-	draw_circle(Vector2(0, 2), 10.0, Color(0.2, 0.45, 0.95))
-	draw_circle(Vector2(0, 4), 6.0, Color(0.85, 0.85, 0.9)) # 胸甲
+	draw_circle(Vector2(0, 3), 16.0, Color(0.2, 0.45, 0.95))
+	draw_circle(Vector2(0, 6), 10.0, Color(0.85, 0.85, 0.95)) # 胸甲
 	
 	# 頭部與金色刺猬髮型 (經典辛的招牌金髮)
-	draw_circle(Vector2(0, -9), 9.0, Color(1.0, 0.85, 0.2)) # 金髮主體
-	draw_circle(Vector2(0, -7), 7.0, Color(0.98, 0.8, 0.68)) # 臉部膚色
-	draw_circle(Vector2(2, -13), 5.0, Color(1.0, 0.88, 0.2)) # 翹起的金髮撮
-	draw_circle(Vector2(-3, -12), 4.5, Color(1.0, 0.88, 0.2))
+	draw_circle(Vector2(0, -14), 14.0, Color(1.0, 0.85, 0.2)) # 金髮主體
+	draw_circle(Vector2(0, -11), 11.0, Color(0.98, 0.8, 0.68)) # 臉部膚色
+	draw_circle(Vector2(3, -20), 8.0, Color(1.0, 0.88, 0.2)) # 翹起的金髮撮
+	draw_circle(Vector2(-5, -19), 7.0, Color(1.0, 0.88, 0.2))
 	
 	# 眼睛
-	var eye_offset = facing_direction.normalized() * 3.0
-	draw_circle(Vector2(-2, -8) + eye_offset, 1.5, Color(0.1, 0.2, 0.5))
-	draw_circle(Vector2(2, -8) + eye_offset, 1.5, Color(0.1, 0.2, 0.5))
+	var eye_offset = facing_direction.normalized() * 4.5
+	draw_circle(Vector2(-3, -12) + eye_offset, 2.2, Color(0.1, 0.2, 0.5))
+	draw_circle(Vector2(3, -12) + eye_offset, 2.2, Color(0.1, 0.2, 0.5))
 	
 	# 經典佩劍 (雙手大劍 / 單手劍)
-	var sword_pos = facing_direction * 16.0 + Vector2(0, 2)
+	var sword_pos = facing_direction * 24.0 + Vector2(0, 3)
 	var sword_angle = facing_direction.angle()
 	
 	# 揮劍刀光弧線特效
