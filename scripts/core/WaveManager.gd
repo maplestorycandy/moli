@@ -9,10 +9,10 @@ signal all_waves_completed()
 signal wave_timer_updated(time_left: float, total_monsters: int, remaining: int)
 
 var current_wave: int = 1
-const MAX_WAVES = 50
+const MAX_WAVES = 1000
 
 var is_wave_active: bool = false
-var wave_countdown: float = 6.0 # 整備時間 6 秒
+var wave_countdown: float = 6.0
 var spawn_queue: Array[Dictionary] = []
 var spawn_interval_timer: float = 0.0
 var total_wave_enemies_to_spawn: int = 0
@@ -38,15 +38,13 @@ func _process(delta: float) -> void:
 		if wave_countdown <= 0.0:
 			_start_next_wave()
 	else:
-		# 急速隊列出怪 (0.15 秒自四面八方急速湧出)
 		if spawn_queue.size() > 0:
 			spawn_interval_timer -= delta
 			if spawn_interval_timer <= 0.0:
-				spawn_interval_timer = 0.15
+				spawn_interval_timer = 0.12
 				var m_data = spawn_queue.pop_front()
 				_spawn_wave_monster(m_data)
 				
-		# 檢查波次是否肅清
 		var current_alive = _get_alive_wave_enemies_count()
 		wave_timer_updated.emit(0.0, total_wave_enemies_to_spawn, current_alive)
 		if spawn_queue.size() == 0 and current_alive == 0:
@@ -72,8 +70,7 @@ func _start_next_wave() -> void:
 	
 	spawn_queue.clear()
 	
-	# 波次怪量隨波數提升 (波次 1 為 12 隻，波次 50 為 48+ 隻)
-	var count = 12 + int(current_wave * 0.9)
+	var count = min(40, 12 + int(current_wave * 0.15))
 	if is_boss_wave:
 		count += 6
 		
@@ -108,7 +105,6 @@ func _spawn_wave_monster(m_data: Dictionary) -> void:
 	else:
 		get_parent().add_child(enemy)
 		
-	# 根據地圖等級倍率與波次調整怪獸強度
 	var base_lvl = current_wave
 	if has_node("/root/MapManager"):
 		var map_d = get_node("/root/MapManager").get_current_map()
@@ -119,16 +115,14 @@ func _on_wave_cleared() -> void:
 	is_wave_active = false
 	wave_cleared.emit(current_wave)
 	
-	# 給予波次結算獎勵
-	var reward_gold = 150 + (current_wave * 70)
-	var reward_exp = 120 + (current_wave * 60)
+	var reward_gold = 200 + (current_wave * 50)
+	var reward_exp = 150 + (current_wave * 40)
 	Global.add_gold(reward_gold)
 	Global.add_exp(reward_exp)
 	
 	EventBus.show_banner_notification.emit("第 %d 波 四方防守大捷！" % current_wave, "獲得結算獎勵: +%d G, +%d EXP！" % [reward_gold, reward_exp])
 	SoundManager.play_level_up()
 	
-	# 每 5 波通關觸發一次天賦三選一並切換回常規音樂
 	if current_wave % 5 == 0:
 		SoundManager.resume_normal_playlist()
 		var b_win = get_parent().get_node_or_null("CanvasLayer/BuffSelectionWindow")
@@ -137,7 +131,7 @@ func _on_wave_cleared() -> void:
 		
 	if current_wave >= MAX_WAVES:
 		all_waves_completed.emit()
-		EventBus.show_banner_notification.emit("🏆 傳奇守護者 🏆", "成功抵禦 50 波四方魔潮！拯救了全魔力寶貝世界！")
+		EventBus.show_banner_notification.emit("🏆 傳奇守護者 🏆", "成功抵禦 1000 波四方魔潮！拯救了全魔力寶貝世界！")
 	else:
 		current_wave += 1
-		wave_countdown = 6.0 # 6 秒整備時間
+		wave_countdown = 5.0

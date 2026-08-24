@@ -11671,16 +11671,32 @@ static func get_random_monster() -> Dictionary:
 static func get_monsters_for_wave(wave: int) -> Array[String]:
 	_ensure_initialized()
 	var res: Array[String] = []
-	
-	if wave == 5: return ["boss_ozunac"]
-	if wave == 10: return ["boss_ruby"]
-	if wave == 20: return ["boss_judas"]
-	if wave == 50: return ["boss_riberius"]
-	
-	# 根據波次難度階梯挑選合適魔物
 	var pool_size = MONSTER_CATALOG.size()
-	var start_idx = int(clamp(float(wave - 1) / 50.0 * float(pool_size - 10), 0, pool_size - 10))
-	for i in range(4):
-		var pick_idx = (start_idx + i * 3) % pool_size
+	
+	if wave % 5 == 0:
+		# 每 5 波 Boss 戰鬥 (包含經典 BOSS 與四系神獸/大領主)
+		if wave == 5:
+			res.append("boss_ozunac")
+		elif wave == 10:
+			res.append("boss_ruby")
+		elif wave == 20:
+			res.append("boss_judas")
+		elif wave == 50 or wave % 100 == 0:
+			res.append("boss_riberius")
+		else:
+			var boss_idx = (wave * 37) % pool_size
+			res.append(MONSTER_CATALOG[boss_idx]["id"])
+			
+		# 附帶 3 種隨從精銳部隊
+		for i in range(3):
+			var minion_idx = (wave * 13 + i * 29) % pool_size
+			res.append(MONSTER_CATALOG[minion_idx]["id"])
+		return res
+		
+	# 一般波次 (1~4, 6~9... 996~999)：全 750+ 種魔力怪物全員輪流參與戰鬥
+	var species_count = 4 + (wave % 3)
+	for i in range(species_count):
+		var pick_idx = (wave * 17 + i * 43) % pool_size
 		res.append(MONSTER_CATALOG[pick_idx]["id"])
+		
 	return res
