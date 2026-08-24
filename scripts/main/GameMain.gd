@@ -11,6 +11,7 @@ extends Node2D
 @onready var buff_win: Control = $CanvasLayer/BuffSelectionWindow
 @onready var map_win: Control = $CanvasLayer/MapSwitchWindow
 @onready var skin_win: Control = $CanvasLayer/SkinSelectionWindow
+@onready var settings_win: Control = $CanvasLayer/SettingsWindow
 
 const MagicSpell = preload("res://scripts/combat/MagicSpell.gd")
 var damage_number_scene = preload("res://scenes/combat/DamageNumber.tscn")
@@ -20,7 +21,9 @@ var shake_timer: float = 0.0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_M:
+		if event.keycode == KEY_O:
+			settings_win.toggle_window()
+		elif event.keycode == KEY_M:
 			map_win.visible = not map_win.visible
 			if map_win.visible and map_win.has_method("open_window"):
 				map_win.open_window()
@@ -89,6 +92,7 @@ func _connect_hud_buttons() -> void:
 		if r2.has_node("BtnBag"): r2.get_node("BtnBag").pressed.connect(func(): inv_win.toggle_window())
 		if r2.has_node("BtnChar"): r2.get_node("BtnChar").pressed.connect(func(): char_win.toggle_window())
 		if r2.has_node("BtnPet"): r2.get_node("BtnPet").pressed.connect(func(): pet_win.toggle_window())
+		if r2.has_node("BtnSettings"): r2.get_node("BtnSettings").pressed.connect(func(): settings_win.toggle_window())
 
 func _process(delta: float) -> void:
 	if is_instance_valid(player):

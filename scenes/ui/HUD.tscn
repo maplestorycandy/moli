@@ -452,7 +452,14 @@ text = "[C] 人"
 focus_mode = 0[node name="BtnPet" type="Button" parent="BottomBar/VBox/Row2"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+focus_mode = 0
 text = "[P] 寵"
+
+[node name="BtnSettings" type="Button" parent="BottomBar/VBox/Row2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+text = "[O] 設定"
 
 
 focus_mode = 0[node name="BannerNotification" type="Panel" parent="."]

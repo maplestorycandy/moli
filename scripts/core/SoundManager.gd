@@ -1,12 +1,18 @@
 extends Node
 
-# 經典魔力寶貝音效與高傳真 BGM 輪播 / Boss 音樂切換管理器
+# 經典魔力寶貝音效與高傳真 BGM 輪播 / Boss 音樂切換管理器 (支援音量自訂與特效音靜音)
 var sfx_players: Array[AudioStreamPlayer] = []
 var bgm_player: AudioStreamPlayer = null
 var current_playlist_idx: int = 0
 var is_in_boss_mode: bool = false
 var has_user_interacted: bool = false
 var current_playing_wave: int = 1
+
+# 音量控制與靜音設定 (0.0 ~ 1.0)
+var bgm_volume: float = 0.8
+var sfx_volume: float = 0.9
+var is_bgm_muted: bool = false
+var is_sfx_muted: bool = false
 
 const MAX_PLAYERS = 12
 
@@ -40,7 +46,7 @@ func _ready() -> void:
 		
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.bus = "Master"
-	bgm_player.volume_db = -8.0
+	_update_bgm_volume()
 	bgm_player.finished.connect(_on_bgm_finished)
 	add_child(bgm_player)
 	
@@ -53,20 +59,36 @@ func _input(event: InputEvent) -> void:
 			if not bgm_player.playing:
 				play_for_wave(current_playing_wave)
 
+func set_bgm_volume(val: float) -> void:
+	bgm_volume = clamp(val, 0.0, 1.0)
+	_update_bgm_volume()
+
+func set_sfx_volume(val: float) -> void:
+	sfx_volume = clamp(val, 0.0, 1.0)
+
+func set_bgm_muted(muted: bool) -> void:
+	is_bgm_muted = muted
+	_update_bgm_volume()
+
+func set_sfx_muted(muted: bool) -> void:
+	is_sfx_muted = muted
+
+func _update_bgm_volume() -> void:
+	if not bgm_player:
+		return
+	if is_bgm_muted or bgm_volume <= 0.001:
+		bgm_player.volume_db = -80.0
+	else:
+		bgm_player.volume_db = -6.0 + linear_to_db(bgm_volume)
+
 func play_for_wave(wave_num: int) -> void:
 	current_playing_wave = wave_num
 	var is_boss_wave = (wave_num % 5 == 0)
 	
 	if is_boss_wave:
-		# 波次 5, 15, 25, 35, 45 -> boss_01 (熱鬥決戰)
-		# 波次 10, 20, 30, 40, 50 -> boss_02 (李貝留斯)
 		var boss_idx = (int(wave_num / 5) - 1) % 2
 		play_boss_track(boss_idx)
 	else:
-		# 一般波次依序播放 bgm_01.ogg ~ bgm_11.ogg
-		# 1~4 -> 0..3 (bgm_01..04)
-		# 6~9 -> 4..7 (bgm_05..08)
-		# 11~14 -> 8..11%11 (bgm_09..11, 01)
 		var non_boss_order = (wave_num - 1) - int((wave_num - 1) / 5)
 		var playlist_idx = non_boss_order % PLAYLIST.size()
 		play_playlist_track(playlist_idx)
@@ -79,6 +101,7 @@ func play_boss_track(idx: int) -> void:
 		var stream = load(track["path"])
 		if stream:
 			bgm_player.stream = stream
+			_update_bgm_volume()
 			bgm_player.play()
 			EventBus.show_banner_notification.emit("🔥 BOSS 決戰降臨！", "戰鬥曲目: 【%s】" % track["name"])
 
@@ -91,6 +114,7 @@ func play_playlist_track(idx: int) -> void:
 		var stream = load(track["path"])
 		if stream:
 			bgm_player.stream = stream
+			_update_bgm_volume()
 			bgm_player.play()
 			EventBus.show_banner_notification.emit("🎵 正在播放 BGM", "【%s】" % track["name"])
 
@@ -115,7 +139,16 @@ func get_free_player() -> AudioStreamPlayer:
 			return p
 	return sfx_players[0]
 
-# --- 經典復古音效生成器 (無須額外音效檔即可發聲) ---
+func _play_sfx(stream: AudioStream, base_vol_db: float = 0.0, pitch: float = 1.0) -> void:
+	if is_sfx_muted or sfx_volume <= 0.001:
+		return
+	var p = get_free_player()
+	p.stream = stream
+	p.volume_db = base_vol_db + linear_to_db(sfx_volume)
+	p.pitch_scale = pitch
+	p.play()
+
+# --- 經典復古音效生成器 ---
 func generate_tone(freq: float, duration: float, wave_type: String = "sine", decay: float = 0.05, vibrato: float = 0.0) -> AudioStreamWAV:
 	var sample_rate = 22050
 	var total_samples = int(sample_rate * duration)
@@ -193,77 +226,37 @@ func generate_arpeggio(freqs: Array, note_duration: float, wave_type: String = "
 	return stream
 
 func play_swing() -> void:
-	var p = get_free_player()
-	p.stream = generate_tone(350.0, 0.12, "noise", 0.15)
-	p.volume_db = -6.0
-	p.pitch_scale = randf_range(0.9, 1.2)
-	p.play()
+	_play_sfx(generate_tone(350.0, 0.12, "noise", 0.15), -6.0, randf_range(0.9, 1.2))
 
 func play_hit() -> void:
-	var p = get_free_player()
-	p.stream = generate_tone(180.0, 0.15, "square", 0.1)
-	p.volume_db = -3.0
-	p.pitch_scale = randf_range(0.85, 1.15)
-	p.play()
+	_play_sfx(generate_tone(180.0, 0.15, "square", 0.1), -3.0, randf_range(0.85, 1.15))
 
 func play_crit() -> void:
-	var p = get_free_player()
-	p.stream = generate_tone(120.0, 0.28, "triangle", 0.2)
-	p.volume_db = 0.0
-	p.pitch_scale = randf_range(0.9, 1.05)
-	p.play()
+	_play_sfx(generate_tone(120.0, 0.28, "triangle", 0.2), 0.0, randf_range(0.9, 1.05))
 
 func play_dodge() -> void:
-	var p = get_free_player()
-	p.stream = generate_tone(520.0, 0.15, "sine", 0.1)
-	p.volume_db = -8.0
-	p.pitch_scale = 1.2
-	p.play()
+	_play_sfx(generate_tone(520.0, 0.15, "sine", 0.1), -8.0, 1.2)
 
 func play_magic() -> void:
-	var p = get_free_player()
-	p.stream = generate_arpeggio([523.25, 659.25, 783.99, 1046.5], 0.05, "sine")
-	p.volume_db = -4.0
-	p.play()
+	_play_sfx(generate_arpeggio([523.25, 659.25, 783.99, 1046.5], 0.05, "sine"), -4.0)
 
 func play_meteor_explosion() -> void:
-	var p = get_free_player()
-	p.stream = generate_tone(80.0, 0.45, "noise", 0.35)
-	p.volume_db = 2.0
-	p.play()
+	_play_sfx(generate_tone(80.0, 0.45, "noise", 0.35), 2.0)
 
 func play_seal_throw() -> void:
-	var p = get_free_player()
-	p.stream = generate_arpeggio([440.0, 554.37, 659.25, 880.0], 0.04, "triangle")
-	p.volume_db = -2.0
-	p.play()
+	_play_sfx(generate_arpeggio([440.0, 554.37, 659.25, 880.0], 0.04, "triangle"), -2.0)
 
 func play_seal_success() -> void:
-	var p = get_free_player()
-	p.stream = generate_arpeggio([523.25, 659.25, 783.99, 1046.5, 1318.51, 1567.98], 0.08, "square")
-	p.volume_db = 0.0
-	p.play()
+	_play_sfx(generate_arpeggio([523.25, 659.25, 783.99, 1046.5, 1318.51, 1567.98], 0.08, "square"), 0.0)
 
 func play_seal_fail() -> void:
-	var p = get_free_player()
-	p.stream = generate_arpeggio([400.0, 350.0, 280.0, 200.0], 0.08, "square")
-	p.volume_db = -2.0
-	p.play()
+	_play_sfx(generate_arpeggio([400.0, 350.0, 280.0, 200.0], 0.08, "square"), -2.0)
 
 func play_level_up() -> void:
-	var p = get_free_player()
-	p.stream = generate_arpeggio([440.0, 554.37, 659.25, 880.0, 1108.73, 1318.51], 0.1, "square")
-	p.volume_db = 1.0
-	p.play()
+	_play_sfx(generate_arpeggio([440.0, 554.37, 659.25, 880.0, 1108.73, 1318.51], 0.1, "square"), 1.0)
 
 func play_heal() -> void:
-	var p = get_free_player()
-	p.stream = generate_arpeggio([659.25, 830.61, 987.77, 1318.51], 0.06, "sine")
-	p.volume_db = -3.0
-	p.play()
+	_play_sfx(generate_arpeggio([659.25, 830.61, 987.77, 1318.51], 0.06, "sine"), -3.0)
 
 func play_gold() -> void:
-	var p = get_free_player()
-	p.stream = generate_arpeggio([987.77, 1318.51], 0.04, "square")
-	p.volume_db = -6.0
-	p.play()
+	_play_sfx(generate_arpeggio([987.77, 1318.51], 0.04, "square"), -6.0)

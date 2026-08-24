@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://settingswin001"]
+
+[ext_resource type="Script" path="res://scripts/ui/SettingsWindow.gd" id="1_sw01"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.08, 0.12, 0.28, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="SettingsWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -180.0
+offset_right = 220.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sw01")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 16.0
+offset_right = -18.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = "⚙️ 聲音與音樂系統設定"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="BGMSection" type="VBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Panel/VBox/BGMSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "🎵 背景音樂 (BGM) 音量"
+
+[node name="HBox" type="HBoxContainer" parent="Panel/VBox/BGMSection"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BGMSlider" type="HSlider" parent="Panel/VBox/BGMSection/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+value = 80.0
+
+[node name="BGMLabel" type="Label" parent="Panel/VBox/BGMSection/HBox"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 13
+text = "80%"
+horizontal_alignment = 2
+
+[node name="BGMMuteCheck" type="CheckBox" parent="Panel/VBox/BGMSection"]
+layout_mode = 2
+focus_mode = 0
+text = "🔇 靜音背景音樂"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="SFXSection" type="VBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Panel/VBox/SFXSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "⚔️ 戰鬥特效音 (SFX) 音量"
+
+[node name="HBox" type="HBoxContainer" parent="Panel/VBox/SFXSection"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SFXSlider" type="HSlider" parent="Panel/VBox/SFXSection/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+value = 90.0
+
+[node name="SFXLabel" type="Label" parent="Panel/VBox/SFXSection/HBox"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 13
+text = "90%"
+horizontal_alignment = 2
+
+[node name="SFXMuteCheck" type="CheckBox" parent="Panel/VBox/SFXSection"]
+layout_mode = 2
+focus_mode = 0
+text = "🔇 完全靜音戰鬥特效音"
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="ActionHBox" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BtnNextBGM" type="Button" parent="Panel/VBox/ActionHBox"]
+custom_minimum_size = Vector2(140, 32)
+layout_mode = 2
+focus_mode = 0
+text = "⏭️ 切換下一首 BGM"
+
+[node name="BtnClose" type="Button" parent="Panel/VBox/ActionHBox"]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+focus_mode = 0
+text = "✕ 關閉設定"
