@@ -19,7 +19,7 @@ extends Control
 @onready var goddess_label: Label = $TopCenter/GoddessBar/Label
 
 @onready var gold_label: Label = $GoldPanel/GoldLabel
-@onready var pet_tactics_btn: Button = $BottomBar/HBox/BtnPetTactic
+@onready var pet_tactics_btn: Button = $BottomBar/VBox/Row2/BtnPetTactic
 @onready var banner: Panel = $BannerNotification
 @onready var banner_title: Label = $BannerNotification/VBox/Title
 @onready var banner_sub: Label = $BannerNotification/VBox/Sub

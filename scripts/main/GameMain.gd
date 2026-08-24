@@ -12,6 +12,7 @@ extends Node2D
 @onready var map_win: Control = $CanvasLayer/MapSwitchWindow
 @onready var skin_win: Control = $CanvasLayer/SkinSelectionWindow
 
+const MagicSpell = preload("res://scripts/combat/MagicSpell.gd")
 var damage_number_scene = preload("res://scenes/combat/DamageNumber.tscn")
 
 var shake_intensity: float = 0.0
@@ -27,6 +28,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			skin_win.visible = not skin_win.visible
 			if skin_win.visible and skin_win.has_method("open_window"):
 				skin_win.open_window()
+		elif event.keycode == KEY_I:
+			inv_win.toggle_window()
+		elif event.keycode == KEY_C:
+			char_win.toggle_window()
+		elif event.keycode == KEY_P:
+			pet_win.toggle_window()
 
 func _ready() -> void:
 	EventBus.damage_spawned.connect(_on_damage_spawned)
@@ -37,25 +44,51 @@ func _ready() -> void:
 	if wave_manager:
 		wave_manager.wave_timer_updated.connect(_on_wave_timer_updated)
 	
-	# 連接 HUD 底部按鈕
-	if hud and hud.has_node("BottomBar/HBox"):
-		var hbox = hud.get_node("BottomBar/HBox")
-		if hbox.has_node("BtnChar"): hbox.get_node("BtnChar").pressed.connect(func(): char_win.toggle_window())
-		if hbox.has_node("BtnBag"): hbox.get_node("BtnBag").pressed.connect(func(): inv_win.toggle_window())
-		if hbox.has_node("BtnPet"): hbox.get_node("BtnPet").pressed.connect(func(): pet_win.toggle_window())
-		if hbox.has_node("BtnPetTactic"): hbox.get_node("BtnPetTactic").pressed.connect(func(): if player and player.has_method("_cycle_pet_command"): player._cycle_pet_command())
-		if hbox.has_node("BtnMap"): hbox.get_node("BtnMap").pressed.connect(func():
-			map_win.visible = not map_win.visible
-			if map_win.visible and map_win.has_method("open_window"):
-				map_win.open_window()
-		)
-		if hbox.has_node("BtnSkin"): hbox.get_node("BtnSkin").pressed.connect(func():
-			skin_win.visible = not skin_win.visible
-			if skin_win.visible and skin_win.has_method("open_window"):
-				skin_win.open_window()
-		)
+	# 連接 HUD 底部雙排快捷欄按鈕
+	_connect_hud_buttons()
 	
-	EventBus.show_banner_notification.emit("歡迎來到法蘭王國！", "【女神防守戰】已啟動！擊退 50 波入侵魔物！")
+	EventBus.show_banner_notification.emit("歡迎來到法蘭王國！", "【魔力神技已解鎖】1~0 施放單體/強力魔法，Q/E/R/F 施放超強全螢幕魔法！")
+
+func _connect_hud_buttons() -> void:
+	if not hud:
+		return
+		
+	# Row 1 (基礎與強力技能)
+	var r1 = hud.get_node_or_null("BottomBar/VBox/Row1")
+	if r1:
+		if r1.has_node("BtnAttack"): r1.get_node("BtnAttack").pressed.connect(func(): if player: player._start_attack())
+		if r1.has_node("BtnSkill1"): r1.get_node("BtnSkill1").pressed.connect(func(): if player: player._start_skill_combo())
+		if r1.has_node("BtnSkill2"): r1.get_node("BtnSkill2").pressed.connect(func(): if player: player._start_skill_force_strike())
+		if r1.has_node("BtnSkill3"): r1.get_node("BtnSkill3").pressed.connect(func(): if player: player._start_skill_kiblast())
+		if r1.has_node("BtnSkill4"): r1.get_node("BtnSkill4").pressed.connect(func(): if player: player._cast_rapid_fire())
+		if r1.has_node("BtnSkill5"): r1.get_node("BtnSkill5").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.DRAIN, MagicSpell.SpellTier.SINGLE, 6.0, 20))
+		if r1.has_node("BtnSkill6"): r1.get_node("BtnSkill6").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.MIND_WAVE, MagicSpell.SpellTier.STRONG, 9.5, 30))
+		if r1.has_node("BtnSkill7"): r1.get_node("BtnSkill7").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.METEOR, MagicSpell.SpellTier.STRONG, 8.5, 25))
+		if r1.has_node("BtnSkill8"): r1.get_node("BtnSkill8").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.ICE, MagicSpell.SpellTier.STRONG, 8.5, 25))
+		if r1.has_node("BtnSkill9"): r1.get_node("BtnSkill9").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.FIRE, MagicSpell.SpellTier.STRONG, 8.5, 25))
+		if r1.has_node("BtnSkill0"): r1.get_node("BtnSkill0").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.WIND, MagicSpell.SpellTier.STRONG, 8.5, 25))
+
+	# Row 2 (超強全螢幕魔法與系統功能)
+	var r2 = hud.get_node_or_null("BottomBar/VBox/Row2")
+	if r2:
+		if r2.has_node("BtnMegaMeteor"): r2.get_node("BtnMegaMeteor").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.METEOR, MagicSpell.SpellTier.MEGA, 20.0, 50))
+		if r2.has_node("BtnMegaIce"): r2.get_node("BtnMegaIce").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.ICE, MagicSpell.SpellTier.MEGA, 20.0, 50))
+		if r2.has_node("BtnMegaFire"): r2.get_node("BtnMegaFire").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.FIRE, MagicSpell.SpellTier.MEGA, 20.0, 50))
+		if r2.has_node("BtnMegaWind"): r2.get_node("BtnMegaWind").pressed.connect(func(): if player: player._cast_magic(MagicSpell.SpellType.WIND, MagicSpell.SpellTier.MEGA, 20.0, 50))
+		if r2.has_node("BtnSeal"): r2.get_node("BtnSeal").pressed.connect(func(): if player: player._use_seal_card())
+		if r2.has_node("BtnDodge"): r2.get_node("BtnDodge").pressed.connect(func(): if player: player._start_dodge())
+		if r2.has_node("BtnPetTactic"): r2.get_node("BtnPetTactic").pressed.connect(func(): if player: player._cycle_pet_command())
+		if r2.has_node("BtnMap"): r2.get_node("BtnMap").pressed.connect(func():
+			map_win.visible = not map_win.visible
+			if map_win.visible and map_win.has_method("open_window"): map_win.open_window()
+		)
+		if r2.has_node("BtnSkin"): r2.get_node("BtnSkin").pressed.connect(func():
+			skin_win.visible = not skin_win.visible
+			if skin_win.visible and skin_win.has_method("open_window"): skin_win.open_window()
+		)
+		if r2.has_node("BtnBag"): r2.get_node("BtnBag").pressed.connect(func(): inv_win.toggle_window())
+		if r2.has_node("BtnChar"): r2.get_node("BtnChar").pressed.connect(func(): char_win.toggle_window())
+		if r2.has_node("BtnPet"): r2.get_node("BtnPet").pressed.connect(func(): pet_win.toggle_window())
 
 func _process(delta: float) -> void:
 	if is_instance_valid(player):

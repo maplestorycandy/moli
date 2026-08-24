@@ -32,8 +32,10 @@ var skin_data: Dictionary = {}
 var skin_anim_frames: Array[Texture2D] = []
 
 # 預載技能與投射物場景
+const MagicSpell = preload("res://scripts/combat/MagicSpell.gd")
 var kiblast_scene = preload("res://scenes/combat/KiBlastProjectile.tscn")
-var meteor_scene = preload("res://scenes/combat/MeteorStrike.tscn")
+var magic_spell_scene = preload("res://scenes/combat/MagicSpell.tscn")
+var rapid_arrow_scene = preload("res://scenes/combat/RapidArrow.tscn")
 var seal_card_scene = preload("res://scenes/combat/SealCardProjectile.tscn")
 
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
@@ -114,24 +116,74 @@ func _handle_input() -> void:
 		_start_attack()
 		return
 		
-	# 技能1: 連擊
+	# [1] 連擊 (近戰多段斬擊)
 	if Input.is_action_just_pressed("skill_1") or Input.is_key_pressed(KEY_1):
 		_start_skill_combo()
 		return
 		
-	# 技能2: 乾坤一擲
+	# [2] 乾坤一擲 (高倍率必殺一擊)
 	if Input.is_action_just_pressed("skill_2") or Input.is_key_pressed(KEY_2):
 		_start_skill_force_strike()
 		return
 		
-	# 技能3: 氣功彈
+	# [3] 氣功彈 (多發巨型氣浪)
 	if Input.is_action_just_pressed("skill_3") or Input.is_key_pressed(KEY_3):
 		_start_skill_kiblast()
 		return
 		
-	# 技能4: 超強隕石魔法
+	# [4] 亂射 (弓箭手暴風散彈雨)
 	if Input.is_action_just_pressed("skill_4") or Input.is_key_pressed(KEY_4):
-		_start_skill_meteor()
+		_cast_rapid_fire()
+		return
+		
+	# [5] 吸血魔法 (暗影汲取 + 治癒)
+	if Input.is_key_pressed(KEY_5):
+		_cast_magic(MagicSpell.SpellType.DRAIN, MagicSpell.SpellTier.SINGLE, 6.0, 20)
+		return
+		
+	# [6] 精神衝擊波 (全方位震盪衝擊)
+	if Input.is_key_pressed(KEY_6):
+		_cast_magic(MagicSpell.SpellType.MIND_WAVE, MagicSpell.SpellTier.STRONG, 9.5, 30)
+		return
+		
+	# [7] 隕石魔法 / 強力隕石魔法
+	if Input.is_key_pressed(KEY_7):
+		_cast_magic(MagicSpell.SpellType.METEOR, MagicSpell.SpellTier.STRONG, 8.5, 25)
+		return
+		
+	# [8] 冰凍魔法 / 強力冰凍魔法
+	if Input.is_key_pressed(KEY_8):
+		_cast_magic(MagicSpell.SpellType.ICE, MagicSpell.SpellTier.STRONG, 8.5, 25)
+		return
+		
+	# [9] 火焰魔法 / 強力火焰魔法
+	if Input.is_key_pressed(KEY_9):
+		_cast_magic(MagicSpell.SpellType.FIRE, MagicSpell.SpellTier.STRONG, 8.5, 25)
+		return
+		
+	# [0] 風刃魔法 / 強力風刃魔法
+	if Input.is_key_pressed(KEY_0):
+		_cast_magic(MagicSpell.SpellType.WIND, MagicSpell.SpellTier.STRONG, 8.5, 25)
+		return
+		
+	# [Q] 超強隕石魔法 (全螢幕天崩地裂)
+	if Input.is_key_pressed(KEY_Q):
+		_cast_magic(MagicSpell.SpellType.METEOR, MagicSpell.SpellTier.MEGA, 20.0, 50)
+		return
+		
+	# [E] 超強冰凍魔法 (全螢幕極寒暴雪)
+	if Input.is_key_pressed(KEY_E):
+		_cast_magic(MagicSpell.SpellType.ICE, MagicSpell.SpellTier.MEGA, 20.0, 50)
+		return
+		
+	# [R] 超強火焰魔法 (全螢幕煉獄火海)
+	if Input.is_key_pressed(KEY_R):
+		_cast_magic(MagicSpell.SpellType.FIRE, MagicSpell.SpellTier.MEGA, 20.0, 50)
+		return
+		
+	# [F] 超強風刃魔法 (全螢幕狂風風暴)
+	if Input.is_key_pressed(KEY_F):
+		_cast_magic(MagicSpell.SpellType.WIND, MagicSpell.SpellTier.MEGA, 20.0, 50)
 		return
 		
 	# 封印卡投擲
@@ -144,21 +196,15 @@ func _handle_input() -> void:
 		_cycle_pet_command()
 
 func _process_movement(delta: float) -> void:
-	# 支援 WASD、方向鍵、InputMap 與滑鼠右鍵點擊移動
 	var move_vec = Vector2.ZERO
-	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
-		move_vec.y -= 1.0
-	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
-		move_vec.y += 1.0
-	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-		move_vec.x -= 1.0
-	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-		move_vec.x += 1.0
+	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP): move_vec.y -= 1.0
+	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN): move_vec.y += 1.0
+	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT): move_vec.x -= 1.0
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT): move_vec.x += 1.0
 		
 	if move_vec == Vector2.ZERO:
 		move_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		
-	# 滑鼠右鍵持續按住走動
 	if move_vec == Vector2.ZERO and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		var mouse_pos = get_global_mouse_position()
 		var diff = mouse_pos - global_position
@@ -198,8 +244,8 @@ func _start_attack() -> void:
 	facing_direction = aim_direction
 	
 	var is_dual = BuffManager.has_buff("dual_attack")
-	var dmg_mult = 1.0 if not is_dual else 1.35
-	_trigger_weapon_hitbox("普通攻擊", dmg_mult, 0.15, 0.3)
+	var dmg_mult = 2.5 if not is_dual else 3.8 # 普攻傷害倍率提升
+	_trigger_weapon_hitbox("普通攻擊", dmg_mult, 0.12, 0.25)
 	SoundManager.play_swing()
 
 func _start_skill_combo() -> void:
@@ -220,17 +266,18 @@ func _process_combo_step() -> void:
 	var is_master = BuffManager.has_buff("combo_master")
 	var max_step = 6 if is_master else 4
 	
-	_trigger_weapon_hitbox("連擊", 0.75 + (combo_step * 0.1), 0.05, 0.15)
+	# 連擊每段傷害大幅提升 (3.5x ~ 5.5x 每段，總傷害超 20x)
+	_trigger_weapon_hitbox("連擊", 3.5 + (combo_step * 0.4), 0.04, 0.12)
 	SoundManager.play_swing()
-	EventBus.screen_shake_requested.emit(4.0, 0.1)
+	EventBus.screen_shake_requested.emit(6.0, 0.1)
 	
 	if combo_step < max_step:
-		get_tree().create_timer(0.12).timeout.connect(func():
+		get_tree().create_timer(0.1).timeout.connect(func():
 			if current_state == ActionState.SKILL_COMBO:
 				_process_combo_step()
 		)
 	else:
-		get_tree().create_timer(0.2).timeout.connect(func():
+		get_tree().create_timer(0.18).timeout.connect(func():
 			if current_state == ActionState.SKILL_COMBO:
 				current_state = ActionState.IDLE
 		)
@@ -260,24 +307,52 @@ func _start_skill_kiblast() -> void:
 	get_parent().add_child(blast)
 	
 	var is_master = BuffManager.has_buff("qigong_split")
-	var count = 3 if is_master else 1
-	var atk_val = int(Global.atk * 1.6)
+	var count = 5 if is_master else 3 # 氣功彈發數增強
+	var atk_val = int(Global.atk * 6.5) # 氣功彈傷害倍率大幅提升 (6.5x)
 	blast.setup(aim_direction, atk_val, count)
 	SoundManager.play_magic()
 
-func _start_skill_meteor() -> void:
-	var mp_cost = 45
+func _cast_rapid_fire() -> void:
+	var mp_cost = 25
 	if Global.mp < mp_cost:
 		_show_not_enough_mp()
 		return
 	Global.consume_mp(mp_cost)
 	
+	facing_direction = aim_direction
+	var arrow_count = 8
+	var dmg_per_arrow = int(Global.atk * 3.2) # 亂射 8 發破空箭 (總計超 25x)
+	
+	for i in range(arrow_count):
+		var spread_angle = randf_range(-0.45, 0.45)
+		var arrow_dir = aim_direction.rotated(spread_angle)
+		var arrow = rapid_arrow_scene.instantiate()
+		arrow.global_position = global_position + arrow_dir * 18.0
+		get_parent().add_child(arrow)
+		arrow.setup(arrow_dir, dmg_per_arrow)
+		
+	SoundManager.play_swing()
+	EventBus.screen_shake_requested.emit(8.0, 0.2)
+
+func _cast_magic(spell_type: MagicSpell.SpellType, spell_tier: MagicSpell.SpellTier, dmg_multiplier: float, mp_cost: int) -> void:
+	if Global.mp < mp_cost:
+		_show_not_enough_mp()
+		return
+	Global.consume_mp(mp_cost)
+	
+	facing_direction = aim_direction
 	var target_p = get_global_mouse_position()
-	var meteor = meteor_scene.instantiate()
-	meteor.global_position = target_p
-	get_parent().add_child(meteor)
-	meteor.setup(int(Global.atk * 2.8))
-	SoundManager.play_magic()
+	
+	# 若為精神衝擊波，以自身為中心
+	if spell_type == MagicSpell.SpellType.MIND_WAVE:
+		target_p = global_position
+		
+	var spell = magic_spell_scene.instantiate()
+	spell.global_position = target_p
+	get_parent().add_child(spell)
+	
+	var dmg = int(Global.atk * dmg_multiplier)
+	spell.setup(spell_type, spell_tier, dmg)
 
 func _use_seal_card() -> void:
 	var card_item = null
@@ -330,17 +405,18 @@ func _update_state(delta: float) -> void:
 				hurtbox.is_invulnerable = false
 				current_state = ActionState.IDLE
 		ActionState.ATTACK:
-			if state_timer >= 0.35:
+			if state_timer >= 0.3:
 				current_state = ActionState.IDLE
 		ActionState.SKILL_FORCE_STRIKE:
-			if state_timer >= 0.45 and weapon_collision.disabled:
-				_trigger_weapon_hitbox("乾坤一擲", 3.2, 0.0, 0.25)
-				EventBus.screen_shake_requested.emit(12.0, 0.3)
+			if state_timer >= 0.4 and weapon_collision.disabled:
+				# 乾坤一擲傷害提升至 12.0x
+				_trigger_weapon_hitbox("乾坤一擲", 12.0, 0.0, 0.25)
+				EventBus.screen_shake_requested.emit(18.0, 0.35)
 				SoundManager.play_crit()
-			elif state_timer >= 0.75:
+			elif state_timer >= 0.65:
 				current_state = ActionState.IDLE
 		ActionState.HURT:
-			if state_timer >= 0.3:
+			if state_timer >= 0.25:
 				current_state = ActionState.IDLE
 
 func _show_not_enough_mp() -> void:
@@ -376,9 +452,9 @@ func _draw() -> void:
 		draw_circle(Vector2.ZERO, 26.0 * p_scale, Color(0.4, 0.8, 1.0, 0.35))
 		
 	# 乾坤一擲蓄力氣場
-	if current_state == ActionState.SKILL_FORCE_STRIKE and state_timer < 0.45:
-		var aura_r = (36.0 + sin(state_timer * 25.0) * 8.0) * p_scale
-		draw_arc(Vector2.ZERO, aura_r, 0, TAU, 28, Color(1.0, 0.7, 0.1, 0.85), 3.5)
+	if current_state == ActionState.SKILL_FORCE_STRIKE and state_timer < 0.4:
+		var aura_r = (38.0 + sin(state_timer * 25.0) * 8.0) * p_scale
+		draw_arc(Vector2.ZERO, aura_r, 0, TAU, 28, Color(1.0, 0.7, 0.1, 0.85), 4.5)
 		draw_circle(Vector2.ZERO, aura_r * 0.6, Color(1.0, 0.4, 0.1, 0.35))
 		
 	var cur_tex: Texture2D = null
@@ -387,7 +463,6 @@ func _draw() -> void:
 		cur_tex = skin_anim_frames[f_idx]
 		
 	if cur_tex:
-		# 1. 繪製單一完整英雄 Skin 精靈圖
 		var tex_size = cur_tex.get_size()
 		var target_h = 76.0 * p_scale
 		var tex_scale = target_h / max(1.0, tex_size.y)
@@ -397,7 +472,6 @@ func _draw() -> void:
 		var dest_rect = Rect2(-draw_w / 2.0, -draw_h + 16 + bounce, draw_w, draw_h)
 		draw_texture_rect(cur_tex, dest_rect, false)
 	else:
-		# 2. 經典主角 辛 (Shin) 藍斗篷金髮勇者手繪
 		var cape_off = -facing_direction * 9.0
 		draw_circle(cape_off + Vector2(0, 3), 18.0, Color(0.15, 0.35, 0.85))
 		draw_circle(Vector2(0, 3), 16.0, Color(0.2, 0.45, 0.95))
@@ -430,7 +504,7 @@ func _draw() -> void:
 		var s_angle = facing_direction.angle()
 		if current_state == ActionState.SKILL_FORCE_STRIKE:
 			slash_col = Color(1.0, 0.4, 0.1, 0.95)
-			draw_arc(Vector2.ZERO, 60.0 * p_scale, s_angle - 1.2, s_angle + 1.2, 20, slash_col, 10.0)
+			draw_arc(Vector2.ZERO, 65.0 * p_scale, s_angle - 1.2, s_angle + 1.2, 20, slash_col, 10.0)
 		else:
 			draw_arc(Vector2.ZERO, 48.0 * p_scale, s_angle - 0.9, s_angle + 0.9, 20, slash_col, 6.0)
 
