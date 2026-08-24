@@ -11564,7 +11564,7 @@ const MONSTER_CATALOG: Array[Dictionary] = [
 		"base_def": 14,
 		"speed": 95.0
 	},
-	# --- 史詩領主 BOSS 群 ---
+	# --- 經典《魔力寶貝》主線十大史詩領主 BOSS ---
 	{
 		"id": "boss_ozunac",
 		"num": "B01",
@@ -11576,9 +11576,9 @@ const MONSTER_CATALOG: Array[Dictionary] = [
 		"scale": 1.4,
 		"element": { CombatMath.ElementType.EARTH: 5, CombatMath.ElementType.FIRE: 5 },
 		"tier": CombatMath.SealCardTier.GOLD,
-		"base_hp": 1500,
-		"base_mp": 500,
-		"base_atk": 85,
+		"base_hp": 2000,
+		"base_mp": 600,
+		"base_atk": 90,
 		"base_def": 45,
 		"speed": 130.0
 	},
@@ -11593,45 +11593,147 @@ const MONSTER_CATALOG: Array[Dictionary] = [
 		"scale": 1.35,
 		"element": { CombatMath.ElementType.WATER: 5, CombatMath.ElementType.FIRE: 5 },
 		"tier": CombatMath.SealCardTier.GOLD,
-		"base_hp": 2200,
+		"base_hp": 3500,
 		"base_mp": 1200,
-		"base_atk": 110,
+		"base_atk": 120,
 		"base_def": 55,
 		"speed": 140.0
 	},
 	{
-		"id": "boss_judas",
+		"id": "boss_akas",
 		"num": "B03",
-		"name": "猶大 (Judas)",
+		"name": "沉默之龍 阿卡斯",
+		"race": "龍　系",
+		"drawer_type": "dragon",
+		"color_main": Color(0.2, 0.4, 0.85),
+		"color_sub": Color(0.6, 0.9, 1.0),
+		"scale": 1.6,
+		"element": { CombatMath.ElementType.WATER: 7, CombatMath.ElementType.EARTH: 3 },
+		"tier": CombatMath.SealCardTier.GOLD,
+		"base_hp": 5500,
+		"base_mp": 1500,
+		"base_atk": 150,
+		"base_def": 65,
+		"speed": 140.0
+	},
+	{
+		"id": "boss_judas",
+		"num": "B04",
+		"name": "背叛者 猶大",
 		"race": "邪魔系",
 		"drawer_type": "boss_judas",
 		"color_main": Color(0.25, 0.15, 0.35),
 		"color_sub": Color(0.8, 0.2, 1.0),
-		"scale": 1.5,
+		"scale": 1.55,
 		"element": { CombatMath.ElementType.FIRE: 5, CombatMath.ElementType.WIND: 5 },
 		"tier": CombatMath.SealCardTier.GOLD,
-		"base_hp": 3200,
-		"base_mp": 1500,
-		"base_atk": 140,
-		"base_def": 70,
+		"base_hp": 8000,
+		"base_mp": 2000,
+		"base_atk": 180,
+		"base_def": 75,
 		"speed": 145.0
 	},
 	{
+		"id": "boss_pab",
+		"num": "B05",
+		"name": "改造陰影 帕布提斯馬",
+		"race": "改造寵",
+		"drawer_type": "ghost",
+		"color_main": Color(0.1, 0.1, 0.15),
+		"color_sub": Color(0.4, 0.9, 0.4),
+		"scale": 1.65,
+		"element": { CombatMath.ElementType.EARTH: 5, CombatMath.ElementType.WIND: 5 },
+		"tier": CombatMath.SealCardTier.GOLD,
+		"base_hp": 11000,
+		"base_mp": 2500,
+		"base_atk": 220,
+		"base_def": 85,
+		"speed": 150.0
+	},
+	{
 		"id": "boss_riberius",
-		"num": "B04",
+		"num": "B06",
 		"name": "軍神 李貝留斯",
 		"race": "邪魔系",
 		"drawer_type": "boss_riberius",
 		"color_main": Color(0.12, 0.08, 0.22),
 		"color_sub": Color(1.0, 0.85, 0.3),
-		"scale": 1.7,
+		"scale": 1.8,
 		"element": { CombatMath.ElementType.EARTH: 5, CombatMath.ElementType.WIND: 5 },
 		"tier": CombatMath.SealCardTier.GOLD,
-		"base_hp": 5500,
-		"base_mp": 3000,
-		"base_atk": 185,
-		"base_def": 95,
+		"base_hp": 15000,
+		"base_mp": 3500,
+		"base_atk": 270,
+		"base_def": 100,
 		"speed": 160.0
+	},
+	{
+		"id": "boss_baros",
+		"num": "B07",
+		"name": "逆牛領主 巴洛斯",
+		"race": "野獸系",
+		"drawer_type": "beast",
+		"color_main": Color(0.7, 0.15, 0.1),
+		"color_sub": Color(1.0, 0.6, 0.2),
+		"scale": 1.75,
+		"element": { CombatMath.ElementType.FIRE: 8, CombatMath.ElementType.EARTH: 2 },
+		"tier": CombatMath.SealCardTier.GOLD,
+		"base_hp": 20000,
+		"base_mp": 4000,
+		"base_atk": 320,
+		"base_def": 120,
+		"speed": 155.0
+	},
+	{
+		"id": "boss_kaifa",
+		"num": "B08",
+		"name": "四曜守護聖獸 凱法",
+		"race": "神獸",
+		"drawer_type": "beast",
+		"color_main": Color(0.9, 0.85, 0.4),
+		"color_sub": Color(1.0, 1.0, 0.8),
+		"scale": 1.85,
+		"element": { CombatMath.ElementType.WIND: 5, CombatMath.ElementType.WATER: 5 },
+		"tier": CombatMath.SealCardTier.GOLD,
+		"base_hp": 26000,
+		"base_mp": 5000,
+		"base_atk": 380,
+		"base_def": 140,
+		"speed": 165.0
+	},
+	{
+		"id": "boss_folibot",
+		"num": "B09",
+		"name": "時之沙漏 佛利波特",
+		"race": "邪魔系",
+		"drawer_type": "ghost",
+		"color_main": Color(0.3, 0.1, 0.5),
+		"color_sub": Color(0.9, 0.6, 1.0),
+		"scale": 1.9,
+		"element": { CombatMath.ElementType.EARTH: 5, CombatMath.ElementType.WATER: 5 },
+		"tier": CombatMath.SealCardTier.GOLD,
+		"base_hp": 34000,
+		"base_mp": 6000,
+		"base_atk": 450,
+		"base_def": 160,
+		"speed": 170.0
+	},
+	{
+		"id": "boss_alges",
+		"num": "B10",
+		"name": "至高神 創世阿爾傑斯",
+		"race": "邪魔系",
+		"drawer_type": "humanoid",
+		"color_main": Color(0.95, 0.85, 0.3),
+		"color_sub": Color(1.0, 1.0, 1.0),
+		"scale": 2.1,
+		"element": { CombatMath.ElementType.EARTH: 3, CombatMath.ElementType.WATER: 3, CombatMath.ElementType.FIRE: 2, CombatMath.ElementType.WIND: 2 },
+		"tier": CombatMath.SealCardTier.GOLD,
+		"base_hp": 45000,
+		"base_mp": 8000,
+		"base_atk": 550,
+		"base_def": 190,
+		"speed": 180.0
 	}
 ]
 
@@ -11671,32 +11773,39 @@ static func get_random_monster() -> Dictionary:
 static func get_monsters_for_wave(wave: int) -> Array[String]:
 	_ensure_initialized()
 	var res: Array[String] = []
-	var pool_size = MONSTER_CATALOG.size()
 	
-	if wave % 5 == 0:
-		# 每 5 波 Boss 戰鬥 (包含經典 BOSS 與四系神獸/大領主)
-		if wave == 5:
-			res.append("boss_ozunac")
-		elif wave == 10:
-			res.append("boss_ruby")
-		elif wave == 20:
-			res.append("boss_judas")
-		elif wave == 50 or wave % 100 == 0:
-			res.append("boss_riberius")
-		else:
-			var boss_idx = (wave * 37) % pool_size
-			res.append(MONSTER_CATALOG[boss_idx]["id"])
+	var non_boss_list: Array = []
+	for m in MONSTER_CATALOG:
+		if not ("boss_" in m["id"]):
+			non_boss_list.append(m["id"])
 			
-		# 附帶 3 種隨從精銳部隊
-		for i in range(3):
-			var minion_idx = (wave * 13 + i * 29) % pool_size
-			res.append(MONSTER_CATALOG[minion_idx]["id"])
-		return res
-		
-	# 一般波次 (1~4, 6~9... 996~999)：全 750+ 種魔力怪物全員輪流參與戰鬥
-	var species_count = 4 + (wave % 3)
-	for i in range(species_count):
-		var pick_idx = (wave * 17 + i * 43) % pool_size
-		res.append(MONSTER_CATALOG[pick_idx]["id"])
+	var total_normal = non_boss_list.size()
+	
+	# 每 50 波完整涵蓋全圖鑑 750+ 隻怪物 (波次 1..50 依序登場所有魔物)
+	var cycle_wave = ((wave - 1) % 50) + 1
+	var bracket_start = int(float(cycle_wave - 1) / 50.0 * float(total_normal))
+	var bracket_end = int(float(cycle_wave) / 50.0 * float(total_normal))
+	bracket_end = max(bracket_start + 12, bracket_end)
+	
+	var is_boss_wave = (cycle_wave % 5 == 0)
+	
+	if is_boss_wave:
+		# 依據魔力寶貝主線劇情與難度階梯登場 10 大經典主線 BOSS
+		match cycle_wave:
+			5: res.append("boss_ozunac")    # Chapter 1: 熱砂之歐茲那克 (Lv.10 東門外殺手)
+			10: res.append("boss_ruby")     # Chapter 2: 狂暴露比 (Lv.20 索奇亞巫冠)
+			15: res.append("boss_akas")     # Chapter 3: 沉默之龍 阿卡斯 (Lv.30 阿巴尼斯雪山)
+			20: res.append("boss_judas")    # Chapter 4: 背叛者 猶大 (Lv.40 神之眼)
+			25: res.append("boss_pab")      # Chapter 5: 改造陰影 帕布提斯馬 (Lv.50 阿魯巴斯實驗所)
+			30: res.append("boss_riberius") # Chapter 6: 軍神 李貝留斯 (Lv.60 黑之宮殿)
+			35: res.append("boss_baros")    # Chapter 7: 逆牛 巴洛斯 (Lv.70 蘭國勳章決戰)
+			40: res.append("boss_kaifa")    # Chapter 8: 四曜守護聖獸 凱法 (Lv.80 天空之城)
+			45: res.append("boss_folibot")  # Chapter 9: 時之沙漏 佛利波特 (Lv.90 沙漏終焉)
+			50: res.append("boss_alges")    # Chapter 10: 至高創世神 阿爾傑斯 (Lv.100 神域頂峰)
+			_: res.append("boss_riberius")
+			
+	# 抓取此波次對應區間內的所有魔物，確保 1~50 波每隻怪全部出戰！
+	for idx in range(bracket_start, min(bracket_end, total_normal)):
+		res.append(non_boss_list[idx])
 		
 	return res

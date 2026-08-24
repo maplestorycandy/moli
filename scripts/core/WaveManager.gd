@@ -88,11 +88,13 @@ func _start_next_wave() -> void:
 	SoundManager.play_for_wave(current_wave)
 	
 	if is_boss_wave:
-		EventBus.show_banner_notification.emit("⚠️ 四方領主突襲警報 ⚠️", "第 %d 波：強大 BOSS 與魔軍自四方裂隙大舉進攻！" % current_wave)
+		var boss_data = MonsterDatabase.get_monster_by_id(monster_ids[0])
+		var b_name = boss_data.get("name", "強大 BOSS")
+		EventBus.show_banner_notification.emit("⚠️ 主線領主決戰降臨 ⚠️", "第 %d 波：【%s】率領魔軍自四方裂隙突襲！" % [current_wave, b_name])
 		SoundManager.play_crit()
-		EventBus.screen_shake_requested.emit(15.0, 0.4)
+		EventBus.screen_shake_requested.emit(18.0, 0.45)
 	else:
-		EventBus.show_banner_notification.emit("第 %d 波 四面八方魔潮來襲！" % current_wave, "魔物正自【西南/東北/西北/東南】四座城外裂隙湧出！")
+		EventBus.show_banner_notification.emit("第 %d 波 魔力全圖鑑魔潮來襲！" % current_wave, "魔物正自【西南/東北/西北/東南】四座城外裂隙湧出！")
 		
 	wave_started.emit(current_wave, is_boss_wave)
 
